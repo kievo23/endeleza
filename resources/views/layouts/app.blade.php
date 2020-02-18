@@ -86,7 +86,7 @@
                             <i class="feather icon-menu"></i>
                         </a>
                         <a href="index-1.htm">
-                            <img class="img-radius" src="\assets\images\logo.png" width="50px" alt="MWeza-Logo">
+                            <img class="img-radius" src="\assets\images\Endeleza.png" width="50px" alt="Endeleza-Logo">
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>
