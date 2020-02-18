@@ -159,7 +159,8 @@ $(document).ready( function () {
       dom: 'Bfrtip',
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
+        ],
+        "order": [[ 6, "desc" ]]
     });
 
     $('a.toggle-vis').on( 'click', function (e) {
