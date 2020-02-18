@@ -52,9 +52,20 @@ class DeliveryNotificationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function convert(Request $req)
     {
         //
+        $request = DeliveryNotification::findOrFail($id);
+        LoanAccount::create([
+            'customer_account_id' => $request->customer_id,
+            'principal_amount' => $request->amount,
+            'trn_charge' => '25.00',
+            'loan_amount' => $request->amount + 25.00,
+            'loan_balance' => $request->amount + 25.00,
+            'loan_penalty' => 0.00,
+            'loan_status' => 0
+        ]);
+
     }
 
     /**

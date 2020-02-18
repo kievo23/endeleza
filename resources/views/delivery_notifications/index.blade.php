@@ -108,6 +108,7 @@ Endeleza Capital: Loan Requests
                             <th>Amount</th>
                             <th>Status</th>
                             <th>Created at</th>
+                            <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -126,6 +127,12 @@ Endeleza Capital: Loan Requests
                               @endif
                             </td>
                             <td>{{$notification->created_at}}</td>
+                            <td>
+                              <a href="{{ url('loan_requests/'.$notification->id.'/convert') }}">
+                                <i class="feather icon-check-circle"></i> Convert to Loan
+                              </a>
+                              
+                            </td> 
                         </tr>
                         @endforeach
                       </tbody>

@@ -61,6 +61,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::resource('users', 'UsersController')->middleware('role:admin');
     
     Route::resource('loan_requests','DeliveryNotificationsController');
+    Route::post('loan_requests/{id}/convert','DeliveryNotificationsController@convert')->name('convert_to_loan');
     Route::post('delivery_notifications/ajax','DeliveryNotificationsController@ajax')->name('deliveries.ajax');
  
     Route::resource('online_checkout','OnlineCheckoutController');
