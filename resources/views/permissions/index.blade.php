@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Permissions
+Endeleza: Permissions
 @endsection
 
 @section('assets')

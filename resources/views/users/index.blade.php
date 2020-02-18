@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: System Users
+Endeleza: System Users
 @endsection
 
 @section('content')

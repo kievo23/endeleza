@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: System Audit
+Endeleza: System Audit
 @endsection
 
 @section('content')

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Endeleza: Create Person
+@endsection
+
 @section('content')
 
                    <form class="well form-horizontal" method="post" action="{{ action('PersonsController@store') }}">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Endeleza Capital: Loan Requests
+Endeleza: Loan Requests
 @endsection
 
 @section('assets')

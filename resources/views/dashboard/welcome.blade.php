@@ -1,7 +1,7 @@
 @extends('layouts.'.$layout)
 
 @section('title')
-M-Weza: Dashboard
+Endeleza: Dashboard
 @endsection
 
 @section('content')

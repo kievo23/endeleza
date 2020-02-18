@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Checkers
+Endeleza: Checkers
 @endsection
 
 @section('assets')

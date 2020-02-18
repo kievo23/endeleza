@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Online Checkouts
+Endeleza: Online Checkouts
 @endsection
 
 @section('assets')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: {{$customer->person->fullName}} Statement 
+Endeleza: {{$customer->person->fullName}} Statement 
 @endsection
 
 @section('assets')

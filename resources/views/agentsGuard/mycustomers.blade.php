@@ -1,7 +1,7 @@
 @extends('layouts.agent')
 
 @section('title')
-M-Weza: Customers
+Endeleza: Customers
 @endsection
 
 @section('assets')

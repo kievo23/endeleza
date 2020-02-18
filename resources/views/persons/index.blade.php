@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Persons
+Endeleza: Persons
 @endsection
 
 @section('assets')
@@ -271,12 +271,12 @@ M-Weza: Persons
                             <th>Surname</th>
                             <th>First Name</th>
                             <th>Other Names</th>
-                            <th>Gender</th>
-                            <th>Date of Birth</th>
+                            <!-- <th>Gender</th> -->
+                            <!-- <th>Date of Birth</th> -->
                             <th>ID Number</th>
                             <th>Primary MSISDN</th>
                             <th>Alternate MSISDN</th>
-                            <th>Postal Address</th>
+                            <!-- <th>Postal Address</th> -->
                             <th>Physical Location</th>
                             <!-- <th>Geo Coordinates</th> -->
                             <!-- <th>ID Front Image URL</th> -->
@@ -299,12 +299,12 @@ M-Weza: Persons
                             <td>{{$person->surname}}</td>                
                             <td>{{$person->first_name}}</td>                
                             <td>{{$person->other_names}}</td>                
-                            <td>{{$person->gender}}</td>                
-                            <td>{{$person->date_of_birth}}</td>                
+                            <!-- <td>{{$person->gender}}</td>                 -->
+                            <!-- <td>{{$person->date_of_birth}}</td>                 -->
                             <td>{{$person->id_number}}</td>                
                             <td>{{$person->primary_msisdn}}</td>                
                             <td>{{$person->alternate_msisdn}}</td>                
-                            <td>{{$person->postal_address}}</td>                
+                            <!-- <td>{{$person->postal_address}}</td>                 -->
                             <td>{{$person->physical_location}}</td>                
                             <!-- <td>{{$person->geo_cordinates}}</td>                 -->
                             <!-- <td>{{$person->id_front_image_url}}</td>                 -->

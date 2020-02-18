@@ -1,7 +1,7 @@
 @extends('layouts.agent')
 
 @section('title')
-M-Weza: {{$title}}
+Endeleza: {{$title}}
 @endsection
 
 @section('assets')

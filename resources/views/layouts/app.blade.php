@@ -308,7 +308,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu {!! Request::is('agents*') ? 'active' : '' !!}">
+                                <!-- <li class="pcoded-hasmenu {!! Request::is('agents*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-user-plus"></i></span>
                                         <span class="pcoded-mtext">Agents</span>
@@ -327,7 +327,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> -->
                                 <li class="pcoded-hasmenu {!! Request::is('loan_accounts*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-trending-up"></i></span>
@@ -456,13 +456,13 @@
                                     </ul>
                                 </li>
                                  <!-- <li class="pcoded-hasmenu"> -->
-                                 <li class="{!! Request::is('messages*') ? 'active' : '' !!}">
+                                 <!-- <li class="{!! Request::is('messages*') ? 'active' : '' !!}">
                                     <a href="{{ url('messages') }}">
                                         <span class="pcoded-micon"><i class="feather icon-message-circle"></i></span>
                                         <span class="pcoded-mtext">Messages</span>
                                     </a>
-                                </li>
-                                <li class="pcoded-hasmenu {!! Request::is('logs*') ? 'active' : '' !!}">
+                                </li> -->
+                                <!-- <li class="pcoded-hasmenu {!! Request::is('logs*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                         <span class="pcoded-mtext">Logs</span>
@@ -476,19 +476,19 @@
                                         </li>
 
                                     </ul>
-                                </li>
-                                <li class="{!! Request::is('settings*') ? 'active' : '' !!}">
+                                </li> -->
+                                <!-- <li class="{!! Request::is('settings*') ? 'active' : '' !!}">
                                     <a href="{{ url('settings') }}">
                                         <span class="pcoded-micon"><i class="feather icon-settings"></i></span>
                                         <span class="pcoded-mtext">Settings</span>
                                     </a>
-                                </li>
-                                <li class="{!! Request::is('check*') ? 'active' : '' !!}">
+                                </li> -->
+                                <!-- <li class="{!! Request::is('check*') ? 'active' : '' !!}">
                                     <a href="{{ route('checker.index') }}">
                                         <span class="pcoded-micon"><i class="feather icon-anchor"></i></span>
                                         <span class="pcoded-mtext">Pending Approvals</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </nav>

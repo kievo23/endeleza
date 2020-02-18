@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Edit Agent
+Endeleza: Edit Agent
 @endsection
 
 @section('content')
