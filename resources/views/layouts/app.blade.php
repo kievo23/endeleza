@@ -111,7 +111,7 @@
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            
+
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
@@ -133,14 +133,14 @@
                                         <li>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">                                                
+                                                            document.getElementById('logout-form').submit();">
                                                 <i class="feather icon-log-out"></i>{{ __('Logout') }}
                                             </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf
                                             </form>
-                                        </li>              
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -266,7 +266,7 @@
                                     <a href="{{url('/')}}">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
-                                    </a>                  
+                                    </a>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('persons*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
@@ -279,18 +279,18 @@
                                                 <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                                 <span class="pcoded-mtext">Persons List</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{url('/persons/create')}}">
                                                 <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                                                 <span class="pcoded-mtext">Create Person</span>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('customers*') ? 'active' : '' !!}">
-                                    <a href="javascript:void(0)"> 
-                                        <span class="pcoded-micon"><i class="feather icon-user-check"></i></span>                                           
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-user-check"></i></span>
                                         <span class="pcoded-mtext">Customers</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -299,18 +299,18 @@
                                                 <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                                                 <span class="pcoded-mtext">Customers List</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{url('/customers/create')}}">
                                                 <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                                                 <span class="pcoded-mtext">Create Customer</span>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('agents*') ? 'active' : '' !!}">
-                                    <a href="javascript:void(0)"> 
-                                        <span class="pcoded-micon"><i class="feather icon-user-plus"></i></span>                                           
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-user-plus"></i></span>
                                         <span class="pcoded-mtext">Agents</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -319,18 +319,18 @@
                                                 <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                                                 <span class="pcoded-mtext">Agents List</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{url('/agents/create')}}">
                                                 <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                                                 <span class="pcoded-mtext">Create Agent</span>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('loan_accounts*') ? 'active' : '' !!}">
-                                    <a href="javascript:void(0)"> 
-                                        <span class="pcoded-micon"><i class="feather icon-trending-up"></i></span>                                           
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-trending-up"></i></span>
                                         <span class="pcoded-mtext">Loan Accounts</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -345,37 +345,37 @@
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">Today</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{ url('loan_accounts/yesterday') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">Yesterday</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{ url('loan_accounts/fullypaid') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">Paid Loans</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{ url('loan_accounts/pendingBelow/3') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">Below 3 days</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{ url('loan_accounts/pendingBelow/6') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">3-6 days</span>
                                             </a>
-                                        </li>  
+                                        </li>
                                         <li class="">
                                             <a href="{{ url('loan_accounts/pendingBelow/10') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">6-10 days</span>
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li class="">
                                             <a href="{{ url('loan_accounts/pendingBelow/15') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
@@ -393,19 +393,19 @@
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">Above 30 days</span>
                                             </a>
-                                        </li>                                       
+                                        </li>
                                     </ul>
                                 </li>
-                               
+
                                 <li class="{!! Request::is('delivery_notifications*') ? 'active' : '' !!}">
                                     <a href="{{ url('delivery_notifications') }}">
                                         <span class="pcoded-micon"><i class="feather icon-message-square"></i></span>
-                                        <span class="pcoded-mtext">Delivery Notifications</span>
+                                        <span class="pcoded-mtext">Loan Requests</span>
                                     </a>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('transactions*') ? 'active' : '' !!}">
-                                    <a href="javascript:void(0)"> 
-                                        <span class="pcoded-micon"><i class="feather icon-trending-up"></i></span>                                           
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-trending-up"></i></span>
                                         <span class="pcoded-mtext">Transactions</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -426,7 +426,7 @@
                                                 <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                                                 <span class="pcoded-mtext">Suspense Transactions</span>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="{!! Request::is('online_checkout*') ? 'active' : '' !!}">
@@ -436,8 +436,8 @@
                                     </a>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('user*') ? 'active' : '' !!}">
-                                    <a href="javascript:void(0)"> 
-                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>                                           
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                         <span class="pcoded-mtext">Users</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -452,9 +452,9 @@
                                                 <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                                                 <span class="pcoded-mtext">Create User</span>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
-                                </li>  
+                                </li>
                                  <!-- <li class="pcoded-hasmenu"> -->
                                  <li class="{!! Request::is('messages*') ? 'active' : '' !!}">
                                     <a href="{{ url('messages') }}">
@@ -463,8 +463,8 @@
                                     </a>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('logs*') ? 'active' : '' !!}">
-                                    <a href="javascript:void(0)"> 
-                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>                                           
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                         <span class="pcoded-mtext">Logs</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -474,9 +474,9 @@
                                                 <span class="pcoded-mtext">SMS logs</span>
                                             </a>
                                         </li>
-                                                                              
+
                                     </ul>
-                                </li>  
+                                </li>
                                 <li class="{!! Request::is('settings*') ? 'active' : '' !!}">
                                     <a href="{{ url('settings') }}">
                                         <span class="pcoded-micon"><i class="feather icon-settings"></i></span>
@@ -530,7 +530,7 @@
         </div>
     </div>
 
-    
+
     <script type="text/javascript" src="{{ asset('bower_components\jquery\js\jquery-3.3.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bower_components\popper.js\js\popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bower_components\bootstrap\js\bootstrap.min.js') }}"></script>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Delivery Notifications
+Endeleza Capital: Loan Requests
 @endsection
 
 @section('assets')
@@ -18,7 +18,7 @@ M-Weza: Delivery Notifications
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          
+
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="d-flex justify-content-between flex-wrap">
@@ -34,12 +34,12 @@ M-Weza: Delivery Notifications
                   </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-end flex-wrap">
-                  
+
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
@@ -48,12 +48,12 @@ M-Weza: Delivery Notifications
                     <li class="nav-item">
                       <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
                     </li>
-                    
+
                   </ul>
                   <div class="tab-content py-0 px-0">
                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                       <div class="d-flex flex-wrap justify-content-xl-between">
-                        
+
                         <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                           <!-- <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i> -->
                           <div class="d-flex flex-column justify-content-around">
@@ -84,46 +84,28 @@ M-Weza: Delivery Notifications
                         </div>
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Delivery Notifications</p>
-                  <div>
-					          Toggle column: 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="0">Notification Id</a> -
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="1">Customer</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="2">Phone</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="3">Receipt Number</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="4">Amount</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="5">Delivery Date</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="6">Route Team Id</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="7">Till No.</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="8">Phone</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="9">Status</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="9">Created At</a>
-				          </div>
+
                   <hr>
                   <div class="table-responsive">
                     <table id="delivery_notifications" class="table display">
                       <thead>
                         <tr>
-                            <th>Notification ID</th>
+                            <th>ID</th>
                             <th>Customer</th>
                             <th>Phone</th>
-                            <th>Receipt Number</th>
-                            <th>Amount</th>
-                            <th>Delivery Date</th>
-                            <th>Route Team ID</th>
                             <th>Till Number</th>
-                            <th>Phone</th>
+                            <th>Amount</th>
                             <th>Status</th>
                             <th>Created at</th>
                         </tr>
@@ -134,12 +116,8 @@ M-Weza: Delivery Notifications
                             <td>{{$notification->id}}</td>
                             <td>{{$notification->customer->person->full_name }}</td>
                             <td>{{$notification->customer->customer_account_msisdn}}</td>
-                            <td>{{$notification->receipt_number}}</td>
-                            <td>{{$notification->amount}}</td>
-                            <td>{{$notification->delivery_date}}</td>
-                            <td>{{$notification->route_team_id}}</td>
                             <td>{{$notification->till_number}}</td>
-                            <td>{{$notification->phone}}</td>
+                            <td>{{$notification->amount}}</td>
                             <td>
                               @if($notification->status == "0")
                               <label class="label label-danger">Not Active</label>
@@ -149,7 +127,7 @@ M-Weza: Delivery Notifications
                             </td>
                             <td>{{$notification->created_at}}</td>
                         </tr>
-                        @endforeach                        
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -183,7 +161,7 @@ $(document).ready( function () {
         'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
-    
+
     $('a.toggle-vis').on( 'click', function (e) {
       e.preventDefault();
 

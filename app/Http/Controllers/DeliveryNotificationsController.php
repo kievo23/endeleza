@@ -7,7 +7,7 @@ use App\DeliveryNotification;
 
 class DeliveryNotificationsController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +17,10 @@ class DeliveryNotificationsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $delivery_notifications = DeliveryNotification::with('customer')->get();
+        $delivery_notifications = DeliveryNotification::with('customer')->orderBy('created_at','DESC')->get();
         $deliveriesWithLoans = DeliveryNotification::where('status',1)->count();
         $valueOfAllDeliveries = DeliveryNotification::sum('amount');
         $valueOfDeliveriesWithLoans = DeliveryNotification::where('status',1)->sum('amount');
@@ -35,21 +35,21 @@ class DeliveryNotificationsController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-   
+
                            $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
-      
+
         return view('users');
     }
 
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function create()
