@@ -394,11 +394,11 @@
                                                 <span class="pcoded-mtext">Above 30 days</span>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> 
                                 </li>
 
-                                <li class="{!! Request::is('delivery_notifications*') ? 'active' : '' !!}">
-                                    <a href="{{ url('delivery_notifications') }}">
+                                <li class="{!! Request::is('loan_requests*') ? 'active' : '' !!}">
+                                    <a href="{{ url('loan_requests') }}">
                                         <span class="pcoded-micon"><i class="feather icon-message-square"></i></span>
                                         <span class="pcoded-mtext">Loan Requests</span>
                                     </a>

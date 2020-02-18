@@ -60,7 +60,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('users/{userId}/logs', 'UsersController@logs')->middleware('role:admin');
     Route::resource('users', 'UsersController')->middleware('role:admin');
     
-    Route::resource('delivery_notifications','DeliveryNotificationsController');
+    Route::resource('loan_requests','DeliveryNotificationsController');
     Route::post('delivery_notifications/ajax','DeliveryNotificationsController@ajax')->name('deliveries.ajax');
  
     Route::resource('online_checkout','OnlineCheckoutController');
