@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <img class="img-radius" src="\assets\images\logo.png">
+                    <img class="img-radius" src="\assets\images\Endeleza.png">
                 </div>
 
                 <div class="card-body">
