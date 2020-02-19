@@ -120,7 +120,6 @@ Endeleza: {{$title}}
                     <a class="toggle-vis badge badge-pill badge-info" data-column="1">Customer</a> - 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="2">Phone</a> - 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="3">Delivery Id</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="4">Till Number</a> - 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="5">Principal Amount</a> - 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="6">Trn Charge</a> - 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="7">Interest</a> - 

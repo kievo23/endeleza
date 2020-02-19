@@ -136,10 +136,16 @@ Endeleza: Loan Requests
                             </td>
                             <td>{{$notification->created_at}}</td>
                             <td>
-                              <a href="{{ url('loan_requests/'.$notification->id.'/convert') }}">
-                                <i class="feather icon-check-circle"></i> Convert to Loan
+                              <a class="dropdown-item" href="#"
+                                onclick="javascript: validate({{$notification->id}})">
+                                    <i class="feather icon-check-circle"></i> Convert to loan
                               </a>
-                              
+                              <form id="convert-intoloan{{$notification->id}}" action="{{ url('loan_request/'.$notification->id.'/convert') }}" method="POST">
+                                  @csrf
+                                  <input type="button" value="" class="btn btn-link p-0 m-0 d-inline align-baseline">
+                                    
+                                  </input>
+                              </form>
                             </td> 
                         </tr>
                         @endforeach
@@ -166,6 +172,13 @@ Endeleza: Loan Requests
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+
 
 <script>
 
@@ -188,6 +201,30 @@ $(document).ready( function () {
       column.visible( ! column.visible() );
     });
 });
+
+function validate(id){
+  swal({
+    title: "Are you sure?",
+    text: "You want to convert this loan request into a loan??",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      swal("You have successfully converted a loan request into a loan", {
+        icon: "success",
+      });
+      setTimeout(function(){ 
+        $('#convert-intoloan'+id).submit();
+        //document.getElementById('convert-intoloan').submit();
+      }, 1000);
+      
+    } else {
+      swal("Okay, You have stopped the conversion of a request successfully");
+    }
+  });
+}
 
 </script>
 @endsection

@@ -54,6 +54,18 @@ Endeleza: Create Customer
         </div>
 
         <div class="form-group row">
+            <label class="col-md-2 control-label">Interest</label>
+            <div class="col-md-7 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </span>
+                    <input id="interest" name="interest" placeholder="For example 20 for 20%" class="form-control" required="true" value="" type="text" >
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <input class="btn btn-primary form-control" style="float: right;" type="submit" value="Submit">
         </div>
     </fieldset>

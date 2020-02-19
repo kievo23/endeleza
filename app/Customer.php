@@ -25,7 +25,7 @@ class Customer extends Model
     // }
 
     protected $fillable = [
-        'blocked','active','customer_account_msisdn','pin','salt_key','pin_reset','account_limit', 'person_id', 'agent_id','rollover'
+        'blocked','active','customer_account_msisdn','pin','salt_key','pin_reset','account_limit', 'person_id', 'agent_id','rollover','interest'
     ];
 
     protected $hidden = [

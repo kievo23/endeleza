@@ -60,8 +60,8 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('users/{userId}/logs', 'UsersController@logs')->middleware('role:admin');
     Route::resource('users', 'UsersController')->middleware('role:admin');
     
+    Route::post('loan_request/{id}/convert','DeliveryNotificationsController@convert')->name('convert_to_loan');
     Route::resource('loan_requests','DeliveryNotificationsController');
-    Route::post('loan_requests/{id}/convert','DeliveryNotificationsController@convert')->name('convert_to_loan');
     Route::post('delivery_notifications/ajax','DeliveryNotificationsController@ajax')->name('deliveries.ajax');
  
     Route::resource('online_checkout','OnlineCheckoutController');
