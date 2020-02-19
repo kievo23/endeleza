@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Transactions
+Endeleza: Transactions
 @endsection
 
 @section('assets')

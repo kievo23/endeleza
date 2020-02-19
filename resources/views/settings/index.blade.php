@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Settings
+Endeleza: Settings
 @endsection
 
 @section('assets')

@@ -1,7 +1,7 @@
 @extends('layouts.'.$layout)
 
 @section('title')
-M-Weza: Dashboard
+Endeleza: Dashboard
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@ M-Weza: Dashboard
         <div class="d-flex justify-content-between flex-wrap">
           <div class="d-flex align-items-end flex-wrap">
             <div class="mr-md-3 mr-xl-5">
-              <h2>Welcome back to M-Weza Twiga Platform</h2>
+              <h2>Welcome back to Endeleza Twiga Platform</h2>
               <p class="mb-md-0">Your analytics dashboard.</p>
               <i class="mdi mdi-home text-muted hover-cursor"></i>
             </div>
@@ -95,7 +95,7 @@ M-Weza: Dashboard
                       </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <!-- <div class="col-xl-3 col-md-6">
                       <div class="card bg-c-green update-card">
                         <div class="card-block">
                           <div class="row align-items-end">
@@ -111,9 +111,9 @@ M-Weza: Dashboard
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
-                    <div class="col-xl-3 col-md-6">
+                    <!-- <div class="col-xl-3 col-md-6">
                       <div class="card bg-c-green update-card">
                         <div class="card-block">
                           <div class="row align-items-end">
@@ -127,7 +127,7 @@ M-Weza: Dashboard
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-xl-3 col-md-6">
                       <div class="card bg-c-green update-card">
@@ -245,7 +245,7 @@ M-Weza: Dashboard
           responsive: true,
           title: {
             display: true,
-            text: 'Repayments, Deliveries and Loans for the Last 30 Days'
+            text: 'Repayments and Loans for the Last 30 Days'
           },
           tooltips: {
             mode: 'index',

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: Register System User
+Endeleza: Register System User
 @endsection
 
 @section('content')

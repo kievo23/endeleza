@@ -74,7 +74,7 @@
         </main>
         <div class="bg-dark">
             <p class="text-white text-center">
-                <small>&copy; {{date("Y")}} M-Weza Corporation | Made by <i>Roysambu Heavy Industries</i></small>
+                <small>&copy; {{date("Y")}} Endeleza Capital | Made by <i>Roysambu Heavy Industries</i></small>
             </p>
         </div
     </div>

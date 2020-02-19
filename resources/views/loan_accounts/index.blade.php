@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: {{$title}}
+Endeleza: {{$title}}
 @endsection
 
 @section('assets')
@@ -24,7 +24,7 @@ M-Weza: {{$title}}
               <div class="d-flex justify-content-between flex-wrap">
                 <div class="d-flex align-items-end flex-wrap">
                   <div class="mr-md-3 mr-xl-5">
-                    <h2>M-Weza Loans</h2>
+                    <h2>Endeleza Loans</h2>
                     <p class="mb-md-0">Your analytics dashboard.</p>
                   </div>
                   <div class="d-flex">

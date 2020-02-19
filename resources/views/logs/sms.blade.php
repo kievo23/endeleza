@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-M-Weza: SMS Logs
+Endeleza: SMS Logs
 @endsection
 
 @section('assets')

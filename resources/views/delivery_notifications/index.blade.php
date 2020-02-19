@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Endeleza Capital: Loan Requests
+Endeleza: Loan Requests
 @endsection
 
 @section('assets')
@@ -40,7 +40,7 @@ Endeleza Capital: Loan Requests
             </div>
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body dashboard-tabs p-0">
@@ -54,30 +54,38 @@ Endeleza Capital: Loan Requests
                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                       <div class="d-flex flex-wrap justify-content-xl-between">
 
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item"> -->
+
                           <!-- <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i> -->
-                          <div class="d-flex flex-column justify-content-around">
+
+                          <!-- <div class="d-flex flex-column justify-content-around">
                             <small class="mb-1 text-muted">Number of Deliveries</small>
                             <h5 class="mr-2 mb-0">{{count($delivery_notifications)}}</h5>
                           </div>
                         </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item"> -->
+
                           <!-- <i class="mdi mdi-eye mr-3 icon-lg text-success"></i> -->
-                          <div class="d-flex flex-column justify-content-around">
+
+                          <!-- <div class="d-flex flex-column justify-content-around">
                             <small class="mb-1 text-muted">Number of Deliveries with Loans</small>
                             <h5 class="mr-2 mb-0">{{$deliveriesWithLoans}}</h5>
                           </div>
                         </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item"> -->
+
                           <!-- <i class="mdi mdi-download mr-3 icon-lg text-warning"></i> -->
-                          <div class="d-flex flex-column justify-content-around">
+
+                          <!-- <div class="d-flex flex-column justify-content-around">
                             <small class="mb-1 text-muted">Value of all Deliveries</small>
                             <h5 class="mr-2 mb-0">KES: {{$valueOfAllDeliveries}}</h5>
                           </div>
                         </div>
-                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item"> -->
+
                           <!-- <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i> -->
-                          <div class="d-flex flex-column justify-content-around">
+                          
+                          <!-- <div class="d-flex flex-column justify-content-around">
                             <small class="mb-1 text-muted">Value of deliveries with loans</small>
                             <h5 class="mr-2 mb-0">KES: {{$valueOfDeliveriesWithLoans}}</h5>
                           </div>
@@ -89,7 +97,7 @@ Endeleza Capital: Loan Requests
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="row">
             <div class="col-md-12 stretch-card">
