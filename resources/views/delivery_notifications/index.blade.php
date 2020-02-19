@@ -137,10 +137,10 @@ Endeleza: Loan Requests
                             <td>{{$notification->created_at}}</td>
                             <td>
                               <a class="dropdown-item" href="#"
-                                onclick="javascript: validate()">
+                                onclick="javascript: validate({{$notification->id}})">
                                     <i class="feather icon-check-circle"></i> Convert to loan
                               </a>
-                              <form id="convert-intoloan" action="{{ url('loan_request/'.$notification->id.'/convert') }}" method="POST">
+                              <form id="convert-intoloan{{$notification->id}}" action="{{ url('loan_request/'.$notification->id.'/convert') }}" method="POST">
                                   @csrf
                                   <input type="button" value="" class="btn btn-link p-0 m-0 d-inline align-baseline">
                                     
@@ -202,7 +202,7 @@ $(document).ready( function () {
     });
 });
 
-function validate(){
+function validate(id){
   swal({
     title: "Are you sure?",
     text: "You want to convert this loan request into a loan??",
@@ -212,16 +212,16 @@ function validate(){
   })
   .then((willDelete) => {
     if (willDelete) {
-      swal("You have successfully queued your sms for sending", {
+      swal("You have successfully converted a loan request into a loan", {
         icon: "success",
       });
       setTimeout(function(){ 
-        $('#convert-intoloan').submit();
+        $('#convert-intoloan'+id).submit();
         //document.getElementById('convert-intoloan').submit();
       }, 1000);
       
     } else {
-      swal("Okay, You have stopped the sending of the text message successfully");
+      swal("Okay, You have stopped the conversion of a request successfully");
     }
   });
 }

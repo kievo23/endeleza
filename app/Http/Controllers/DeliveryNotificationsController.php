@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DeliveryNotification;
 use App\Customer;
+use App\LoanAccount;
 
 class DeliveryNotificationsController extends Controller
 {
@@ -21,7 +22,7 @@ class DeliveryNotificationsController extends Controller
 
     public function index()
     {
-        $delivery_notifications = DeliveryNotification::with('customer')->orderBy('created_at','DESC')->get();
+        $delivery_notifications = DeliveryNotification::with('customer')->orderBy('created_at','DESC')->limit(400)->get();
         $deliveriesWithLoans = DeliveryNotification::where('status',1)->count();
         $valueOfAllDeliveries = DeliveryNotification::sum('amount');
         $valueOfDeliveriesWithLoans = DeliveryNotification::where('status',1)->sum('amount');
@@ -57,23 +58,26 @@ class DeliveryNotificationsController extends Controller
     {
         //
         $request = DeliveryNotification::findOrFail($id);
-        $customer = Customer::findOrFail($id);
+        $customer = Customer::findOrFail($request->customer_id);
         $interest = number_format(($customer->interest/100 * $request->amount), 2, '.', '');
-        LoanAccount::create([
+        
+        $rst = LoanAccount::create([
             'customer_account_id' => $request->customer_id,
             'principal_amount' => $request->amount,
             'trn_charge' => '0.00',
+            'delivery_id' => $request->id,
+            'till_number' => $request->till_number,
             'loan_amount' => $request->amount + $interest,
             'loan_balance' => $request->amount + $interest,
             'loan_penalty' => 0.00,
             'loan_status' => 0
         ]);
-
         $request->status = "1";
         $request->save();
-
-        return redirect()->route('loan_accounts.index')
-                        ->with('success','Customer created successfully.');
+        
+        return redirect("loan_accounts")
+            //->route('loan_accounts.index')
+            ->with('success','Customer created successfully.');
     }
 
     /**
