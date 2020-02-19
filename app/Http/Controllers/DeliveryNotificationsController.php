@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DeliveryNotification;
+use App\Customer;
 
 class DeliveryNotificationsController extends Controller
 {
@@ -52,20 +53,27 @@ class DeliveryNotificationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function convert(Request $req)
+    public function convert($id)
     {
         //
         $request = DeliveryNotification::findOrFail($id);
+        $customer = Customer::findOrFail($id);
+        $interest = number_format(($customer->interest/100 * $request->amount), 2, '.', '');
         LoanAccount::create([
             'customer_account_id' => $request->customer_id,
             'principal_amount' => $request->amount,
-            'trn_charge' => '25.00',
-            'loan_amount' => $request->amount + 25.00,
-            'loan_balance' => $request->amount + 25.00,
+            'trn_charge' => '0.00',
+            'loan_amount' => $request->amount + $interest,
+            'loan_balance' => $request->amount + $interest,
             'loan_penalty' => 0.00,
             'loan_status' => 0
         ]);
 
+        $request->status = "1";
+        $request->save();
+
+        return redirect()->route('loan_accounts.index')
+                        ->with('success','Customer created successfully.');
     }
 
     /**

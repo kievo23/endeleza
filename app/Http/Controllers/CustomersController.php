@@ -99,6 +99,7 @@ class CustomersController extends Controller
             'agent_id' => intval($request->agent),
             'customer_account_msisdn' => $phone,
             'pin_reset' => 1,
+            'interest' => $request->interest,
             'pin' => $hashed,
             'salt_key' => $salt
         ]);
@@ -181,6 +182,7 @@ class CustomersController extends Controller
             "active" => $req->active,
             "rollover" => $req->rollover,
             "agent_id" => $req->agent,
+            'interest' => $req->interest,
             "account_limit" => $req->account_limit.".00"
         ]);
   
