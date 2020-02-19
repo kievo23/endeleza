@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
 
-    <title>{{ config('app.name', 'M-Weza Twiga') }}</title>
+    <title>{{ config('app.name', 'Endeleza Capital') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('assets/js/app.js') }}" defer></script>

@@ -114,7 +114,7 @@ Endeleza: {{$title}}
               <div class="card">
                 <div class="card-body">
                   <p class="card-title">Loan Accounts</p>
-                  <div>
+                  <!-- <div>
 					          Toggle column: 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="0">Loan Id</a> -
                     <a class="toggle-vis badge badge-pill badge-info" data-column="1">Customer</a> - 
@@ -130,7 +130,7 @@ Endeleza: {{$title}}
                     <a class="toggle-vis badge badge-pill badge-info" data-column="11">Status</a>
                     <a class="toggle-vis badge badge-pill badge-info" data-column="12">Hours</a>
                     <a class="toggle-vis badge badge-pill badge-info" data-column="13">Created At</a>
-				          </div>
+				          </div> -->
                   <hr>
                   <div class="table-responsive">
                     <table id="loan_accounts" class="table">
@@ -140,11 +140,11 @@ Endeleza: {{$title}}
                             <!-- <th>Loan Product ID</th> -->
                             <th>Customer Account</th>
                             <th>Customer Phone</th>
-                            <th>Agent </th>
-                            <th>Delivery ID</th>
+                            <!-- <th>Agent </th> -->
+                            <!-- <th>Delivery ID</th> -->
                             <th>Till Number</th>
                             <th>Principal Amount</th>
-                            <th>Trn Charge</th>
+                            <!-- <th>Trn Charge</th> -->
                             <th>Interest</th>
                             <th>Loan Penalty</th>
                             <th>Loan Amount</th>
@@ -162,11 +162,11 @@ Endeleza: {{$title}}
                             <!-- <td>{{$account->loan_product_id}}</td> -->
                             <td>{{$account->customer->person ? $account->customer->person->full_name : ''}}</td>
                             <td> {{$account->customer ? $account->customer->customer_account_msisdn : ''}}</td>
-                            <td> {{$account->customer->agent->person ? $account->customer->agent->person->two_name : ''}}</td>
-                            <td>{{$account->delivery_id}}</td>
+                            <!-- <td> {{$account->customer->agent->person ? $account->customer->agent->person->two_name : ''}}</td> -->
+                            <!-- <td>{{$account->delivery_id}}</td> -->
                             <td>{{$account->delivery->till_number}}</td>
                             <td>{{$account->principal_amount}}</td>
-                            <td>{{$account->trn_charge}}</td>
+                            <!-- <td>{{$account->trn_charge}}</td> -->
                             <td>{{$account->interest_charged}}</td>
                             <td>{{$account->loan_penalty}}</td>  
                             <td>{{$account->loan_amount}}</td>

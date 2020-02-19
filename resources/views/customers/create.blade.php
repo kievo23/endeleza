@@ -25,7 +25,7 @@ Endeleza: Create Customer
             </div>
         </div>
 
-        <div class="form-group row">
+        <!-- <div class="form-group row">
             <label class="col-md-2 control-label">
                 <i class="glyphicon glyphicon-user"></i>
                 Agent </label>
@@ -39,7 +39,7 @@ Endeleza: Create Customer
                     @endforeach
                 </select>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group row">
             <label class="col-md-2 control-label">Customer Number</label>
