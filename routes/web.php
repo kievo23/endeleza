@@ -79,6 +79,7 @@ Route::middleware(['web','auth'])->group(function () {
 
     Route::get('loan_accounts/individual/{customerId}','LoanAccountsController@customerLoans')->name('customerLoans');
     Route::get('loan_accounts/fullypaid','LoanAccountsController@fullypaid');
+    Route::get('loan_accounts/pending','LoanAccountsController@pending');
     Route::get('loan_accounts/today','LoanAccountsController@today');
     Route::get('loan_accounts/yesterday','LoanAccountsController@yesterday');
     Route::get('loan_accounts/pendingBelow/{days}','LoanAccountsController@pendingBelow');
