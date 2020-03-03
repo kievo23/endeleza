@@ -339,6 +339,18 @@
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">All </span>
                                             </a>
+                                        </li> 
+                                        <li class="">
+                                            <a href="{{ url('loan_accounts/pending') }}">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">Active Loans</span>
+                                            </a>
+                                        </li>                                       
+                                        <li class="">
+                                            <a href="{{ url('loan_accounts/fullypaid') }}">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">Paid Loans</span>
+                                            </a>
                                         </li>
                                         <li class="">
                                             <a href="{{ url('loan_accounts/today') }}">
@@ -352,13 +364,7 @@
                                                 <span class="pcoded-mtext">Yesterday</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/fullypaid') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">Paid Loans</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
+                                        <!-- <li class="">
                                             <a href="{{ url('loan_accounts/pendingBelow/3') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">Below 3 days</span>
@@ -393,7 +399,7 @@
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
                                                 <span class="pcoded-mtext">Above 30 days</span>
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul> 
                                 </li>
 

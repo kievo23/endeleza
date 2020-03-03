@@ -78,6 +78,23 @@ class LoanAccountsController extends Controller
         );
     }
 
+    public function pending()
+    {
+        $loan_accounts = LoanAccount::where('loan_status',0)->get();
+        $clearedLoans = LoanAccount::where('loan_status',0)->count();
+        $valueOfLoans = LoanAccount::where('loan_status',0)->sum('loan_amount');
+        $valueOfTransactions = LoanAccount::where('loan_status',0)->sum('trn_charge');
+        $valueOfInterests = LoanAccount::where('loan_status',0)->sum('interest_charged');
+        $valueOfLoanPenalty = LoanAccount::where('loan_status',0)->sum('loan_penalty');
+        $valueOfOutstandingLoans = LoanAccount::where('loan_status',0)->sum('loan_balance');
+        $title = "Actively Pending Loans";
+        //dd($loan_accounts);
+        
+        return view('loan_accounts/index', 
+            compact('title','loan_accounts','clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests')
+        );
+    }
+
     public function yesterday(){
         $loan_accounts = LoanAccount::whereDate('created_at', '=', Carbon::now()->subDays(1)->toDateString())->get();
         //dd($loan_accounts);

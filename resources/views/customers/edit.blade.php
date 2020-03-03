@@ -37,13 +37,14 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">Account Limit</label>
                 <div class="col-md-8 inputGroupContainer">
-                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-money"></i></span><input id="primaryMobileNumber" name="account_limit" placeholder="5000" class="form-control" required="true" value="{{$customer->account_limit}}" type="text">
+                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-money"></i></span>
+                    <input id="primaryMobileNumber" name="account_limit" placeholder="5000" class="form-control" required="true" value="{{$customer->account_limit}}" type="text">
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-md-2 control-label">Interest</label>
-                <div class="col-md-7 inputGroupContainer">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Interest</label>
+                <div class="col-md-8 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-home"></i>
@@ -108,7 +109,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label"></label>
                 <div class="col-md-8 inputGroupContainer">
-                    <input class="btn btn-primary form-control" type="submit" value="Update">
+                    <input class="btn btn-primary form-control" type="submit" value="Update Customer">
                 </div>
             </div>
             <div class="form-group">

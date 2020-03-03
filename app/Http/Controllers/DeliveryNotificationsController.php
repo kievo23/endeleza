@@ -54,30 +54,42 @@ class DeliveryNotificationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function convert($id)
+    public function convert($id,Request $req)
     {
         //
         $request = DeliveryNotification::findOrFail($id);
-        $customer = Customer::findOrFail($request->customer_id);
-        $interest = number_format(($customer->interest/100 * $request->amount), 2, '.', '');
-        
-        $rst = LoanAccount::create([
-            'customer_account_id' => $request->customer_id,
-            'principal_amount' => $request->amount,
-            'trn_charge' => '0.00',
-            'delivery_id' => $request->id,
-            'till_number' => $request->till_number,
-            'loan_amount' => $request->amount + $interest,
-            'loan_balance' => $request->amount + $interest,
-            'loan_penalty' => 0.00,
-            'loan_status' => 0
-        ]);
-        $request->status = "1";
-        $request->save();
-        
-        return redirect("loan_accounts")
+        $status = null;
+        //dd($req->status);
+        if($req->status == "denay"){
+            $status = 0;
+            $request->status = $status;
+            $rst = $request->save();         
+            return redirect("loan_requests")
             //->route('loan_accounts.index')
-            ->with('success','Customer created successfully.');
+            ->with('success','Loan denied successfully.');
+        }else if($req->status == "give"){
+            $status = 1;
+            $request->status = $status;
+            $rst = $request->save();
+            //dd($rst);
+            $customer = Customer::findOrFail($request->customer_id);
+            $interest = number_format(($customer->interest/100 * $request->amount), 2, '.', '');
+            
+            $rst = LoanAccount::create([
+                'customer_account_id' => $request->customer_id,
+                'principal_amount' => $request->amount,
+                'trn_charge' => '0.00',
+                'delivery_id' => $request->id,
+                'till_number' => $request->till_number,
+                'loan_amount' => $request->amount + $interest,
+                'loan_balance' => $request->amount + $interest,
+                'loan_penalty' => 0.00,
+                'loan_status' => 0
+            ]);
+            return redirect("loan_accounts")
+            //->route('loan_accounts.index')
+            ->with('success','Loan created successfully.');
+        }
     }
 
     /**
