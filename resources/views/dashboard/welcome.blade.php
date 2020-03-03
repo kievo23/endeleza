@@ -14,7 +14,7 @@ Endeleza: Dashboard
         <div class="d-flex justify-content-between flex-wrap">
           <div class="d-flex align-items-end flex-wrap">
             <div class="mr-md-3 mr-xl-5">
-              <h2>Welcome back to Endeleza Twiga Platform</h2>
+              <h2>Welcome back to the Endeleza Platform</h2>
               <p class="mb-md-0">Your analytics dashboard.</p>
               <i class="mdi mdi-home text-muted hover-cursor"></i>
             </div>
