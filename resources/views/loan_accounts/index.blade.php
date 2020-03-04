@@ -149,6 +149,7 @@ Endeleza: {{$title}}
               <table id="loan_accounts" class="table">
                 <thead>
                   <tr>
+                    <th>Date Created</th>
                     <th>Loan Account ID</th>
                     <!-- <th>Loan Product ID</th> -->
                     <th>Customer Account</th>
@@ -164,13 +165,13 @@ Endeleza: {{$title}}
                     <th>Loan Balance</th>
                     <th>Loan Status</th>
                     <th>Hours in Arrears</th>
-                    <th>Date Created</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($loan_accounts as $account)
                   <tr>
+                    <td>{{$account->created_at}}</td>
                     <td>{{$account->id}}</td>
                     <!-- <td>{{$account->loan_product_id}}</td> -->
                     <td>{{$account->customer->person ? $account->customer->person->full_name : ''}}</td>
@@ -191,7 +192,6 @@ Endeleza: {{$title}}
                       @endif
                     </td>
                     <td>{{$account->hours_in_arrears}} ({{$account->days_in_arrears}} days)</td>
-                    <td>{{$account->created_at}}</td>
                     <td>
                       @php
                       $link = $account->customer ? $account->customer->customer_account_msisdn : '';

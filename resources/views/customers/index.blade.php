@@ -72,7 +72,7 @@ Endeleza: Customers
                   <p class="card-title">CUSTOMERS</p>
 
 
-                  <div>
+                  <!-- <div>
 					          Toggle column: 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="0">Customer Id</a> -
                     <a class="toggle-vis badge badge-pill badge-info" data-column="1">Person Id</a> -
@@ -86,7 +86,7 @@ Endeleza: Customers
                     <a class="toggle-vis badge badge-pill badge-info" data-column="9">Created At</a> - 
                     <a class="toggle-vis badge badge-pill badge-info" data-column="10">Actions</a>
 				          </div>
-                  <hr>
+                  <hr> -->
 
                   <div class="table-responsive">
                     <table id="customers" class="table display">
