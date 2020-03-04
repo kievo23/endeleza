@@ -12,10 +12,14 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$transactions = Transaction::paginate(10);
-        $transactions = Transaction::all();
+        if (! empty($request->start_date)) {
+            $transactions = Transaction::whereBetween('created_at', [$request->start_date, $request->end_date])->get();
+        } else {
+            $transactions = Transaction::all();
+        }
         //dd($transactions);
         //$deliveriesWithLoans = Transaction::where('status',1)->count();
         $valueOfAllTransactions = Transaction::sum('transaction_amount');
