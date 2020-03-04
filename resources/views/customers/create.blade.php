@@ -19,7 +19,7 @@ Endeleza: Create Customer
                 </span>
                 <select name="person" class="form-control">
                     @foreach($persons as $person)
-                    <option value="{{$person->id}}">{{$person->first_name}} (ID:{{$person->id_number}})</option>
+                    <option value="{{$person->id}}">{{$person->first_name}} (ID:{{$person->id_number}}, Names: {{$person->full_name}}, Phone: {{$person->primary_msisdn}})</option>
                     @endforeach
                 </select>
             </div>
@@ -66,7 +66,32 @@ Endeleza: Create Customer
         </div>
 
         <div class="form-group row">
-            <input class="btn btn-primary form-control" style="float: right;" type="submit" value="Submit">
+            <label class="col-md-2 control-label">Account Limit</label>
+            <div class="col-md-7 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-money"></i>
+                    </span>
+                    <input id="primaryMobileNumber" name="account_limit" placeholder="5000" class="form-control" required="true" value="" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+                <label class="col-md-2 control-label">Active</label>
+                <div class="col-md-7 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                        <select class="selectpicker form-control" name="active">
+                            <option value="">--Select status--</option>
+                            <option value="1">Active</option>
+                            <option value="0">Deactivate</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        <div class="form-group row">
+            <input class="btn btn-primary form-control" style="float: right;" type="submit" value="Create Customer">
         </div>
     </fieldset>
 </form>

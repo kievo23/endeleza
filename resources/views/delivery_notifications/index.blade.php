@@ -129,23 +129,27 @@ Endeleza: Loan Requests
                             <td>{{$notification->amount}}</td>
                             <td>
                               @if($notification->status == "0")
-                              <label class="label label-danger">Not Active</label>
-                              @else
+                              <label class="label label-danger">Denied</label>
+                              @elseif($notification->status == "1")
                               <label class="label label-success">Active</label>
+                              @else
+                              <label class="label label-info">Not Attended</label>
                               @endif
                             </td>
                             <td>{{$notification->created_at}}</td>
                             <td>
-                              <a class="dropdown-item" href="#"
-                                onclick="javascript: validate({{$notification->id}})">
-                                    <i class="feather icon-check-circle"></i> Convert to loan
-                              </a>
-                              <form id="convert-intoloan{{$notification->id}}" action="{{ url('loan_request/'.$notification->id.'/convert') }}" method="POST">
-                                  @csrf
-                                  <input type="button" value="" class="btn btn-link p-0 m-0 d-inline align-baseline">
-                                    
-                                  </input>
-                              </form>
+                              @if($notification->status == null)
+                                <a class="dropdown-item" href="#"
+                                  onclick="javascript: validate({{$notification->id}})">
+                                      <i class="feather icon-check-circle"></i> Convert to loan
+                                </a>
+                                <form id="convert-intoloan{{$notification->id}}" action="{{ url('loan_request/'.$notification->id.'/convert') }}" method="POST">
+                                    @csrf
+                                    <input type="button" value="" class="btn btn-link p-0 m-0 d-inline align-baseline">
+                                      <input type="hidden" value="" name="status" id="convert{{$notification->id}}">
+                                    </input>
+                                </form>
+                              @endif
                             </td> 
                         </tr>
                         @endforeach
@@ -207,21 +211,42 @@ function validate(id){
     title: "Are you sure?",
     text: "You want to convert this loan request into a loan??",
     icon: "warning",
-    buttons: true,
+    buttons: {
+      cancel: "close",
+      ok: "convert",
+      denay: "denay",
+    },
     dangerMode: true,
   })
   .then((willDelete) => {
     if (willDelete) {
-      swal("You have successfully converted a loan request into a loan", {
-        icon: "success",
-      });
-      setTimeout(function(){ 
-        $('#convert-intoloan'+id).submit();
-        //document.getElementById('convert-intoloan').submit();
-      }, 1000);
+      console.log(willDelete);
       
+      if(willDelete == "ok"){
+          swal("You have successfully converted a loan request into a loan", {
+          icon: "success",
+        });
+        
+        setTimeout(function(){ 
+          $('#convert-intoloan'+id).submit();
+          //document.getElementById('convert-intoloan').submit();
+        }, 1000);
+
+        $("#convert"+id).val("give");
+      } else{
+        swal("You have successfully rejected the loan request", {
+          icon: "warning",
+        });
+
+        setTimeout(function(){ 
+          $('#convert-intoloan'+id).submit();
+          //document.getElementById('convert-intoloan').submit();
+        }, 1000);
+
+        $("#convert"+id).val("denay");
+      }     
     } else {
-      swal("Okay, You have stopped the conversion of a request successfully");
+      //swal("Okay, You have stopped the conversion of a request successfully");
     }
   });
 }
