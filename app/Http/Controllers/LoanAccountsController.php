@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\LoanAccount;
-use App\LoanAccountMC;
-use Carbon\Carbon;
 use App\Customer;
+use Carbon\Carbon;
+use App\LoanAccount;
 use App\Transaction;
+use App\LoanAccountMC;
+use Illuminate\Http\Request;
 use App\DeliveryNotification;
+use Illuminate\Support\Collection;
 
 class LoanAccountsController extends Controller
 {
@@ -22,10 +23,15 @@ class LoanAccountsController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
         //$loan_accounts = LoanAccount::paginate(10);
-        $loan_accounts = LoanAccount::all();
+        
+        if (! empty($request->start_date)) {
+            $loan_accounts = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->get();
+        } else {
+            $loan_accounts = LoanAccount::all();
+        }
         $clearedLoans = LoanAccount::where('loan_status',1)->count();
         $valueOfLoans = LoanAccount::sum('loan_amount');
         $valueOfTransactions = LoanAccount::sum('trn_charge');
@@ -34,8 +40,8 @@ class LoanAccountsController extends Controller
         $valueOfOutstandingLoans = LoanAccount::sum('loan_balance');
         $title = "All Loans";
         
-        return view('loan_accounts/index', 
-            compact('title','loan_accounts','clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests')
+        return view('loan_accounts/index',
+            compact('title', 'loan_accounts', 'clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests')
         );
     }
 

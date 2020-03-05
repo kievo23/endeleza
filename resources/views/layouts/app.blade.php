@@ -268,7 +268,7 @@
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="pcoded-hasmenu {!! Request::is('persons*') ? 'active' : '' !!}">
+                                <!-- <li class="pcoded-hasmenu {!! Request::is('persons*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                         <span class="pcoded-mtext">Persons</span>
@@ -287,8 +287,14 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </li> -->
+                                <li class="{!! Request::is('persons*') ? 'active' : '' !!}">
+                                    <a href="{{url('/persons')}}">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                        <span class="pcoded-mtext">Persons</span>
+                                    </a>
                                 </li>
-                                <li class="pcoded-hasmenu {!! Request::is('customers*') ? 'active' : '' !!}">
+                                <!-- <li class="pcoded-hasmenu {!! Request::is('customers*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-user-check"></i></span>
                                         <span class="pcoded-mtext">Customers</span>
@@ -307,6 +313,12 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </li> -->
+                                <li class="{!! Request::is('customers*') ? 'active' : '' !!}">
+                                    <a href="{{url('/customers')}}">
+                                        <span class="pcoded-micon"><i class="feather icon-user-check"></i></span>
+                                        <span class="pcoded-mtext">Customers</span>
+                                    </a>
                                 </li>
                                 <!-- <li class="pcoded-hasmenu {!! Request::is('agents*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">

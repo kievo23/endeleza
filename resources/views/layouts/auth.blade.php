@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
 
+    <!-- means that the title shall be the name set for APP_NAME in the .env file, and if that fails, it shall be set to 'Endeleza Capital' -->
     <title>{{ config('app.name', 'Endeleza Capital') }}</title>
 
     <!-- Scripts -->
