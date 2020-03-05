@@ -234,7 +234,7 @@ Endeleza: Dashboard
               borderWidth: 1,
               data: @json($graph_l),
           },{
-              label: 'Deliveries',
+              label: 'Requests',
               borderColor: window.chartColors.yellow,
               backgroundColor: window.chartColors.yellow,            
               borderWidth: 1,

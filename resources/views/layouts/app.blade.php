@@ -403,11 +403,37 @@
                                     </ul> 
                                 </li>
 
-                                <li class="{!! Request::is('loan_requests*') ? 'active' : '' !!}">
-                                    <a href="{{ url('loan_requests') }}">
+                                <li class="pcoded-hasmenu {!! Request::is('loan_requests*') ? 'active' : '' !!}">
+                                    <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-message-square"></i></span>
                                         <span class="pcoded-mtext">Loan Requests</span>
                                     </a>
+                                    <ul class="pcoded-submenu">
+                                    <li class="">
+                                            <a href="{{ route('new_requests') }}">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">New Requests </span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{{ url('loan_requests') }}">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">All </span>
+                                            </a>
+                                        </li> 
+                                        <li class="">
+                                            <a href="{{ route('approved_requests') }}">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">Approved </span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{{ route('denied_requests') }}">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">Denied </span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="pcoded-hasmenu {!! Request::is('transactions*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
