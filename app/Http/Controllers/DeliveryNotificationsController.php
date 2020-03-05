@@ -95,19 +95,19 @@ class DeliveryNotificationsController extends Controller
 
     public function newRequests(){
         $title = "New Requests";
-        $delivery_notifications = DeliveryNotification::where('status',null)->count();
+        $delivery_notifications = DeliveryNotification::where('status',null)->get();
         return view('delivery_notifications/index', compact('delivery_notifications','title'));
     }
 
     public function approvedRequests(){
         $title = "Approved Requests";
-        $delivery_notifications = DeliveryNotification::where('status',1)->count();
+        $delivery_notifications = DeliveryNotification::where('status',1)->get();
         return view('delivery_notifications/index', compact('delivery_notifications','title'));
     }
 
     public function deniedRequests(){
         $title = "Denied Request";
-        $delivery_notifications = DeliveryNotification::where('status',0)->count();
+        $delivery_notifications = DeliveryNotification::where('status',0)->get();
         return view('delivery_notifications/index', compact('delivery_notifications','title'));
     }
 
