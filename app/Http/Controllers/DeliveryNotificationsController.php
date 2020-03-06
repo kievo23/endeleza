@@ -22,12 +22,13 @@ class DeliveryNotificationsController extends Controller
 
     public function index()
     {
+        $title = "All Requests";
         $delivery_notifications = DeliveryNotification::with('customer')->orderBy('created_at','DESC')->limit(400)->get();
         $deliveriesWithLoans = DeliveryNotification::where('status',1)->count();
         $valueOfAllDeliveries = DeliveryNotification::sum('amount');
         $valueOfDeliveriesWithLoans = DeliveryNotification::where('status',1)->sum('amount');
         //dd($delivery_notifications);
-        return view('delivery_notifications/index', compact('delivery_notifications','deliveriesWithLoans','valueOfAllDeliveries','valueOfDeliveriesWithLoans'));
+        return view('delivery_notifications/index', compact('delivery_notifications','deliveriesWithLoans','valueOfAllDeliveries','valueOfDeliveriesWithLoans','title'));
     }
 
     public function ajax(Request $request)
@@ -90,6 +91,24 @@ class DeliveryNotificationsController extends Controller
             //->route('loan_accounts.index')
             ->with('success','Loan created successfully.');
         }
+    }
+
+    public function newRequests(){
+        $title = "New Requests";
+        $delivery_notifications = DeliveryNotification::where('status',null)->get();
+        return view('delivery_notifications/index', compact('delivery_notifications','title'));
+    }
+
+    public function approvedRequests(){
+        $title = "Approved Requests";
+        $delivery_notifications = DeliveryNotification::where('status',1)->get();
+        return view('delivery_notifications/index', compact('delivery_notifications','title'));
+    }
+
+    public function deniedRequests(){
+        $title = "Denied Request";
+        $delivery_notifications = DeliveryNotification::where('status',0)->get();
+        return view('delivery_notifications/index', compact('delivery_notifications','title'));
     }
 
     /**
