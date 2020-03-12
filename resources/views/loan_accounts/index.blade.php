@@ -150,40 +150,34 @@ Endeleza: {{$title}}
                 <thead>
                   <tr>
                     <th>Date Created</th>
-                    <th>Loan Account ID</th>
-                    <!-- <th>Loan Product ID</th> -->
                     <th>Customer Account</th>
                     <th>Customer Phone</th>
-                    <!-- <th>Agent </th> -->
-                    <!-- <th>Delivery ID</th> -->
-                    <th>Till Number</th>
                     <th>Principal Amount</th>
-                    <!-- <th>Trn Charge</th> -->
                     <th>Interest</th>
-                    <th>Loan Penalty</th>
-                    <th>Loan Amount</th>
+                    <th>Repayable Amount</th>
+                    <th>Till Number</th>
                     <th>Loan Balance</th>
                     <th>Loan Status</th>
-                    <th>Hours in Arrears</th>
+                    <th>Loan Penalty</th>
+                    <th>Days in Arrears</th>
                     <th>Actions</th>
+                    <!-- <th>Loan Account ID</th> -->
+                    <!-- <th>Loan Product ID</th> -->
+                    <!-- <th>Agent </th> -->
+                    <!-- <th>Delivery ID</th> -->
+                    <!-- <th>Trn Charge</th> -->
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($loan_accounts as $account)
                   <tr>
                     <td>{{$account->created_at}}</td>
-                    <td>{{$account->id}}</td>
-                    <!-- <td>{{$account->loan_product_id}}</td> -->
                     <td>{{$account->customer->person ? $account->customer->person->full_name : ''}}</td>
-                    <td> {{$account->customer ? $account->customer->customer_account_msisdn : ''}}</td>
-                    <!-- <td> {{$account->customer->agent->person ? $account->customer->agent->person->two_name : ''}}</td> -->
-                    <!-- <td>{{$account->delivery_id}}</td> -->
-                    <td>{{$account->delivery->till_number}}</td>
+                    <td>{{$account->customer ? $account->customer->customer_account_msisdn : ''}}</td>
                     <td>{{$account->principal_amount}}</td>
-                    <!-- <td>{{$account->trn_charge}}</td> -->
                     <td>{{$account->interest_charged}}</td>
-                    <td>{{$account->loan_penalty}}</td>
                     <td>{{$account->loan_amount}}</td>
+                    <td>{{$account->delivery->till_number}}</td>
                     <td>{{$account->loan_balance}}</td>
                     <td>@if($account->loan_status == "0")
                       <label class="label label-danger">Not cleared</label>
@@ -191,25 +185,31 @@ Endeleza: {{$title}}
                       <label class="label label-success">Cleared</label>
                       @endif
                     </td>
-                    <td>{{$account->hours_in_arrears}} ({{$account->days_in_arrears}} days)</td>
+                    <td>{{$account->loan_penalty}}</td>
+                    <td>{{$account->days_in_arrears}} days</td>
                     <td>
                       @php
                       $link = $account->customer ? $account->customer->customer_account_msisdn : '';
                       @endphp
                       <a href="{{ url('/customer/searchByPhone/'.$link) }}">
-                        <i class="feather icon-list"></i> Statement
-                      </a>
-                      @if((auth()->user()->can('delete-loan') || auth()->user()->hasRole('admin')))
-                      <form action="{{ route('loan_accounts.destroy', [$account->id]) }}" class="col-sm-5 deleteForm" method="POST">
-                        @csrf
-                        {{method_field('DELETE')}}
-                        <button type="button" class="deleteBtn btn btn-link">
-                          <i class="feather icon-trash-2"></i>Drop
-                        </button>
-                      </form>
-                      @endif
-                    </td>
-                  </tr>
+                      <i class="feather icon-list"></i> Statement
+                    </a>
+                    @if((auth()->user()->can('delete-loan') || auth()->user()->hasRole('admin')))
+                    <form action="{{ route('loan_accounts.destroy', [$account->id]) }}" class="col-sm-5 deleteForm" method="POST">
+                      @csrf
+                      {{method_field('DELETE')}}
+                      <button type="button" class="deleteBtn btn btn-link">
+                        <i class="feather icon-trash-2"></i>Drop
+                      </button>
+                    </form>
+                    @endif
+                  </td>
+                  <!-- <td>{{$account->id}}</td> -->
+                  <!-- <td>{{$account->loan_product_id}}</td> -->
+                  <!-- <td> {{$account->customer->agent->person ? $account->customer->agent->person->two_name : ''}}</td> -->
+                  <!-- <td>{{$account->delivery_id}}</td> -->
+                  <!-- <td>{{$account->trn_charge}}</td> -->
+                </tr>
                   @endforeach
                 </tbody>
               </table>

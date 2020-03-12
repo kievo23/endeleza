@@ -115,53 +115,55 @@ Endeleza: Transactions
               <table id="transactions" class="table">
                 <thead>
                   <tr>
-                    <th>Transaction ID</th>
-                    <th>Customer ID</th>
-                    <th>Loan Account ID</th>
-                    <th>MSISDN</th>
-                    <th>Paid By</th>
                     <th>Transaction Reference</th>
-                    <th>Transaction Amount</th>
-                    <th>Debit</th>
-                    <th>Credit</th>
+                    <th>Customer ID</th>
+                    <th>MSISDN</th>
                     <th>Transaction Time</th>
-                    <th>Transaction Status</th>
-                    <th>Transaction Type</th>
+                    <th>Transaction Amount</th>
+                    <!-- <th>Transaction ID</th> -->
+                    <!-- <th>Loan Account ID</th> -->
+                    <!-- <th>Paid By</th> -->
+                    <!-- <th>Debit</th> -->
+                    <!-- <th>Credit</th> -->
+                    <!-- <th>Transaction Status</th> -->
+                    <!-- <th>Transaction Type</th> -->
                     <!-- <th>Created By</th> -->
                     <!-- <th>Updated By</th> -->
                     <!-- <th>Date Updated</th> -->
                     <!-- <th>Deleted By</th> -->
                     <!-- <th>Date Deleted</th> -->
-                    <th>Created At</th>
+                    <!-- <th>Created At</th> -->
                     <!-- <th>Updated At</th> -->
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($transactions as $transaction)
                   <tr>
-                    <td>{{$transaction->id}}</td>
+                    <td>{{$transaction->transaction_reference}}</td>
+
                     @if(isset($transaction->customer->person))
                     <td>{{$transaction->customer->person->first_name}} {{$transaction->customer->person->surname}}</td>
                     @else
                     <td>Not Known</td>
                     @endif
 
-                    <td>{{$transaction->loan_account_id}}</td>
                     <td>{{$transaction->msisdn}}</td>
-                    <td>{{$transaction->paid_by}}</td>
-                    <td>{{$transaction->transaction_reference}}</td>
-                    <td>{{$transaction->transaction_amount}}</td>
-                    <td>{{$transaction->debit}}</td>
-                    <td>{{$transaction->credit}}</td>
                     <td>{{$transaction->transaction_time}}</td>
-                    <td>{{$transaction->transaction_status}}</td>
-                    <td>{{$transaction->transaction_type}}</td>
+                    <td>{{$transaction->transaction_amount}}</td>
+
+                    <!-- <td>{{$transaction->id}}</td> -->
+                    <!-- <td>{{$transaction->loan_account_id}}</td> -->
+                    <!-- <td>{{$transaction->paid_by}}</td>                     -->
+                    <!-- <td>{{$transaction->debit}}</td> -->
+                    <!-- <td>{{$transaction->credit}}</td> -->
+                    <!-- <td>{{$transaction->transaction_status}}</td> -->
+                    <!-- <td>{{$transaction->transaction_type}}</td> -->
                     <!-- <td>{{$transaction->created_by}}</td> -->
                     <!-- <td>{{$transaction->updated_by}}</td> -->
                     <!-- <td>{{$transaction->date_updated}}</td> -->
                     <!-- <td>{{$transaction->deleted_by}}</td> -->
                     <!-- <td>{{$transaction->date_deleted}}</td> -->
-                    <td>{{$transaction->created_at}}</td>
+                    <!-- <td>{{$transaction->created_at}}</td> -->
                     <!-- <td>{{$transaction->updated_at}}</td> -->
                   </tr>
                   @endforeach
