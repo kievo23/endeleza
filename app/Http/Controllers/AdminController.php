@@ -144,7 +144,8 @@ class AdminController extends Controller
         //Data
         $loan_accounts = LoanAccount::count();
         $clearedLoans = LoanAccount::where('loan_status',1)->count();
-        $valueOfLoans = LoanAccount::sum('loan_amount');
+        $valueOfLoans = LoanAccount::sum('principal_amount');
+        $valueOfPrincipalOnLoans = LoanAccount::where('loan_status',1)->sum('loan_amount');
         $valueOfTransactions = LoanAccount::sum('trn_charge');
         $valueOfInterests = LoanAccount::sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
@@ -153,9 +154,10 @@ class AdminController extends Controller
         $customers = Customer::count();
         $activeCustomers = Customer::where('active',1)->count();
 
-        $delivery_notifications = DeliveryNotification::count();
+        $delivery_notifications = DeliveryNotification::where('status',null)->count();
         $deliveriesWithLoans = DeliveryNotification::where('status',1)->count();
-        $valueOfAllDeliveries = DeliveryNotification::sum('amount');
+        $requests = DeliveryNotification::where('status',null)->count();
+        $valueOfAllRequests = DeliveryNotification::where('status',null)->sum('amount');
         $valueOfDeliveriesWithLoans = DeliveryNotification::where('status',1)->sum('amount');
 
         $transactions = Transaction::count();
@@ -174,9 +176,10 @@ class AdminController extends Controller
             'activeCustomers',
             'delivery_notifications',
             'deliveriesWithLoans',
-            'valueOfAllDeliveries',
             'valueOfDeliveriesWithLoans',
             'transactions',
+            'requests',
+            'valueOfAllRequests',
             'valueOfAllTransactions',
             'transactionsWithoutACustomer',
             'layout',

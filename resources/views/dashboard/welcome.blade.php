@@ -101,7 +101,7 @@ Endeleza: Dashboard
                           <div class="row align-items-end">
                             <div class="col-8">
                               <a href="{{ action('DeliveryNotificationsController@index')}}">
-                                <h4 class="text-white">{{$delivery_notifications}}</h4>
+                                <h4 class="text-white">{{$requests}}</h4>
                                 <h6 class="text-white m-b-0">Number of loan requests</h6>
                               </a>
                             </div>
@@ -118,7 +118,7 @@ Endeleza: Dashboard
                         <div class="card-block">
                           <div class="row align-items-end">
                             <div class="col-8">
-                              <h4 class="text-white">{{$valueOfAllDeliveries}}</h4>
+                              <h4 class="text-white">{{$valueOfAllRequests}}</h4>
                               <h6 class="text-white m-b-0">Value of all loan requests</h6>
                             </div>
                             <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
