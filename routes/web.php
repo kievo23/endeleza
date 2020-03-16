@@ -58,7 +58,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::resource('admin','AdminController');
     Route::resource('products', 'ProductsController');
     Route::get('users/{userId}/logs', 'UsersController@logs')->middleware('role:admin');
-    Route::resource('users', 'UsersController')->middleware('role:admin');
+    Route::resource('users', 'UsersController');
     
     Route::get('loan_request/deniedRequests','DeliveryNotificationsController@deniedRequests')->name('denied_requests');
     Route::get('loan_request/approvedrequests','DeliveryNotificationsController@approvedRequests')->name('approved_requests');
