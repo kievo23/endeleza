@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -54,21 +56,31 @@ class LoginController extends Controller
 
         $credentials = [
             "email" => $req->email,
-            "password" => $req->password,
-            "active" => 1
+            "password" => $req->password
         ];
-
-        //dd($validator);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput($req->only('email'));
         } else{
-            //$credentials = $req->only('email', 'password');
-            if(Auth::guard('web')->attempt($credentials)){
-                return redirect()->route('dashboard');
+            $user = User::where('email',$req->email)->first();
+            if($user){
+                if(Hash::check($req->password, $user->password)){
+                    if($user->active == 1){
+                        if(Auth::guard('web')->attempt($credentials)){
+                            return redirect()->route('dashboard');
+                            
+                        }else{
+                            //dd('Wrong credentials or account not active');
+                            return back()->with('error', 'Wrong credentials or account not active');
+                        }
+                    }else{
+                        return back()->with('error', 'Wrong credentials or account not active'); 
+                    }
+                }else{
+                    return back()->with('error', 'Wrong credentials');
+                }
             }else{
-                //dd('Wrong credentials or account not active');
-                return back()->with('error', 'Wrong credentials or account not active');
+                return back()->with('error', 'No user is registered with that email');
             }
         }
     }

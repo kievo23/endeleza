@@ -26,6 +26,7 @@ class User extends Authenticatable
 
     protected static $logOnlyDirty = true;
     
+    
     protected $guard = 'web';
     protected $table = 'users';
 
