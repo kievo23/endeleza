@@ -43,7 +43,7 @@ Endeleza: Persons
                   <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
                     <i class="mdi mdi-plus text-muted"></i>
                   </button> -->
-                  <a href="#" class="mr-2">
+                  <a href="{{route('persons.create')}}" class="mr-2">
                   <button class="btn btn-primary btn-rounded btn-fw btn-icon-text">
                     <i class="mdi mdi-account-plus btn-icon-prepend"></i>
                      Create Person 
