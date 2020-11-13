@@ -98,7 +98,11 @@
                     <div class="input-group">
                         <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
                         <select class="selectpicker form-control" name="agent">
-                            <option value="{{$customer->agent_id}}">{!! isset($customer->agent_id) ? $customer->agent->person->fullName : "Not Set" !!}</option>
+                            @if($customer->agent_id && $customer->agent_id != 0)
+                                <option value="{{$customer->agent_id}}">
+                                    {!! isset($customer->agent_id) ? $customer->agent->person->fullName : "Not Set" !!}
+                                </option>
+                            @endif
                             @foreach($agents as $agent)
                                 <option value="{{$agent->id}}">{{$agent->person->fullName}}</option>
                             @endforeach
