@@ -243,6 +243,7 @@ Endeleza: {{$title}}
     $(document).ready(function() {
       let table = $('#loan_accounts').DataTable({
         dom: 'Bfrtip',
+        order: [[ 1, "desc" ]]
         buttons: [
           'copy', 'csv', 'excel', 'pdf', 'print'
         ]
@@ -296,8 +297,8 @@ Endeleza: {{$title}}
 
       function cb(start, end) {
         console.log(start,end);
-        var start_date = start.format('YYYY-MM-DD');
-        var end_date = end.format('YYYY-MM-DD');
+        var start_date = start.format('YYYY-MM-DD 00:00:00');
+        var end_date = end.format('YYYY-MM-DD 23:59:59');
         $('#start_date').val(start_date);
         $('#end_date').val(end_date);
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));

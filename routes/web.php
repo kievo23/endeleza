@@ -63,6 +63,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('loan_request/deniedRequests','DeliveryNotificationsController@deniedRequests')->name('denied_requests');
     Route::get('loan_request/approvedrequests','DeliveryNotificationsController@approvedRequests')->name('approved_requests');
     Route::get('loan_request/newrequests','DeliveryNotificationsController@newRequests')->name('new_requests');
+    Route::post('loan_request/{id}/convert','DeliveryNotificationsController@convert')->name('convert_toLoan');
     Route::resource('loan_requests','DeliveryNotificationsController');
     Route::post('delivery_notifications/ajax','DeliveryNotificationsController@ajax')->name('deliveries.ajax');
  
