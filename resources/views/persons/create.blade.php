@@ -82,6 +82,13 @@ Endeleza: Create Person
                             </div>
                          </div>
 
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Business Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input id="business" name="business" placeholder="Business Name" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div>
+
                          <input class="btn btn-primary" style="float: left;" type="submit" value="Submit">
                          
                       </fieldset>

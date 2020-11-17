@@ -52,7 +52,8 @@ class PersonsController extends Controller
             'primary_msisdn'=> $request->primaryMobileNumber,
             'alternate_msisdn'=> $request->alternateMobileNumber,
             'postal_address'=> $request->postalAddress,
-            'physical_location' => $request->physicalLocation
+            'physical_location' => $request->physicalLocation,
+            'business_name' => $request->business
         ]);
 
         return redirect()->route('persons.index')
@@ -104,6 +105,7 @@ class PersonsController extends Controller
             'alternate_msisdn'=> 'nullable',
             'postal_address'=> 'nullable',
             'physical_location' => 'nullable',
+            'business_name' => 'nullable'
         ]);
   
         $person->update($request->all());
