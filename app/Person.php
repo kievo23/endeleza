@@ -17,7 +17,7 @@ class Person extends Model
 
     protected $table = 'people';
 
-    protected $fillable = ['surname', 'first_name', 'other_names', 'gender','twiga_response', 'date_of_birth', 'id_number', 'primary_msisdn', 'alternate_msisdn', 'postal_address', 'physical_location'];
+    protected $fillable = ['surname', 'first_name', 'other_names', 'gender','twiga_response', 'date_of_birth', 'id_number', 'primary_msisdn', 'alternate_msisdn', 'postal_address', 'physical_location','business_name'];
 
     public function customers()
     {

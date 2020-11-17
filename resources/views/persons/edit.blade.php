@@ -76,6 +76,7 @@
                     <div class="input-group">
                         <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
                         <select class="selectpicker form-control" name="gender">
+                            <option value="{{$person->gender}}">{{ $person->gender == "M" ? "Male" : "Female"}}</option>
                             <option value="M">Male</option>
                             <option value="F">Female</option>
                         </select>

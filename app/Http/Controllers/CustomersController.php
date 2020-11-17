@@ -94,22 +94,26 @@ class CustomersController extends Controller
         $hashed = Bcrypt::hash($code, $salt);
         //dd($hashed);
 
-        $customer = CustomerMC::create([
-            'person_id' => intval($request->person),
-            'agent_id' => intval($request->agent),
-            'customer_account_msisdn' => $phone,
-            'pin_reset' => 1,
-            'interest' => $request->interest,
-            'pin' => $hashed,
-            'salt_key' => $salt
-        ]);
-
-        //dd($agent);
-
-        $rst = SMS::sendsms($phone, "You have been registered as an M-Weza customer. This is a one time password ". $code);
-        
-        return redirect()->route('customers.index')
-                        ->with('success','Customer created successfully.');
+        $customer = Customer::where('customer_account_msisdn',$phone)->first();
+        if(!$customer){
+            $customer = CustomerMC::create([
+                'person_id' => intval($request->person),
+                'agent_id' => intval($request->agent),
+                'customer_account_msisdn' => $phone,
+                'pin_reset' => 1,
+                'interest' => $request->interest,
+                'pin' => $hashed,
+                'salt_key' => $salt
+            ]);
+    
+            $rst = SMS::sendsms($phone, "You have been registered as an M-Weza customer. This is a one time password ". $code);
+            
+            return redirect()->route('customers.index')
+                            ->with('success','Customer created successfully.');
+        }else{
+            return redirect()->route('customers.index')
+                            ->with('error','Can not create customer with that phone number. Customer already exists.');
+        }
     }
 
     public function find(Request $req){

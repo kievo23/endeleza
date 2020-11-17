@@ -95,6 +95,7 @@ Endeleza: Customers
                             <th>Customer ID</th>
                             <th>Person</th>
                             <th>Agent</th>
+                            <th>Business</th>
                             <th>Customer Account MSISDN</th>
                             <th>Blocked</th>
                             <th>PIN Reset</th>
@@ -113,6 +114,11 @@ Endeleza: Customers
                             <td>
                             @if($customer->agent->person)
                             {{$customer->agent->person->full_name}}
+                            @endif
+                            </td>
+                            <td>
+                            @if($customer->person->business_name)
+                            {{$customer->person->business_name}}
                             @endif
                             </td>
                             <td>{{$customer->customer_account_msisdn}}</td>

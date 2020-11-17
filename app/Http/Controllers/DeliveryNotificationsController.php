@@ -95,7 +95,7 @@ class DeliveryNotificationsController extends Controller
 
     public function newRequests(){
         $title = "New Requests";
-        $delivery_notifications = DeliveryNotification::where('status',null)->get();
+        $delivery_notifications = DeliveryNotification::where('status',0)->get();
         return view('delivery_notifications/index', compact('delivery_notifications','title'));
     }
 

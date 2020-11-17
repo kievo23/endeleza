@@ -556,7 +556,7 @@
                                             {{ session('warning') }}
                                         </div>
                                     @endif
-                                    @if(session('danger'))
+                                    @if(session('error'))
                                         <div class="alert alert-danger">
                                             {{ session('error') }}
                                         </div>
