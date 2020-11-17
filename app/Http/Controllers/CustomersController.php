@@ -100,7 +100,7 @@ class CustomersController extends Controller
                 'person_id' => intval($request->person),
                 'agent_id' => intval($request->agent),
                 'customer_account_msisdn' => $phone,
-                'pin_reset' => 1,
+                'pin_reset' => 0,
                 'interest' => $request->interest,
                 'pin' => $hashed,
                 'salt_key' => $salt
