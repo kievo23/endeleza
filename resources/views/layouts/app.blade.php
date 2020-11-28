@@ -364,54 +364,6 @@
                                                 <span class="pcoded-mtext">Paid Loans</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/today') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">Today</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/yesterday') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">Yesterday</span>
-                                            </a>
-                                        </li>
-                                        <!-- <li class="">
-                                            <a href="{{ url('loan_accounts/pendingBelow/3') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">Below 3 days</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/pendingBelow/6') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">3-6 days</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/pendingBelow/10') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">6-10 days</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/pendingBelow/15') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">10-15 days</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/pendingBelow/30') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">15-30 days</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="{{ url('loan_accounts/pendingAbove30') }}">
-                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                                <span class="pcoded-mtext">Above 30 days</span>
-                                            </a>
-                                        </li> -->
                                     </ul> 
                                 </li>
 

@@ -42,8 +42,8 @@ class TestController extends Controller
           //Fill in the request parameters with valid values
           'ShortCode' => env('MPESA_C2B_SHORT_CODE'),
           'ResponseType' => 'Completed',
-          'ConfirmationURL' => 'https://sol.mweza.co.ke/api/confirmTransactionUrl',
-          'ValidationURL' => 'https://sol.mweza.co.ke/api/validateTransactionUrl'
+          'ConfirmationURL' => 'https://app.endelezacapital.com/api/confirmTransactionUrl',
+          'ValidationURL' => 'https://app.endelezacapital.com/api/validateTransactionUrl'
         );
   
         $data_string = json_encode($curl_post_data);

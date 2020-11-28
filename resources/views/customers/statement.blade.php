@@ -97,7 +97,7 @@ Endeleza: {{$customer->person->fullName}} Statement
                             <td>{{$record->trn_charge}}</td>
                             <td>{{$record->interest_charged}}</td>
                             <td>{{$record->loan_penalty}}</td>
-                            <td>{{$record->loan_amount}}</td>
+                            <td>{{$record->principal_amount}}</td>
                             <td>{{$record->receipt}}</td>
                             <td class='table-warning'>{{$total}}</td>
                             <td class='table-success'>{{$record->amount}}</td> 

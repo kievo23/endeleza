@@ -152,6 +152,7 @@ Endeleza: {{$title}}
                     <th>Date Created</th>
                     <th>Customer Account</th>
                     <th>Customer Phone</th>
+                    <th>Business</th>
                     <th>Principal Amount</th>
                     <th>Interest</th>
                     <th>Repayable Amount</th>
@@ -174,6 +175,7 @@ Endeleza: {{$title}}
                     <td>{{$account->created_at}}</td>
                     <td>{{$account->customer->person ? $account->customer->person->full_name : ''}}</td>
                     <td>{{$account->customer ? $account->customer->customer_account_msisdn : ''}}</td>
+                    <td>{{$account->customer->person ? $account->customer->person->business_name : ''}}</td>
                     <td>{{$account->principal_amount}}</td>
                     <td>{{$account->interest_charged}}</td>
                     <td>{{$account->loan_amount}}</td>

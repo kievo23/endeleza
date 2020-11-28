@@ -134,10 +134,10 @@ class CustomersController extends Controller
         $customer = Customer::where('customer_account_msisdn',$phone)->first();
         if($customer){
             $query = 'SELECT * FROM (
-                (SELECT loan_account.id,1 as type, trn_charge, interest_charged, loan_amount, loan_penalty, NULL as receipt,NULL as amount, created_at 
+                (SELECT loan_account.id,1 as type, trn_charge, interest_charged, principal_amount, loan_amount, loan_penalty, NULL as receipt,NULL as amount, created_at 
                 FROM loan_account WHERE customer_account_id = '.$customer->id.')
                 UNION ALL
-                (SELECT transactions.id AS id,2 as type, null as trn_charge, NULL as interest_charged, NULL AS loan_amount, NULL AS loan_penalty,	transaction_reference as receipt,transaction_amount as amount, created_at 
+                (SELECT transactions.id AS id,2 as type, null as trn_charge, NULL as interest_charged,NULL as principal_amount, NULL AS loan_amount, NULL AS loan_penalty,	transaction_reference as receipt,transaction_amount as amount, created_at 
                 FROM transactions WHERE customer_id = '.$customer->id.')
             ) results
             ORDER BY `results`.`created_at`  ASC';

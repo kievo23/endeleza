@@ -150,6 +150,14 @@ class AdminController extends Controller
         $valueOfInterests = LoanAccount::sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
         $valueOfOutstandingLoans = LoanAccount::sum('loan_balance');
+        $healthyLoans = LoanAccount::where('created_at', '>', Carbon::now()->subDays(8))
+            ->sum('loan_balance');
+
+        $lateLoans = LoanAccount::whereBetween('created_at', [Carbon::now()->subDays(28) ,Carbon::now()->subDays(8) ])
+            ->sum('loan_balance');
+
+        $defaulters = LoanAccount::where('created_at', '<', Carbon::now()->subDays(28))
+            ->sum('loan_balance');
 
         $customers = Customer::count();
         $activeCustomers = Customer::where('active',1)->count();
@@ -163,6 +171,7 @@ class AdminController extends Controller
         $transactions = Transaction::count();
         $valueOfAllTransactions = Transaction::sum('transaction_amount');
         $transactionsWithoutACustomer = Transaction::where('customer_id',NULL)->count();
+
         $layout = "app"; 
         return view('dashboard/welcome',compact(
             'loan_accounts',
@@ -186,7 +195,10 @@ class AdminController extends Controller
             'dates',
             'graph_d',
             'graph_r',
-            'graph_l'
+            'graph_l',
+            'lateLoans',
+            'defaulters',
+            'healthyLoans'
         ));
     }
 

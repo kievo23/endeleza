@@ -52,6 +52,7 @@ Endeleza: Loan Requests
                             <th>ID</th>
                             <th>Customer</th>
                             <th>Phone</th>
+                            <th>Business</th>
                             <th>Till Number</th>
                             <th>Amount</th>
                             <th>Status</th>
@@ -64,8 +65,9 @@ Endeleza: Loan Requests
                         @foreach($delivery_notifications as $notification)
                         <tr>
                             <td>{{$notification->id}}</td>
-                            <td>{{$notification->customer->person->full_name }}</td>
+                            <td>{{$notification->customer->person ? $notification->customer->person->full_name : '' }}</td>
                             <td>{{$notification->customer->customer_account_msisdn}}</td>
+                            <td>{{$notification->customer->person ? $notification->customer->person->business_name : ''}}</td>
                             <td>{{$notification->till_number}}</td>
                             <td>{{$notification->amount}}</td>
                             <td>

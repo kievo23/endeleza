@@ -82,6 +82,7 @@ class DeliveryNotificationsController extends Controller
                 'trn_charge' => '0.00',
                 'delivery_id' => $request->id,
                 'till_number' => $request->till_number,
+                'interest_charged' => $interest,
                 'loan_amount' => $request->amount + $interest,
                 'loan_balance' => $request->amount + $interest,
                 'loan_penalty' => 0.00,
