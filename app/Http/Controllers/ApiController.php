@@ -126,7 +126,7 @@ class ApiController extends Controller
 
     public function lipanampesa(Request $req){
         Log::alert(json_encode($req->all()));
-        //dd($req->all());
+        dd($req->all());
         $rst = json_decode(json_encode($req->all()));
 
         $stk_callback = json_encode($req->all());
@@ -164,6 +164,8 @@ class ApiController extends Controller
                 LoanAccount::offsetUser($msisdn,$amt,$mpesaCode,$timestamp,"PAYMENT_STK",$msisdn);
             }
         }
+        return response(array("msg"=>"End point reached"), 200)
+                  ->header('Content-Type', 'application/json');
     }
 
     public static function loanRepaymentTwiga($data,$loan){
