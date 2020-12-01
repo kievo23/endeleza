@@ -148,7 +148,7 @@ Endeleza: Transactions
                     <td>Not Known</td>
                     @endif
 
-                    <td>{{$transaction->payer_number}}</td>
+                    <td>{{$transaction->paid_by}}</td>
                     <td>{{$transaction->payer_names}}</td>
                     <td>{{$transaction->transaction_time}}</td>
                     <td>{{$transaction->transaction_amount}}</td>
