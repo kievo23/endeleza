@@ -55,7 +55,7 @@ class LoanAccount extends Model
         return $this->belongsTo('App\Product');
     }
 
-    public static function offsetUser($msisdn,$amt,$mpesaCode,$timestamp,$desc,$account_no){
+    public static function offsetUser($msisdn,$amt,$mpesaCode,$timestamp,$desc,$account_no,$PaidByNames){
         $account_no = "+254" . substr(trim($account_no), -9);
         $amtPaid = $amt;
 
@@ -104,6 +104,7 @@ class LoanAccount extends Model
                 'customer_id' => $customer->id,
                 'msisdn' => $account_no,
                 'paid_by' => $msisdn,
+                'payer_names' => $PaidByNames,
                 'transaction_reference' => $mpesaCode,
                 'transaction_amount' => $amtPaid,
                 'transaction_time' => $timestamp,
@@ -115,6 +116,7 @@ class LoanAccount extends Model
                 'customer_id' => NULL,
                 'msisdn' => $account_no,
                 'paid_by' => $msisdn,
+                'payer_names' => $PaidByNames,
                 'transaction_reference' => $mpesaCode,
                 'transaction_amount' => $amtPaid,
                 'transaction_time' => $timestamp,

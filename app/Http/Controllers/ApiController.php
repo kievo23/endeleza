@@ -161,7 +161,7 @@ class ApiController extends Controller
             //Offset User
             $transaction = Transaction::where('transaction_reference',$mpesaCode)->first();
             if(!$transaction){    
-                LoanAccount::offsetUser($msisdn,$amt,$mpesaCode,$timestamp,"PAYMENT_STK",$msisdn);
+                LoanAccount::offsetUser($msisdn,$amt,$mpesaCode,$timestamp,"PAYMENT_STK",$msisdn,$PaidByNames="NONE");
             }
         }
         return response(array("msg"=>"End point reached"), 200)

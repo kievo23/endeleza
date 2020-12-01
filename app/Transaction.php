@@ -10,6 +10,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'customer_id',
+        'payer_names',
         'gl_account_id',
         'loan_account_id',
         'msisdn',

@@ -68,7 +68,7 @@ class C2BController extends Controller
         //Check if the BillRefNumber exists and if not store it in suspense account
         $transaction = Transaction::where('transaction_reference',$mpesaCode)->first();
         if(!$transaction){
-            LoanAccount::offsetUser($msisdn,$amt,$mpesaCode,$timestamp,"PAYMENT_PAYBILL",$account_no);                
+            LoanAccount::offsetUser($msisdn,$amt,$mpesaCode,$timestamp,"PAYMENT_PAYBILL",$account_no,$PaidByNames);                
         }
         return response('{"ResultCode":0,"ResultDesc":"Confirmation received successfully"}', 200)
                 ->header('Content-Type', 'application/json');

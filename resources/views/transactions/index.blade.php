@@ -116,8 +116,9 @@ Endeleza: Transactions
                 <thead>
                   <tr>
                     <th>Transaction Reference</th>
-                    <th>Customer ID</th>
+                    <th>Customer ID</th>                    
                     <th>MSISDN</th>
+                    <th>Paid By</th>
                     <th>Transaction Time</th>
                     <th>Transaction Amount</th>
                     <!-- <th>Transaction ID</th> -->
@@ -147,7 +148,8 @@ Endeleza: Transactions
                     <td>Not Known</td>
                     @endif
 
-                    <td>{{$transaction->msisdn}}</td>
+                    <td>{{$transaction->payer_number}}</td>
+                    <td>{{$transaction->payer_names}}</td>
                     <td>{{$transaction->transaction_time}}</td>
                     <td>{{$transaction->transaction_amount}}</td>
 
