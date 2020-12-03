@@ -24,12 +24,13 @@ class C2BController extends Controller
         $rst = json_decode(json_encode($req->all()));
         
         
-        $mpesaCode = $rst->TransID;
-        $account_no = $rst->BillRefNumber;
-        $msisdn = $rst->MSISDN;
-        $amt = $rst->TransAmount;
-        $timestamp = $rst->TransTime;
-        $balance = $rst->OrgAccountBalance;
+        $mpesaCode  = $rst->TransID;
+        $account_no = $rst->MSISDN;
+        //$account_no = $rst->BillRefNumber;
+        $msisdn     = $rst->MSISDN;
+        $amt        = $rst->TransAmount;
+        $timestamp  = $rst->TransTime;
+        $balance    = $rst->OrgAccountBalance;
         // "FirstName": "KELVIN",
         // "MiddleName": "CHEGE",
         // "LastName": "MAINA",
@@ -53,7 +54,7 @@ class C2BController extends Controller
 
             $mpesa= new \Safaricom\Mpesa\Mpesa();
             $trasactionStatus = $mpesa->transactionStatus(
-            $Initiator = "kakituchege",
+            $Initiator = config('app.INITIATOR_NAME'),
             $SecurityCredential = config('app.MPESA_C2B_SECURITY_CREDENTIAL'),
             $CommandID = 'TransactionStatusQuery',
             $TransactionID = $mpesaCode,

@@ -47,6 +47,10 @@ class TransactionsController extends Controller
      */
     public function reconcile($transId)
     {
+        //Test
+        //LoanAccount::offsetUser("0710345130","20","wewerersdf","","desc","0710345130",$PaidByNames="Ghost");
+        
+        //real
         $title = "Reconcile This Orphan Transaction";
         $customers = Customer::all();
         $transaction = Transaction::find($transId);

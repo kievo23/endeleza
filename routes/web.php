@@ -48,7 +48,6 @@ Route::middleware(['web','auth'])->group(function () {
     Route::put('customers/{id}/update', 'CustomersController@update')->name('customers.update')->middleware('role_or_permission:admin|edit-customer');;
     Route::post('customers/{id}/destroy', 'CustomersController@destroy');
 
-
     Route::get('/register', 'RegistrationController@register');
     Route::post('/register', 'RegistrationController@postRegister');
     

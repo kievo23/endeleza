@@ -145,6 +145,7 @@ return [
     'MPESA_CONSUMER_SECRET'=>env('MPESA_CONSUMER_SECRET', null),
     'MPESA_ENV'=> env('MPESA_ENV', null),
     'APP_DOMAIN'=> env('APP_DOMAIN',null),
+    'INITIATOR_NAME' => env('INITIATOR_NAME',null),
     'MPESA_C2B_SHORT_CODE'=> env('MPESA_C2B_SHORT_CODE', null),
     'MPESA_C2B_PASSKEY' => env('MPESA_C2B_PASSKEY',null),
     'MPESA_C2B_INITIATOR' => env('MPESA_C2B_INITIATOR',null),
