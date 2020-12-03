@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Transaction;
 use App\Customer;
 use App\LoanAccount;
+use Illuminate\Support\Facades\URL;
 
 class TransactionsController extends Controller
 {
@@ -63,17 +64,18 @@ class TransactionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req,$id)
+    public function store(Request $req)
     {
         $customer = Customer::find($req->customer);
         if($customer){
             $transaction = Transaction::find($req->transId);
+            //dd($transaction);
             if($transaction->customer_id){
                 //Transaction Already assigned to a customer.
-                return redirect()->previous()
-                        ->with('error','Ooops, this transaction can not be offset as its already assigned');
+                return redirect('transactions')
+                    ->with('error','Ooops, this transaction can not be offset as its already assigned');
             }else{
-                $msisdn = $transaction->paid_by;
+                $msisdn = $customer->customer_account_msisdn;
                 $amt = $transaction->transaction_amount;
                 $mpesaCode = $transaction->transaction_reference;
                 $timestamp = $transaction->transaction_time;
@@ -85,11 +87,13 @@ class TransactionsController extends Controller
 
                 $transaction->customer_id = $req->customer;
                 $transaction->save();
+                return redirect('transactions')
+                ->with('status','Great, customer has been offset successfully!');
             }
         }else{
             //Customer doesn't exist
-            return redirect()->previous()
-                        ->with('error','Oooops, Customer does not exist');
+            return redirect('transactions')
+                ->with('error','Ooops, Customer does not exist');
         }
     }
 

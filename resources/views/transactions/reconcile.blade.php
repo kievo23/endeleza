@@ -62,13 +62,14 @@ Orphan Transaction Reconciliation.
                             <select name="customer" data-dropup-auto="false" class="form-control hidden dropdown" data-live-search="true" id="customerSelect">
                                 <option value="">-- Select Customers--</option>
                                 @foreach($customers as $customer)
-                                  <option value="{{$customer->customer_account_msisdn}}">{{$customer->person->full_name}}</option>
+                                  <option value="{{$customer->id}}">{{$customer->person->full_name}} {{$customer->customer_account_msisdn}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
 
                     <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                    <input name="transId" value="{{$transaction->id}}" type="hidden">
 
                     <div class="form-actions">
                         <div class="row">
