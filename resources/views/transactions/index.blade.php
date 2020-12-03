@@ -121,6 +121,7 @@ Endeleza: Transactions
                     <th>Paid By</th>
                     <th>Transaction Time</th>
                     <th>Transaction Amount</th>
+                    <th>Actions</th>
                     <!-- <th>Transaction ID</th> -->
                     <!-- <th>Loan Account ID</th> -->
                     <!-- <th>Paid By</th> -->
@@ -152,6 +153,11 @@ Endeleza: Transactions
                     <td>{{$transaction->payer_names}}</td>
                     <td>{{$transaction->transaction_time}}</td>
                     <td>{{$transaction->transaction_amount}}</td>
+                    <td>@if(!isset($transaction->customer->person))
+                    <a href="{{ url('transactions/reconcile/'.$transaction->id) }}">
+                                <i class="feather icon-edit"></i> Recon
+                              </a>
+                    @endif</td>
 
                     <!-- <td>{{$transaction->id}}</td> -->
                     <!-- <td>{{$transaction->loan_account_id}}</td> -->

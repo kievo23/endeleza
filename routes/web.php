@@ -72,6 +72,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::resource('persons', 'PersonsController');
     Route::resource('agents', 'AgentsController');
     Route::get('agents/{agentId}/customers', 'AgentsController@listOfCustomers')->name('agentCustomerList');
+    Route::get('transactions/reconcile/{transId}','TransactionsController@reconcile');
     Route::get('transactions/suspense','TransactionsController@suspense');
     Route::resource('transactions','TransactionsController');
     Route::resource('settings','SettingsController')->middleware('role:admin');

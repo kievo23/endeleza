@@ -126,7 +126,7 @@ class ApiController extends Controller
 
     public function lipanampesa(Request $req){
         Log::alert(json_encode($req->all()));
-        dd($req->all());
+        //dd($req->all());
         $rst = json_decode(json_encode($req->all()));
 
         $stk_callback = json_encode($req->all());

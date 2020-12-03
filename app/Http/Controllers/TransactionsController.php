@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaction;
+use App\Customer;
+use App\LoanAccount;
 
 class TransactionsController extends Controller
 {
@@ -16,9 +18,9 @@ class TransactionsController extends Controller
     {
         //$transactions = Transaction::paginate(10);
         if (! empty($request->start_date)) {
-            $transactions = Transaction::whereBetween('created_at', [$request->start_date, $request->end_date])->get();
+            $transactions = Transaction::whereNotNull('customer_id')->whereBetween('created_at', [$request->start_date, $request->end_date])->get();
         } else {
-            $transactions = Transaction::all();
+            $transactions = Transaction::whereNotNull('customer_id')->get();
         }
         //dd($transactions);
         //$deliveriesWithLoans = Transaction::where('status',1)->count();
@@ -43,9 +45,12 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function reconcile($transId)
     {
-        //
+        $title = "Reconcile This Orphan Transaction";
+        $customers = Customer::all();
+        $transaction = Transaction::find($transId);
+        return view('transactions/reconcile', compact('title','customers','transaction'));
     }
 
     /**
@@ -54,9 +59,34 @@ class TransactionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req,$id)
     {
-        //
+        $customer = Customer::find($req->customer);
+        if($customer){
+            $transaction = Transaction::find($req->transId);
+            if($transaction->customer_id){
+                //Transaction Already assigned to a customer.
+                return redirect()->previous()
+                        ->with('error','Ooops, this transaction can not be offset as its already assigned');
+            }else{
+                $msisdn = $transaction->paid_by;
+                $amt = $transaction->transaction_amount;
+                $mpesaCode = $transaction->transaction_reference;
+                $timestamp = $transaction->transaction_time;
+                $payment_desc = "RECONCILIATION";
+                $PaidByNames = $transaction->payer_names;
+
+                //offset user
+                LoanAccount::offsetUser($msisdn,$amt,$mpesaCode,$timestamp,$payment_desc,$msisdn,$PaidByNames);
+
+                $transaction->customer_id = $req->customer;
+                $transaction->save();
+            }
+        }else{
+            //Customer doesn't exist
+            return redirect()->previous()
+                        ->with('error','Oooops, Customer does not exist');
+        }
     }
 
     /**
