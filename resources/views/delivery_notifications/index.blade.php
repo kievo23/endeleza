@@ -72,16 +72,16 @@ Endeleza: Loan Requests
                             <td>{{$notification->amount}}</td>
                             <td>
                               @if($notification->status == "0")
-                              <label class="label label-danger">Denied</label>
+                              <label class="label label-info">Pending</label>
                               @elseif($notification->status == "1")
                               <label class="label label-success">Active</label>
                               @else
-                              <label class="label label-info">Not Attended</label>
+                              <label class="label label-warning">Denied</label>
                               @endif
                             </td>
                             <td>{{$notification->created_at}}</td>
                             <td>
-                              @if($notification->status == null)
+                              @if($notification->status == null || $notification->status == 0)
                                 <a class="dropdown-item" href="#"
                                   onclick="javascript: validate({{$notification->id}})">
                                       <i class="feather icon-check-circle"></i> Convert to loan
@@ -89,8 +89,9 @@ Endeleza: Loan Requests
                                 <form id="convert-intoloan{{$notification->id}}" action="{{ url('loan_request/'.$notification->id.'/convert') }}" method="POST">
                                     @csrf
                                     <input type="button" value="" class="btn btn-link p-0 m-0 d-inline align-baseline">
-                                      <input type="hidden" value="" name="status" id="convert{{$notification->id}}">
+                                      
                                     </input>
+                                    <input type="hidden" value="" name="status" id="convert{{$notification->id}}">
                                 </form>
                               @endif
                             </td> 

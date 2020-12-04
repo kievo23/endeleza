@@ -23,7 +23,7 @@ class DeliveryNotificationsController extends Controller
     public function index()
     {
         $title = "All Requests";
-        $delivery_notifications = DeliveryNotification::with('customer')->orderBy('created_at','DESC')->limit(400)->get();
+        $delivery_notifications = DeliveryNotification::with('customer')->where('status',2)->orWhere('status',0)->orderBy('created_at','DESC')->limit(500)->get();
         $deliveriesWithLoans = DeliveryNotification::where('status',1)->count();
         $valueOfAllDeliveries = DeliveryNotification::sum('amount');
         $valueOfDeliveriesWithLoans = DeliveryNotification::where('status',1)->sum('amount');
@@ -62,7 +62,7 @@ class DeliveryNotificationsController extends Controller
         $status = null;
         //dd($req->status);
         if($req->status == "denay"){
-            $status = 0;
+            $status = 2;
             $request->status = $status;
             $rst = $request->save();         
             return redirect("loan_requests")

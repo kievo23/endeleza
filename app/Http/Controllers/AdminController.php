@@ -153,7 +153,7 @@ class AdminController extends Controller
         $healthyLoans = LoanAccount::where('created_at', '>', Carbon::now()->subDays(8))
             ->sum('loan_balance');
 
-        $lateLoans = LoanAccount::whereBetween('created_at', [Carbon::now()->subDays(28) ,Carbon::now()->subDays(8) ])
+        $lateLoans = LoanAccount::whereBetween('created_at', [Carbon::now()->subDays(29) ,Carbon::now()->subDays(8) ])
             ->sum('loan_balance');
 
         $defaulters = LoanAccount::where('created_at', '<', Carbon::now()->subDays(28))

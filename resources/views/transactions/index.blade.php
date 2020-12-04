@@ -116,8 +116,8 @@ Endeleza: Transactions
                 <thead>
                   <tr>
                     <th>Transaction Reference</th>
-                    <th>Customer ID</th>                    
-                    <th>MSISDN</th>
+                    <th>Customer Names</th>                    
+                    <th>PhoneNo.</th>
                     <th>Paid By</th>
                     <th>Transaction Time</th>
                     <th>Transaction Amount</th>
@@ -144,7 +144,7 @@ Endeleza: Transactions
                     <td>{{$transaction->transaction_reference}}</td>
 
                     @if(isset($transaction->customer->person))
-                    <td>{{$transaction->customer->person->first_name}} {{$transaction->customer->person->surname}}</td>
+                    <td>{{$transaction->customer->person->first_name}} {{$transaction->customer->person->surname}} ({{$transaction->customer->customer_account_msisdn}})</td>
                     @else
                     <td>Not Known</td>
                     @endif
@@ -205,6 +205,7 @@ Endeleza: Transactions
   <script>
     $(document).ready(function() {
       $('#transactions').DataTable({
+        order: [[ 4, "desc" ]],
         dom: 'Bfrtip',
         buttons: [
           'copy', 'csv', 'excel', 'pdf', 'print'

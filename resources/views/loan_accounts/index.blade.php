@@ -150,17 +150,17 @@ Endeleza: {{$title}}
                 <thead>
                   <tr>
                     <th>Date Created</th>
-                    <th>Customer Account</th>
+                    <th>Customer</th>
                     <th>Customer Phone</th>
                     <th>Business</th>
-                    <th>Principal Amount</th>
-                    <th>Interest</th>
-                    <th>Repayable Amount</th>
-                    <th>Till Number</th>
-                    <th>Loan Balance</th>
-                    <th>Loan Status</th>
-                    <th>Loan Penalty</th>
-                    <th>Days in Arrears</th>
+                    <th>Principal</th>
+                    <th>Repayable</th>
+                    <th>Till</th>
+                    <th>Paid Amount</th>
+                    <th>Balance</th>
+                    <th>Status</th>
+                    <th>Penalty</th>
+                    <th>Days</th>
                     <th>Actions</th>
                     <!-- <th>Loan Account ID</th> -->
                     <!-- <th>Loan Product ID</th> -->
@@ -177,12 +177,12 @@ Endeleza: {{$title}}
                     <td>{{$account->customer ? $account->customer->customer_account_msisdn : ''}}</td>
                     <td>{{$account->customer->person ? $account->customer->person->business_name : ''}}</td>
                     <td>{{$account->principal_amount}}</td>
-                    <td>{{$account->interest_charged}}</td>
                     <td>{{$account->loan_amount}}</td>
                     <td>{{$account->delivery->till_number}}</td>
+                    <td>{{$account->loan_amount - $account->loan_balance}}</td>
                     <td>{{$account->loan_balance}}</td>
                     <td>@if($account->loan_status == "0")
-                      <label class="label label-danger">Not cleared</label>
+                      <label class="label label-warning">Active</label>
                       @else
                       <label class="label label-success">Cleared</label>
                       @endif

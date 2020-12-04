@@ -83,12 +83,12 @@ Endeleza: {{$customer->person->fullName}} Statement
                             @if($record->type == 1)
                                 @php                                    
                                     $total = $record->trn_charge+$record->interest_charged+$record->loan_penalty+$record->loan_amount;
-                                    $balance = $balance - $total;
+                                    $balance = $balance + $total;
                                     $description = "Loan";
                                 @endphp
                             @else
                                 @php                                    
-                                    $balance = $balance + $record->amount;
+                                    $balance = $balance - $record->amount;
                                     $description = "Payment";
                                 @endphp
                             @endif
