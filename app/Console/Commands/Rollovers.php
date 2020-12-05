@@ -15,14 +15,14 @@ class Rollovers extends Command
      *
      * @var string
      */
-    protected $signature = 'rollovers:run';
+    protected $signature = 'count_days:run';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Rollover the loans if they have accrued in days and are unpaid';
+    protected $description = 'Counts the number of days from when loans were taken';
 
     /**
      * Create a new command instance.
@@ -30,18 +30,14 @@ class Rollovers extends Command
      * @return void
      */
 
-    public static $thirdDayStandardCharge;
-    public static $rateForFiveDaysAndBelow;
-    public static $rateAboveTenDays;
-    public static $rateAboveFiveDays;
+    // public static $thirdDayStandardCharge;
+    // public static $rateForFiveDaysAndBelow;
+    // public static $rateAboveTenDays;
+    // public static $rateAboveFiveDays;
     
     public function __construct()
     {
         parent::__construct();
-        self::$thirdDayStandardCharge = Settings::where('name','3rdDayStandardCharge')->pluck('value')->first();
-        static::$rateForFiveDaysAndBelow = Settings::where('name','RateForFiveDaysAndBelow')->pluck('value')->first();
-        static::$rateAboveFiveDays = Settings::where('name','RateAboveFiveDays')->pluck('value')->first();
-        static::$rateAboveTenDays = Settings::where('name','RateAboveTenDays')->pluck('value')->first();
     }
 
     /**
@@ -84,57 +80,57 @@ class Rollovers extends Command
     }
 
     public static function balanceChange($loan,$hours,$days){
-        $standardCharge = 0;
-        //0.495
-        $rate = self::$rateForFiveDaysAndBelow;
-        if($hours == 72){
-            //15
-            $standardCharge = self::$thirdDayStandardCharge;
-        }
-        if($hours > 120){
-            //0.55
-            $rate = self::$rateAboveFiveDays;
-        }
-        $interest = $loan->loan_balance * $rate/100;
-        $loan->interest_charged += $interest;
-        $loan->trn_charge += $standardCharge;
-        $loan->loan_balance += ($interest + $standardCharge);
+        // $standardCharge = 0;
+        // //0.495
+        // $rate = self::$rateForFiveDaysAndBelow;
+        // if($hours == 72){
+        //     //15
+        //     $standardCharge = self::$thirdDayStandardCharge;
+        // }
+        // if($hours > 120){
+        //     //0.55
+        //     $rate = self::$rateAboveFiveDays;
+        // }
+        // $interest = $loan->loan_balance * $rate/100;
+        //$loan->interest_charged += $interest;
+        //$loan->trn_charge += $standardCharge;
+        //$loan->loan_balance += ($interest + $standardCharge);
         $loan->hours_in_arrears = $hours;
         $loan->days_in_arrears = $days;
         //$loan->loan_penalty = $loan->loan_balance- $loan->loan_amount;
         $loan->save();
-        if($hours == 96){
-            $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility amount due has changed to Ksh. ".round($loan->loan_balance,0).", & will attract a fee of 0.5% daily until the 6th day. Dial *483*818# to make payment todayto avoid more charges.";
-            SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
-        }else if($hours == 72){
-            $msg = "Dear ".$loan->customer->person->first_name.", your TWIGA-MWeza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". Kindly settle it today. Dial *483*818# now to make your payment";
-            SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
-        }else if($hours == 144){
-            $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". Kindly settle it by end of day today to avoid additionalcharges. Dial *483*818# now topay";
-            SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
-        }else if($hours == 168){
-            $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility amount due has changed to Ksh. ".round($loan->loan_balance,0).", & will attract a fee of 0.55% daily until the 9th day. Dial *483*818# now to pay by end of day today to reduce charges.";
-             SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
-        }else if($hours == 216){
-            $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". You have exceeded the acceptable payment period allowed. Kindly settle it IMMEDIATELY to avoid additional higher charges daily until you pay in full";
-            SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
-        }else if($hours == 240){
-            $msg = "Dear ".$loan->customer->person->first_name.", the M-Weza Facility fee has changed to 0.65% daily until you clear all the outstanding amount. The new amount due is Ksh. ".round($loan->loan_balance,0).". Kindly settle it IMMEDIATELY to avoid additional higher charges";
-            SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
-        }
+        // if($hours == 96){
+        //     $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility amount due has changed to Ksh. ".round($loan->loan_balance,0).", & will attract a fee of 0.5% daily until the 6th day. Dial *483*818# to make payment todayto avoid more charges.";
+        //     SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
+        // }else if($hours == 72){
+        //     $msg = "Dear ".$loan->customer->person->first_name.", your TWIGA-MWeza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". Kindly settle it today. Dial *483*818# now to make your payment";
+        //     SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
+        // }else if($hours == 144){
+        //     $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". Kindly settle it by end of day today to avoid additionalcharges. Dial *483*818# now topay";
+        //     SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
+        // }else if($hours == 168){
+        //     $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility amount due has changed to Ksh. ".round($loan->loan_balance,0).", & will attract a fee of 0.55% daily until the 9th day. Dial *483*818# now to pay by end of day today to reduce charges.";
+        //      SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
+        // }else if($hours == 216){
+        //     $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". You have exceeded the acceptable payment period allowed. Kindly settle it IMMEDIATELY to avoid additional higher charges daily until you pay in full";
+        //     SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
+        // }else if($hours == 240){
+        //     $msg = "Dear ".$loan->customer->person->first_name.", the M-Weza Facility fee has changed to 0.65% daily until you clear all the outstanding amount. The new amount due is Ksh. ".round($loan->loan_balance,0).". Kindly settle it IMMEDIATELY to avoid additional higher charges";
+        //     SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
+        // }
     }
 
     public static function balanceChangeDaily($loan,$days){
         //0.65
-        $rate = self::$rateAboveTenDays;
-        $interest = $loan->loan_balance * $rate/100;
-        $loan->loan_balance += $interest;
+        //$rate = self::$rateAboveTenDays;
+        //$interest = $loan->loan_balance * $rate/100;
+        //$loan->loan_balance += $interest;
         $loan->days_in_arrears = $days;
-        $loan->loan_penalty += $interest;
+        //$loan->loan_penalty += $interest;
         $loan->save();
-        if($days == 11){
-            $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". You have exceeded the acceptable payment period allowed. Kindly settle it IMMEDIATELY to avoid additional higher charges daily until you pay in full";
-            SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
-        }
+        //if($days == 11){
+        //    $msg = "Dear ".$loan->customer->person->first_name.", your M-Weza Facility balance as at now is Ksh. ".round($loan->loan_balance,0).". You have exceeded the acceptable payment period allowed. Kindly settle it IMMEDIATELY to avoid additional higher charges daily until you pay in full";
+        //    SMS::sendsms($loan->customer->customer_account_msisdn,$msg);
+        //}
     }    
 }

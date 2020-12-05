@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //         ->hourly();
-        $schedule->command('rollovers:run')->hourly();
+        $schedule->command('count_days:run')->hourly();
     }
 
     /**
