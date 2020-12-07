@@ -32,6 +32,7 @@ Endeleza: Agents
                     <!-- <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
                     <p class="text-primary mb-0 hover-cursor">Analytics</p> -->
                   </div>
+                  
                 </div>
                 <div class="d-flex justify-content-between align-items-end flex-wrap">
                   <!-- <button type="button" class="btn btn-light bg-white btn-icon mr-3 d-none d-md-block ">
@@ -44,6 +45,9 @@ Endeleza: Agents
                     <i class="mdi mdi-plus text-muted"></i>
                   </button>
                   <button class="btn btn-primary mt-2 mt-xl-0">Generate report</button> -->
+                  <div class="d-flex justify-content-between align-items-end flex-wrap">
+                    <button class="btn btn-warning mt-2 mt-xl-0"><a href="{{ route('agents.create') }}">Create Agent</a></button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -445,6 +445,12 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="pcoded-hasmenu {!! Request::is('agents*') ? 'active' : '' !!}">
+                                    <a href="{{url('/agents')}}">
+                                        <span class="pcoded-micon"><i class="feather icon-airplay"></i></span>
+                                        <span class="pcoded-mtext">Agents</span>
+                                    </a>                                
+                                </li>
                                  <!-- <li class="pcoded-hasmenu"> -->
                                  <!-- <li class="{!! Request::is('messages*') ? 'active' : '' !!}">
                                     <a href="{{ url('messages') }}">
