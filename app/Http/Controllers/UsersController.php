@@ -116,10 +116,13 @@ class UsersController extends Controller
         $user->syncRoles();
         $user->assignRole($req->role);
         $user->syncPermissions();
-        foreach ($req->permissions as $key => $permission) {
-            # code...
-            $user->givePermissionTo($permission);
+        if(!empty($req->permissions)){
+            foreach ($req->permissions as $key => $permission) {
+                # code...
+                $user->givePermissionTo($permission);
+            }
         }
+        
         //dd($req->all());
 
         return redirect()->route('users.index')

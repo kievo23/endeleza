@@ -188,7 +188,7 @@ class LoanAccountsController extends Controller
         $valueOfLoans = LoanAccount::whereDate('created_at', '<=', Carbon::now()->subDays($offset)->toDateString())
             ->whereDate('created_at', '>', Carbon::now()->subDays($days)->toDateString())
             ->where('loan_status',0)
-            ->sum('loan_amount');
+            ->sum('loan_principal');
         $valueOfTransactions = LoanAccount::whereDate('created_at', '<=', Carbon::now()->subDays($offset)->toDateString())
             ->whereDate('created_at', '>', Carbon::now()->subDays($days)->toDateString())
             ->where('loan_status',0)
