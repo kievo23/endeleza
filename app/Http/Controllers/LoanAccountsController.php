@@ -72,7 +72,7 @@ class LoanAccountsController extends Controller
     {
         $loan_accounts = LoanAccount::where('loan_status',1)->get();
         $clearedLoans = LoanAccount::where('loan_status',1)->count();
-        $valueOfLoans = LoanAccount::where('loan_status',1)->sum('loan_amount');
+        $valueOfLoans = LoanAccount::where('loan_status',1)->sum('principal_amount');
         $valueOfTransactions = LoanAccount::where('loan_status',1)->sum('trn_charge');
         $valueOfInterests = LoanAccount::where('loan_status',1)->sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::where('loan_status',1)->sum('loan_penalty');
