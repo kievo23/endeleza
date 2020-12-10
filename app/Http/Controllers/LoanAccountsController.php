@@ -34,7 +34,7 @@ class LoanAccountsController extends Controller
             $loan_accounts = LoanAccount::orderBy('id','desc')->get();
         }
         $clearedLoans = LoanAccount::where('loan_status',1)->count();
-        $valueOfLoans = LoanAccount::sum('loan_principal');
+        $valueOfLoans = LoanAccount::sum('principal_amount');
         $valueOfTransactions = LoanAccount::sum('trn_charge');
         $valueOfInterests = LoanAccount::sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
@@ -89,7 +89,7 @@ class LoanAccountsController extends Controller
     {
         $loan_accounts = LoanAccount::where('loan_status',0)->get();
         $clearedLoans = LoanAccount::where('loan_status',0)->count();
-        $valueOfLoans = LoanAccount::where('loan_status',0)->sum('loan_principal');
+        $valueOfLoans = LoanAccount::where('loan_status',0)->sum('principal_amount');
         $valueOfTransactions = LoanAccount::where('loan_status',0)->sum('trn_charge');
         $valueOfInterests = LoanAccount::where('loan_status',0)->sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::where('loan_status',0)->sum('loan_penalty');
