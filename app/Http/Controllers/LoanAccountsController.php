@@ -35,6 +35,7 @@ class LoanAccountsController extends Controller
         }
         $clearedLoans = LoanAccount::where('loan_status',1)->count();
         $valueOfLoans = LoanAccount::sum('principal_amount');
+        $repayable = LoanAccount::where('loan_status',1)->sum('loan_amount');
         $valueOfTransactions = LoanAccount::sum('trn_charge');
         $valueOfInterests = LoanAccount::sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
@@ -42,7 +43,7 @@ class LoanAccountsController extends Controller
         $title = "All Loans";
         
         return view('loan_accounts/index',
-            compact('title', 'loan_accounts', 'clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests')
+            compact('title', 'loan_accounts', 'clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests','repayable')
         );
     }
 
@@ -73,6 +74,7 @@ class LoanAccountsController extends Controller
         $loan_accounts = LoanAccount::where('loan_status',1)->get();
         $clearedLoans = LoanAccount::where('loan_status',1)->count();
         $valueOfLoans = LoanAccount::where('loan_status',1)->sum('principal_amount');
+        $repayable = LoanAccount::where('loan_status',1)->sum('loan_amount');
         $valueOfTransactions = LoanAccount::where('loan_status',1)->sum('trn_charge');
         $valueOfInterests = LoanAccount::where('loan_status',1)->sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::where('loan_status',1)->sum('loan_penalty');
@@ -81,7 +83,7 @@ class LoanAccountsController extends Controller
         //dd($loan_accounts);
         
         return view('loan_accounts/index', 
-            compact('title','loan_accounts','clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests')
+            compact('title','loan_accounts','clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests','repayable')
         );
     }
 
@@ -90,6 +92,7 @@ class LoanAccountsController extends Controller
         $loan_accounts = LoanAccount::where('loan_status',0)->get();
         $clearedLoans = LoanAccount::where('loan_status',0)->count();
         $valueOfLoans = LoanAccount::where('loan_status',0)->sum('principal_amount');
+        $repayable = LoanAccount::where('loan_status',0)->sum('loan_amount');
         $valueOfTransactions = LoanAccount::where('loan_status',0)->sum('trn_charge');
         $valueOfInterests = LoanAccount::where('loan_status',0)->sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::where('loan_status',0)->sum('loan_penalty');
@@ -98,7 +101,7 @@ class LoanAccountsController extends Controller
         //dd($loan_accounts);
         
         return view('loan_accounts/index', 
-            compact('title','loan_accounts','clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests')
+            compact('title','loan_accounts','clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests','repayable')
         );
     }
 
