@@ -73,7 +73,7 @@ class DeliveryNotificationsController extends Controller
             $request->status = $status;
             $rst = $request->save();
             //dd($rst);
-            $loan = LoanAccount::find($request->id);
+            $loan = LoanAccount::where("delivery_id",$request->id);
             if($loan){
                 return redirect("loan_accounts")
                 //->route('loan_accounts.index')
