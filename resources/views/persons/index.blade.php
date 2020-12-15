@@ -292,6 +292,7 @@ Endeleza: Persons
 $(document).ready( function () {
     $('#persons').DataTable({
       dom: 'Bfrtip',
+      pageLength: 50,
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
         ]

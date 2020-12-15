@@ -206,6 +206,7 @@ Endeleza: Transactions
     $(document).ready(function() {
       $('#transactions').DataTable({
         order: [[ 4, "desc" ]],
+        pageLength: 50,
         dom: 'Bfrtip',
         buttons: [
           'copy', 'csv', 'excel', 'pdf', 'print'

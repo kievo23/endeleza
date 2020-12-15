@@ -134,6 +134,7 @@ Endeleza: Loan Requests
 $(document).ready( function () {
     let table = $('#delivery_notifications').DataTable({
       dom: 'Bfrtip',
+      pageLength: 50,
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
         ],

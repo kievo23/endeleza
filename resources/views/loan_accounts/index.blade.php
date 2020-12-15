@@ -238,7 +238,8 @@ Endeleza: {{$title}}
     $(document).ready(function() {
       let table = $('#loan_accounts').DataTable({
         dom: 'Bfrtip',
-        order: [[ 1, "desc" ]]
+        pageLength: 50,
+        order: [[ 1, "desc" ]],
         buttons: [
           'copy', 'csv', 'excel', 'pdf', 'print'
         ]
