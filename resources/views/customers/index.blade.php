@@ -99,7 +99,6 @@ Endeleza: Customers
                             <th>Customer Account MSISDN</th>
                             <th>Blocked</th>
                             <th>Active</th>
-                            <th>Last PIN Change</th>
                             <th>Account Limit</th>
                             <th>Created At</th>
                             <th>Actions</th>
@@ -129,7 +128,6 @@ Endeleza: Customers
                               <label class="label label-success">Active</label>
                               @endif
                             </td> 
-                            <td>{{$customer->last_pin_change}}</td>
                             <td>{{$customer->account_limit}}</td>
                             <td>{{$customer->created_at}}</td>
                             <td>
