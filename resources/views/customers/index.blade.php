@@ -170,7 +170,7 @@ $(document).ready( function () {
     let table = $('#customers').DataTable({
       dom: 'Bfrtip',
       pageLength: 50,
-      order: [[ 8, "desc" ]]
+      order: [[ 8, "asc" ]]
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
         ]
