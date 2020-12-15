@@ -98,7 +98,7 @@ class LoanAccountsController extends Controller
     public function pending()
     {
         $loan_accounts = LoanAccount::where('loan_status',0)->get();
-        $clearedLoans = LoanAccount::where('loan_status',0)->count();
+        $clearedLoans = LoanAccount::where('loan_status',1)->count();
         $valueOfLoans = LoanAccount::where('loan_status',0)->sum('principal_amount');
         $repayable = LoanAccount::where('loan_status',0)->sum('loan_amount');
         $valueOfTransactions = LoanAccount::where('loan_status',0)->sum('trn_charge');
