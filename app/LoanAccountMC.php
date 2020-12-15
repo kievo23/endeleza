@@ -105,7 +105,7 @@ class LoanAccountMC extends Model
                         "paid_datetime" => Carbon::now(),
                         "loan_balance" => $loan->loan_balance
                     ];
-                    ApiController::loanRepaymentTwiga($data,$loan);
+                    //ApiController::loanRepaymentTwiga($data,$loan);
                 }
             }
             self::recordTransaction([

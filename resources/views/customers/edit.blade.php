@@ -116,12 +116,7 @@
                     <input class="btn btn-primary form-control" type="submit" value="Update Customer">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label">Twiga Activation response</label>
-                <div class="col-md-8 inputGroupContainer">
-                {{$customer->twiga_response}}
-                </div>
-            </div>
+            
 
         <!-- </div> -->
    
