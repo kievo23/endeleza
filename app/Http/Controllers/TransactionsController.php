@@ -20,13 +20,16 @@ class TransactionsController extends Controller
         //$transactions = Transaction::paginate(10);
         if (! empty($request->start_date)) {
             $transactions = Transaction::whereNotNull('customer_id')->whereBetween('created_at', [$request->start_date, $request->end_date])->get();
+            $valueOfAllTransactions = Transaction::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('transaction_amount');
+            $transactionsWithoutACustomer = Transaction::whereBetween('created_at', [$request->start_date, $request->end_date])->where('customer_id',NULL)->count();
         } else {
             $transactions = Transaction::whereNotNull('customer_id')->get();
+            $valueOfAllTransactions = Transaction::sum('transaction_amount');
+            $transactionsWithoutACustomer = Transaction::where('customer_id',NULL)->count();
         }
         //dd($transactions);
         //$deliveriesWithLoans = Transaction::where('status',1)->count();
-        $valueOfAllTransactions = Transaction::sum('transaction_amount');
-        $transactionsWithoutACustomer = Transaction::where('customer_id',NULL)->count();
+        
         return view('transactions/index', compact('transactions','valueOfAllTransactions','transactionsWithoutACustomer'));
     }
 
