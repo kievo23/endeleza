@@ -98,7 +98,6 @@ Endeleza: Customers
                             <th>Business</th>
                             <th>Customer Account MSISDN</th>
                             <th>Blocked</th>
-                            <th>PIN Reset</th>
                             <th>Active</th>
                             <th>Last PIN Change</th>
                             <th>Account Limit</th>
@@ -123,12 +122,7 @@ Endeleza: Customers
                             </td>
                             <td>{{$customer->customer_account_msisdn}}</td>
                             <td>{{$customer->blocked}}</td>
-                            <td>@if($customer->pin_reset == "0")
-                              <label class="label label-success">Reset</label>
-                              @else
-                              <label class="label label-danger">Not Reset</label>
-                              @endif
-                            </td>
+                            
                             <td>@if($customer->active == "0")
                               <label class="label label-danger">Not Active</label>
                               @else
@@ -177,6 +171,7 @@ Endeleza: Customers
 $(document).ready( function () {
     let table = $('#customers').DataTable({
       dom: 'Bfrtip',
+      pageLength: 50,
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
         ]
