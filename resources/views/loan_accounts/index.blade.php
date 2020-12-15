@@ -239,7 +239,7 @@ Endeleza: {{$title}}
       let table = $('#loan_accounts').DataTable({
         dom: 'Bfrtip',
         pageLength: 50,
-        order: [[ 1, "desc" ]],
+        order: [[ 0, "desc" ]],
         buttons: [
           'copy', 'csv', 'excel', 'pdf', 'print'
         ]
