@@ -265,7 +265,7 @@ Endeleza: {{$customer->person->fullName}} Statement
             <div class="col-md-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Delivery Notifications</p>
+                  <p class="card-title">Loan Requests</p>
                   <div class="table-responsive">
                     <table id="delivery_notifications" class="table">
                       <thead>
