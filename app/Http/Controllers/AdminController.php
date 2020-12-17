@@ -40,7 +40,7 @@ class AdminController extends Controller
         }
         
         $graph_loans = LoanAccount::select([
-            DB::raw('sum(loan_amount) as `amount`'),
+            DB::raw('sum(principal_amount) as `amount`'),
             DB::raw('DATE(created_at) as day')
           ])->groupBy('day')
           ->where('created_at', '>=', Carbon::now()->subMonth())
