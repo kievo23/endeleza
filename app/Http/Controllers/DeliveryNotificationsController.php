@@ -115,7 +115,7 @@ class DeliveryNotificationsController extends Controller
 
     public function deniedRequests(){
         $title = "Denied Request";
-        $delivery_notifications = DeliveryNotification::where('status',0)->get();
+        $delivery_notifications = DeliveryNotification::where('status',2)->get();
         return view('delivery_notifications/index', compact('delivery_notifications','title'));
     }
 
