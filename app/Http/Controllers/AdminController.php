@@ -169,7 +169,7 @@ class AdminController extends Controller
         $valueOfDeliveriesWithLoans = DeliveryNotification::where('status',1)->sum('amount');
 
         $transactions = Transaction::count();
-        $valueOfAllTransactions = Transaction::sum('transaction_amount');
+        $valueOfAllTransactions = Transaction::whereNull('customer_id')->sum('transaction_amount');
         $transactionsWithoutACustomer = Transaction::where('customer_id',NULL)->count();
 
         $layout = "app"; 
