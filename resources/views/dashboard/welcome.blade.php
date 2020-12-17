@@ -221,8 +221,8 @@ Endeleza: Dashboard
           labels: @json($dates),
           datasets: [{
               label: 'Repayments',
-              borderColor: window.chartColors.cyan,
-              backgroundColor: window.chartColors.cyan,            
+              borderColor: window.chartColors.orange,
+              backgroundColor: window.chartColors.orange,            
               borderWidth: 1,
               data: @json($graph_r),
           },{
