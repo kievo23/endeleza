@@ -196,8 +196,8 @@ class AdminController extends Controller
             'graph_r',
             'graph_l',
             'lateLoans',
-            'defaulters',
-            'healthyLoans'
+            'defaulters'
+            //'healthyLoans'
         ));
     }
 
