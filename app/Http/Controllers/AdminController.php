@@ -150,13 +150,12 @@ class AdminController extends Controller
         $valueOfInterests = LoanAccount::sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
         $valueOfOutstandingLoans = LoanAccount::sum('loan_balance');
-        $healthyLoans = LoanAccount::where('created_at', '>', Carbon::now()->subDays(8))
-            ->sum('loan_balance');
+        //$healthyLoans = LoanAccount::where('created_at', '>', Carbon::now()->subDays(8))->sum('loan_balance');
 
         $lateLoans = LoanAccount::whereBetween('created_at', [Carbon::now()->subDays(29) ,Carbon::now()->subDays(8) ])
             ->sum('loan_balance');
 
-        $defaulters = LoanAccount::where('created_at', '<', Carbon::now()->subDays(28))
+        $defaulters = LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
             ->sum('loan_balance');
 
         $customers = Customer::count();
