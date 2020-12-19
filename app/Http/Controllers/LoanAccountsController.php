@@ -32,7 +32,7 @@ class LoanAccountsController extends Controller
                 ->orderBy('id','desc')->get();
                 $clearedLoans = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->count();
                 $valueOfLoans = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('principal_amount');
-                $repayable = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('loan_amount');
+                $repayable = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('loan_amount');
                 $valueOfTransactions = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('trn_charge');
                 $valueOfInterests = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('interest_charged');
                 $valueOfLoanPenalty = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('loan_penalty');
@@ -41,7 +41,7 @@ class LoanAccountsController extends Controller
             $loan_accounts = LoanAccount::orderBy('id','desc')->get();
             $clearedLoans = LoanAccount::where('loan_status',1)->count();
             $valueOfLoans = LoanAccount::sum('principal_amount');
-            $repayable = LoanAccount::where('loan_status',1)->sum('loan_amount');
+            $repayable = LoanAccount::sum('loan_amount');
             $valueOfTransactions = LoanAccount::sum('trn_charge');
             $valueOfInterests = LoanAccount::sum('interest_charged');
             $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
