@@ -417,6 +417,12 @@
                                                 <span class="pcoded-mtext">Suspense Transactions</span>
                                             </a>
                                         </li>
+                                        <li class="">
+                                            <a href="{{url('transactions/create')}}">
+                                                <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
+                                                <span class="pcoded-mtext">Create Transaction</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="{!! Request::is('online_checkout*') ? 'active' : '' !!}">

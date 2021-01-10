@@ -126,19 +126,24 @@ class TransactionsController extends Controller
 
     public function input(Request $req)
     {
-        $trans = Transaction::where('transaction_reference',$req->transaction_reference)->first();
-        if($trans){
-            return redirect('transactions')
-                    ->with('error','Transaction Code Exists');
+        if(auth()->user()->id == 4){
+            $trans = Transaction::where('transaction_reference',$req->transaction_reference)->first();
+            if($trans){
+                return redirect('transactions')
+                        ->with('error','Transaction Code Exists');
+            }else{
+                $transaction = new Transaction;
+                $transaction->transaction_amount  = $req->transaction_amount;
+                $transaction->transaction_type = "MANUAL_TRANSACTION";
+                $transaction->transaction_time = $req->transaction_time;
+                $transaction->transaction_reference = $req->transaction_reference;
+                $transaction->save();
+                return redirect('transactions')
+                        ->with('status','Great, Transaction created successfully!');
+            }
         }else{
-            $transaction = new Transaction;
-            $transaction->transaction_amount  = $req->transaction_amount;
-            $transaction->transaction_type = "MANUAL_TRANSACTION";
-            $transaction->transaction_time = $req->transaction_time;
-            $transaction->transaction_reference = $req->transaction_reference;
-            $transaction->save();
             return redirect('transactions')
-                    ->with('status','Great, Transaction created successfully!');
+                ->with('error','Ooops, You are not authorized to register a transaction');
         }
     }
 
