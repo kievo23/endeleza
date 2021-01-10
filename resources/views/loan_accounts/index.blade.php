@@ -120,23 +120,6 @@ Endeleza: {{$title}}
                  <a href="{{ route('loan_accounts.index') }}" class="btn btn-secondary">Reset</a>
                </form>
             </div>
-            <!-- <div>
-              /
-					          Toggle column: 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="0">Loan Id</a> -
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="1">Customer</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="2">Phone</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="3">Delivery Id</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="5">Principal Amount</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="6">Trn Charge</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="7">Interest</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="8">Penalty</a> -
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="9">Loan Amount</a> -  
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="10">Balance</a> - 
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="11">Status</a>
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="12">Hours</a>
-                    <a class="toggle-vis badge badge-pill badge-info" data-column="13">Created At</a>
-				          </div> -->
             <hr>
             <div class="table-responsive">
               <table id="loan_accounts" class="table">
@@ -155,11 +138,6 @@ Endeleza: {{$title}}
                     <th>Penalty</th>
                     <th>Days</th>
                     <th>Actions</th>
-                    <!-- <th>Loan Account ID</th> -->
-                    <!-- <th>Loan Product ID</th> -->
-                    <!-- <th>Agent </th> -->
-                    <!-- <th>Delivery ID</th> -->
-                    <!-- <th>Trn Charge</th> -->
                   </tr>
                 </thead>
                 <tbody>

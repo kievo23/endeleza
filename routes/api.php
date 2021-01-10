@@ -27,6 +27,9 @@ Route::middleware('auth:api')->group(function () {
     });
     Route::post("delivery_notification", "ApiController@deliveryNotification");
 });
+//Test Check Balance
+Route::get('payBillBalance',['uses' =>'MpesaController@checkBalance']);
+
 
 Route::post('lipanampesa/success', ['as' => 'lipanampesa', 'uses' => 'ApiController@lipanampesa']);
 Route::post('transactionQueryResult',['uses' =>'MpesaController@transactionQueryResult']);

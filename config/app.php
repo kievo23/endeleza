@@ -135,7 +135,6 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-
     /* 
     
     MPESA CONFIGURATIONS
@@ -145,11 +144,10 @@ return [
     'MPESA_CONSUMER_SECRET'=>env('MPESA_CONSUMER_SECRET', null),
     'MPESA_ENV'=> env('MPESA_ENV', null),
     'APP_DOMAIN'=> env('APP_DOMAIN',null),
-    'INITIATOR_NAME' => env('INITIATOR_NAME',null),
-    'MPESA_C2B_SHORT_CODE'=> env('MPESA_C2B_SHORT_CODE', null),
+    'MPESA_SHORT_CODE'=> env('MPESA_SHORT_CODE', null),
     'MPESA_C2B_PASSKEY' => env('MPESA_C2B_PASSKEY',null),
-    'MPESA_C2B_INITIATOR' => env('MPESA_C2B_INITIATOR',null),
-    'MPESA_C2B_SECURITY_CREDENTIAL' => env('MPESA_C2B_SECURITY_CREDENTIAL',null),
+    'MPESA_INITIATOR' => env('MPESA_INITIATOR',null),
+    'MPESA_SECURITY_CREDENTIAL' => env('MPESA_SECURITY_CREDENTIAL',null),
     'MPESA_CONFIRMATION_TOKEN' => env('MPESA_CONFIRMATION_TOKEN', null),
 
     /*

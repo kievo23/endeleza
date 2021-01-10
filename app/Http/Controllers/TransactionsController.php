@@ -111,12 +111,38 @@ class TransactionsController extends Controller
         //
     }
 
+    public function create()
+    {
+        $title = "Create Missed Transaction";
+        return view('transactions/create', compact('title'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function input(Request $req)
+    {
+        $trans = Transaction::where('transaction_reference',$req->transaction_reference)->first();
+        if($trans){
+            return redirect('transactions')
+                    ->with('error','Transaction Code Exists');
+        }else{
+            $transaction = new Transaction;
+            $transaction->transaction_amount  = $req->transaction_amount;
+            $transaction->transaction_type = "MANUAL_TRANSACTION";
+            $transaction->transaction_time = $req->transaction_time;
+            $transaction->transaction_reference = $req->transaction_reference;
+            $transaction->save();
+            return redirect('transactions')
+                    ->with('status','Great, Transaction created successfully!');
+        }
+    }
+
+
     public function edit($id)
     {
         //
