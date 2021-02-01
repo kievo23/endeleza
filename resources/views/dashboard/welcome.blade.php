@@ -50,7 +50,7 @@ Endeleza: Dashboard
                         <div class="card-block">
                           <div class="row align-items-end">
                             <div class="col-8">
-                              <h4 class="text-white">{{$valueOfLoans}}</h4>
+                              <h4 class="text-white">{{ number_format($valueOfLoans, 2, '.', ',')}}</h4>
                               <h6 class="text-white m-b-0">Value of loans given</h6>
                             </div>
                             <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
@@ -66,7 +66,7 @@ Endeleza: Dashboard
                         <div class="card-block">
                           <div class="row align-items-end">
                             <div class="col-8">
-                              <h4 class="text-white">{{$valueOfOutstandingLoans}}</h4>
+                              <h4 class="text-white">{{ number_format($valueOfOutstandingLoans, 2, '.', ',')}}</h4>
                               <h6 class="text-white m-b-0">Value of loans outstanding</h6>
                             </div>
                             <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
@@ -83,7 +83,7 @@ Endeleza: Dashboard
                           <div class="row align-items-end">
                             <div class="col-8">
                               <a href="{{ action('DeliveryNotificationsController@index')}}">
-                                <h4 class="text-white">{{$valueOfInterests}}</h4>
+                                <h4 class="text-white">{{ number_format($valueOfInterests, 2, '.', ',')}}</h4>
                                 <h6 class="text-white m-b-0">Total Interest Earned</h6>
                               </a>
                             </div>
@@ -100,7 +100,7 @@ Endeleza: Dashboard
                         <div class="card-block">
                           <div class="row align-items-end">
                             <div class="col-8">
-                              <h4 class="text-white">{{$valueOfAllTransactions}}</h4>
+                              <h4 class="text-white">{{ number_format($valueOfAllTransactions, 2, '.', ',')}}</h4>
                               <h6 class="text-white m-b-0">Value of Repayment</h6>
                             </div>
                             <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
@@ -116,7 +116,7 @@ Endeleza: Dashboard
                         <div class="card-block">
                           <div class="row align-items-end">
                             <div class="col-8">
-                              <h4 class="text-white">{{$lateLoans}}</h4>
+                              <h4 class="text-white">{{ $lateLoans}}</h4>
                               <h6 class="text-white m-b-0">Value of Late Loans 8-29days</h6>
                             </div>
                             <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
@@ -133,7 +133,7 @@ Endeleza: Dashboard
                           <div class="row align-items-end">
                             <div class="col-8">
                               <a href="{{ action('TransactionsController@index')}}">
-                                <h4 class="text-white">{{$defaulters}}</h4>
+                                <h4 class="text-white">{{ number_format($defaulters, 2, '.', ',')}}</h4>
                                 <h6 class="text-white m-b-0">Amount Defaulted 30days+</h6>
                               </a>
                             </div>
