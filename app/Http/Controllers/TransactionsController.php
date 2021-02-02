@@ -126,7 +126,7 @@ class TransactionsController extends Controller
 
     public function input(Request $req)
     {
-        if(auth()->user()->id == 4){
+        if(auth()->user()->id == 4 || auth()->user()->id == 11){
             $trans = Transaction::where('transaction_reference',$req->transaction_reference)->first();
             if($trans){
                 return redirect('transactions')
