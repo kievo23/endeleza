@@ -28,7 +28,7 @@ Endeleza: Dashboard
                 <div class="page-body">
                   <div class="row">
                     <div class="col-xl-3 col-md-6">
-                      <div class="card bg-c-green update-card p-2">
+                      <div class="card bg-c-green update-card">
                         <div class="card-block">
                           <div class="row align-items-end">
                             <div class="col-8">
@@ -149,12 +149,11 @@ Endeleza: Dashboard
                       <div class="card bg-c-green update-card">
                         <div class="card-block">
                           <div class="row align-items-end">
-                            <div class="col-8">
-                              <h5 class="text-white">@php echo number_format(($defaulters/$valueOfOutstandingLoans*100), 2, '.', ''); @endphp %</h5>
-                              <h6 class="text-white m-b-0">Percentage of defaults to Outstanding loans</h6>
-                            </div>
-                            <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                              <canvas id="update-chart-2" height="50" width="89" style="display: block; width: 89px; height: 50px;"></canvas>
+                            <div class="col-12">
+                              <a href="{{ action('TransactionsController@index')}}">
+                                <h5 class="text-white">@php echo number_format(($defaulters/$valueOfOutstandingLoans*100), 2, '.', ''); @endphp %</h5>
+                                <h6 class="text-white m-b-0">Percentage of defaults to Outstanding loans</h6>
+                              </a>
                             </div>
                           </div>
                         </div>
