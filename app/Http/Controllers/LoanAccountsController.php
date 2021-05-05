@@ -80,14 +80,14 @@ class LoanAccountsController extends Controller
     public function fullypaid(Request $request)
     {
         if (! empty($request->start_date)) {
-            $loan_accounts = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->get();
-            $clearedLoans = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->count();
-            $valueOfLoans = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('principal_amount');
-            $repayable = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('loan_amount');
-            $valueOfTransactions = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('trn_charge');
-            $valueOfInterests = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('interest_charged');
-            $valueOfLoanPenalty = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('loan_penalty');
-            $valueOfOutstandingLoans = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('loan_balance');
+            $loan_accounts = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->get();
+            $clearedLoans = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->count();
+            $valueOfLoans = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('principal_amount');
+            $repayable = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('loan_amount');
+            $valueOfTransactions = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('trn_charge');
+            $valueOfInterests = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('interest_charged');
+            $valueOfLoanPenalty = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('loan_penalty');
+            $valueOfOutstandingLoans = LoanAccount::whereBetween('updated_at', [$request->start_date, $request->end_date])->where('loan_status',1)->sum('loan_balance');
             $title = "Fully Paid Loans";
         }else{
             $loan_accounts = LoanAccount::where('loan_status',1)->get();
