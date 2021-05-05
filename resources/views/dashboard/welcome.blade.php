@@ -232,8 +232,8 @@ Endeleza: Dashboard
               data: @json($graph_l),
           },{
               label: 'Requests',
-              borderColor: '#6833FF',
-              backgroundColor: '#6833FF',            
+              borderColor: '#F0E869',
+              backgroundColor: '#F0E869',            
               borderWidth: 1,
               data: @json($graph_d),
           }]
