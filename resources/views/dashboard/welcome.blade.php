@@ -226,8 +226,8 @@ Endeleza: Dashboard
               data: @json($graph_r),
           },{
               label: 'Loans',
-              borderColor: '#F06975',
-              backgroundColor: '#F06975',            
+              borderColor: '#F08C69',
+              backgroundColor: '#F08C69',            
               borderWidth: 1,
               data: @json($graph_l),
           },{
