@@ -220,8 +220,8 @@ Endeleza: Dashboard
           labels: @json($dates),
           datasets: [{
               label: 'Repayments',
-              borderColor: '#F069BA',
-              backgroundColor: '#F069BA',            
+              borderColor: '#9BF069',
+              backgroundColor: '#9BF069',            
               borderWidth: 1,
               data: @json($graph_r),
           },{
