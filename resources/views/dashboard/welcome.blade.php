@@ -220,20 +220,20 @@ Endeleza: Dashboard
           labels: @json($dates),
           datasets: [{
               label: 'Repayments',
-              borderColor: window.chartColors.green,
-              backgroundColor: window.chartColors.green,            
+              borderColor: '#FF5733',
+              backgroundColor: '#FF5733',            
               borderWidth: 1,
               data: @json($graph_r),
           },{
               label: 'Loans',
-              borderColor: window.chartColors.blue,
-              backgroundColor: window.chartColors.blue,            
+              borderColor: '#33FFC0',
+              backgroundColor: '#33FFC0',            
               borderWidth: 1,
               data: @json($graph_l),
           },{
               label: 'Requests',
-              borderColor: window.chartColors.yellow,
-              backgroundColor: window.chartColors.yellow,            
+              borderColor: '#6833FF',
+              backgroundColor: '#6833FF',            
               borderWidth: 1,
               data: @json($graph_d),
           }]
