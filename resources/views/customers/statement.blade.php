@@ -82,9 +82,9 @@ Endeleza: {{$customer->person->fullName}} Statement
                             @endphp 
                             @if($record->type == 1)
                                 @php                                    
-                                    $total = $record->trn_charge+$record->interest_charged+$record->loan_penalty+$record->loan_amount;
-                                    $balance = $balance + $total;
-                                    $description = "Loan";
+                                  $total = $record->trn_charge+$record->interest_charged+$record->loan_penalty+$record->loan_amount;
+                                  $balance = $balance + $record->loan_amount;
+                                  $description = "Loan";
                                 @endphp
                             @else
                                 @php                                    
@@ -99,7 +99,7 @@ Endeleza: {{$customer->person->fullName}} Statement
                             <td>{{$record->loan_penalty}}</td>
                             <td>{{$record->principal_amount}}</td>
                             <td>{{$record->receipt}}</td>
-                            <td class='table-warning'>{{$total}}</td>
+                            <td class='table-warning'>{{$record->loan_amount}}</td>
                             <td class='table-success'>{{$record->amount}}</td> 
                             <td>{{$balance}}</td>
                         </tr>
