@@ -23,9 +23,9 @@ class TransactionsController extends Controller
             $valueOfAllTransactions = Transaction::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('transaction_amount');
             $transactionsWithoutACustomer = Transaction::whereBetween('created_at', [$request->start_date, $request->end_date])->where('customer_id',NULL)->count();
         } else {
-            $transactions = Transaction::limit(200)->whereNotNull('customer_id')->get();
-            $valueOfAllTransactions = Transaction::limit(200)->sum('transaction_amount');
-            $transactionsWithoutACustomer = Transaction::limit(200)->where('customer_id',NULL)->count();
+            $transactions = Transaction::orderBy('id','desc')->whereNotNull('customer_id')->limit(200)->get();
+            $valueOfAllTransactions = Transaction::orderBy('id','desc')->limit(200)->sum('transaction_amount');
+            $transactionsWithoutACustomer = Transaction::orderBy('id','desc')->limit(200)->where('customer_id',NULL)->count();
         }
         //dd($transactions);
         //$deliveriesWithLoans = Transaction::where('status',1)->count();
