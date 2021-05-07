@@ -38,14 +38,14 @@ class LoanAccountsController extends Controller
                 $valueOfLoanPenalty = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('loan_penalty');
                 $valueOfOutstandingLoans = LoanAccount::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('loan_balance');
         } else {
-            $loan_accounts = LoanAccount::orderBy('id','desc')->limit(300)->get();
-            $clearedLoans = LoanAccount::where('loan_status',1)->limit(3100)->count();
-            $valueOfLoans = LoanAccount::limit(300)->sum('principal_amount');
-            $repayable = LoanAccount::limit(300)->sum('loan_amount');
-            $valueOfTransactions = LoanAccount::limit(300)->sum('trn_charge');
-            $valueOfInterests = LoanAccount::limit(300)->sum('interest_charged');
-            $valueOfLoanPenalty = LoanAccount::limit(300)->sum('loan_penalty');
-            $valueOfOutstandingLoans = LoanAccount::limit(300)->sum('loan_balance');
+            $loan_accounts = LoanAccount::orderBy('id','desc')->limit(150)->get();
+            $clearedLoans = LoanAccount::where('loan_status',1)->limit(150)->count();
+            $valueOfLoans = LoanAccount::limit(150)->sum('principal_amount');
+            $repayable = LoanAccount::limit(150)->sum('loan_amount');
+            $valueOfTransactions = LoanAccount::limit(150)->sum('trn_charge');
+            $valueOfInterests = LoanAccount::limit(150)->sum('interest_charged');
+            $valueOfLoanPenalty = LoanAccount::limit(150)->sum('loan_penalty');
+            $valueOfOutstandingLoans = LoanAccount::limit(150)->sum('loan_balance');
         }
         
         $title = "All Loans";
