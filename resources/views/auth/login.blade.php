@@ -10,7 +10,7 @@ Endeleza: Login
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <img style="border-radius: 25px;position:relative; left: 54px;" class="img-radius" src="\assets\images\Endeleza.png">
+                    <img style="border-radius: 25px;position:relative;" class="img-radius" src="\assets\images\Endeleza.png">
                 </div>
 
                 <div class="card-body">
