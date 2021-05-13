@@ -36,7 +36,7 @@ Endeleza: Report
                   <div class="row">
                     <div class="card col-xl-12 p-2 col-md-12">
                       <div class="card-header">
-                        <h4>Books of Accouts</h4>
+                        <h4>Books of Accounts</h4>
                       </div>
                       <div class="card-block">
                         <table class="table" id="report">
