@@ -36,7 +36,8 @@ Route::prefix('agent')->name('agent.')->namespace('Agent')->group(function(){
 // });
 
 Route::middleware(['web','auth'])->group(function () {
-    Route::get('/', 'AdminController@index')->name('dashboard');    
+    Route::get('/', 'AdminController@index')->name('dashboard'); 
+    Route::get('report','AdminController@report')->name('report.index');   
     Route::get('customers/searchcreate', 'CustomersController@searchcreate');
     Route::post('customer/search', 'CustomersController@find')->name('customerSearch');
     Route::get('customer/searchByPhone/{phone}', 'CustomersController@customerStatement')->name('statement');
@@ -99,6 +100,8 @@ Route::middleware(['web','auth'])->group(function () {
     });
 
     Route::get('checks','CheckerController@index')->name('checker.index');
+
+
     Route::post('checker/{checkId}/approve','CheckerController@approve')->name('checker.approve')->middleware('role_or_permission:admin|checker');
     Route::post('checker/{checkId}/drop','CheckerController@drop')->name('checker.drop')->middleware('role_or_permission:admin|checker');
 });

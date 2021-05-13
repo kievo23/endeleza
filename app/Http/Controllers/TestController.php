@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TestController extends Controller
 {
@@ -24,6 +26,26 @@ class TestController extends Controller
     public function create()
     {
         //
+    }
+
+    public function report()
+    {
+        //
+        $data = DB::table('loan_account')
+            ->select(
+                DB::raw('YEAR(created_at) as year'),
+                DB::raw('MONTH(created_at) as month'),
+                DB::raw('SUM(principal_amount) as amount_advanced'),
+                DB::raw('SUM(loan_amount) as expected_amount'),
+                DB::raw('SUM(loan_amount - loan_balance) as amount_paid')
+            )
+            ->whereYear('created_at', '=', Carbon::now()->year)
+            ->orWhereYear('created_at', '=', Carbon::now()->subYear()->year)
+            ->groupBy('year', 'month')
+            ->get(); 
+        return response()
+            ->json(['data'=>$data])
+            ->header('Content-Type', 'application/json');
     }
 
     public function registerUrlMpesa(){

@@ -457,6 +457,12 @@
                                         <span class="pcoded-mtext">Agents</span>
                                     </a>                                
                                 </li>
+                                <li class="{!! Request::is('report*') ? 'active' : '' !!}">
+                                    <a href="{{url('/report')}}">
+                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                        <span class="pcoded-mtext">Report</span>
+                                    </a>                                
+                                </li>
                                  <!-- <li class="pcoded-hasmenu"> -->
                                  <!-- <li class="{!! Request::is('messages*') ? 'active' : '' !!}">
                                     <a href="{{ url('messages') }}">
