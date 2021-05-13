@@ -40,7 +40,7 @@ Endeleza: Report
                       </div>
                       <div class="card-block">
                         <div class="table-responsive">
-                            <table class="table" id="report display">
+                            <table class="table display" id="report">
                                 <thead class="success">
                                     <th>Year</th>
                                     <th>Month</th>
