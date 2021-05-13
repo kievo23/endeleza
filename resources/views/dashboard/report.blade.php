@@ -38,7 +38,7 @@ Endeleza: Report
                       <div class="card-header">
                         <h4>Books of Accounts</h4>
                       </div>
-                      <div class="card-block">
+                      <div class="card-block table-responsive">
                         <table class="table" id="report">
                             <thead class="success">
                                 <th>Year</th>
