@@ -38,41 +38,43 @@ Endeleza: Report
                       <div class="card-header">
                         <h4>Books of Accounts</h4>
                       </div>
-                      <div class="card-block table-responsive">
-                        <table class="table" id="report">
-                            <thead class="success">
-                                <th>Year</th>
-                                <th>Month</th>
-                                <th>Amount Advanced</th>
-                                <th>Expected Repayment</th>
-                                <th>Actual Amount Paid</th>
-                                <th>Outstanding Principal</th>
-                                <th>P & L</th>
-                            </thead>
-                            <tbody>
-                            @foreach($data as $d)
-                                <tr>
-                                    <td>{{$d->year}}</td>
-                                    <td>
-                                    @php 
-                                    echo date("F", strtotime('00-'.$d->month.'-01'));
-                                    @endphp
-                                    </td>
-                                    <td>{{number_format($d->amount_advanced, 2, '.', ',')}}</td>
-                                    <td>{{number_format($d->expected_amount, 2, '.', ',')}}</td>
-                                    <td>{{number_format($d->amount_paid, 2, '.', ',')}}</td>
-                                    <td>
-                                    @if($d->amount_advanced > $d->amount_paid)
-                                        {{abs($d->amount_advanced - $d->amount_paid)}}
-                                    @else
-                                        0
-                                    @endif
-                                    </td>
-                                    <td>{{number_format(($d->amount_paid - $d->amount_advanced), 2, '.', ',')}}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                      <div class="card-block">
+                        <div class="table-responsive">
+                            <table class="table" id="report display">
+                                <thead class="success">
+                                    <th>Year</th>
+                                    <th>Month</th>
+                                    <th>Amount Advanced</th>
+                                    <th>Expected Repayment</th>
+                                    <th>Actual Amount Paid</th>
+                                    <th>Outstanding Principal</th>
+                                    <th>P & L</th>
+                                </thead>
+                                <tbody>
+                                @foreach($data as $d)
+                                    <tr>
+                                        <td>{{$d->year}}</td>
+                                        <td>
+                                        @php 
+                                        echo date("F", strtotime('00-'.$d->month.'-01'));
+                                        @endphp
+                                        </td>
+                                        <td>{{number_format($d->amount_advanced, 2, '.', ',')}}</td>
+                                        <td>{{number_format($d->expected_amount, 2, '.', ',')}}</td>
+                                        <td>{{number_format($d->amount_paid, 2, '.', ',')}}</td>
+                                        <td>
+                                        @if($d->amount_advanced > $d->amount_paid)
+                                            {{abs($d->amount_advanced - $d->amount_paid)}}
+                                        @else
+                                            0
+                                        @endif
+                                        </td>
+                                        <td>{{number_format(($d->amount_paid - $d->amount_advanced), 2, '.', ',')}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                       </div>
                     </div>
                   </div>
