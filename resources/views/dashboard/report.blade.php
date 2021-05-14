@@ -55,6 +55,7 @@ Endeleza: Report
                                     <th>Actual Amount Paid</th>
                                     <th>Outstanding Principal</th>
                                     <th>P & L</th>
+                                    <th>Pending Payments</th>
                                 </thead>
                                 <tbody>
                                 @foreach($data as $d)
@@ -76,6 +77,9 @@ Endeleza: Report
                                         @endif
                                         </td>
                                         <td>{{number_format(($d->amount_paid - $d->amount_advanced), 2, '.', ',')}}</td>
+                                        <td>
+                                          {{ number_format(($d->amount_paid - $d->amount_paid), 2, '.', ',') }}
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
