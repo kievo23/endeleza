@@ -222,9 +222,46 @@ class AdminController extends Controller
             ->groupBy('year', 'month')
             ->get();
 
-            return view('dashboard/report',compact(
-                'data'
-            ));
+        $graph_aa = [];
+        $graph_ea = [];
+        $graph_ap = [];
+        $graph_pl = [];
+        $graph_pa = [];
+        $graph_op = [];
+        $dates = [];
+        $countd = 0;
+        $countr = 0;
+        $countl = 0;
+
+        foreach($data as $key => $d){
+            try {
+                array_push($graph_aa, $d->amount_advanced);
+                array_push($graph_ea, $d->expected_amount);
+                array_push($graph_ap, $d->amount_paid);
+                array_push($dates, $d->year." ".date("M", strtotime('00-'.$d->month.'-01')));
+                array_push($graph_pl,($d->amount_paid - $d->amount_advanced));
+                array_push($graph_pa,($d->expected_amount - $d->amount_paid));
+                if($d->amount_advanced > $d->amount_paid){
+                    array_push($graph_op,($d->amount_advanced - $d->amount_paid));
+                }else{
+                    array_push($graph_op,0);
+                }
+            } catch (\Throwable $th) {
+                //throw $th;
+                //print_r($th);
+            }
+        }
+
+        return view('dashboard/report',compact(
+            'graph_aa',
+            'graph_ea',
+            'graph_ap',
+            'graph_pl',
+            'graph_pa',
+            'graph_op',
+            'dates',
+            'data'
+        ));
     }
 
     /**

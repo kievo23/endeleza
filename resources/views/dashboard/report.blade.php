@@ -40,10 +40,18 @@ Endeleza: Report
             </div>
           </div>
           <div class="row">
+            <div class="col-xl-12 col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <canvas id="myChart" width="400" height="200"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-
                   <hr>
                   <div class="table-responsive">
                             <table class="table display" id="report">
@@ -111,6 +119,8 @@ Endeleza: Report
 
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+<script src="https://www.chartjs.org/dist/2.9.2/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 
 
 <script>
@@ -136,6 +146,81 @@ $(document).ready( function () {
     });
 });
 
+var ctx = document.getElementById('myChart').getContext('2d');
+
+
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: @json($dates),
+          datasets: [{
+              type: 'bar',
+              label: 'Amount Advanced',
+              borderColor: '#8727d6',
+              backgroundColor: '#8727d6',            
+              //borderWidth: 1,
+              borderRadius: 5,
+              fill: false,
+              data: @json($graph_aa),
+          },{
+              type: 'bar',
+              label: 'Expected Amount',
+              borderColor: '#d927c7',
+              backgroundColor: '#d927c7',            
+              //borderWidth: 1,
+              fill: false,
+              data: @json($graph_ea),
+          },{
+              type: 'bar',
+              label: 'Amount Paid',
+              borderColor: '#336ce8',
+              backgroundColor: '#336ce8',            
+              //borderWidth: 1,
+              fill: false,
+              data: @json($graph_ap),
+          },{
+              type: 'line',
+              label: 'Profit & Loss',
+              borderColor: '#e8336c',
+              backgroundColor: '#e8336c',            
+              //borderWidth: 1,
+              fill: false,
+              data: @json($graph_pl),
+          },{
+              label: 'Outstanding Principal',
+              borderColor: '#6c33e8',
+              backgroundColor: '#6c33e8',            
+              //borderWidth: 1,
+              data: @json($graph_op),
+          },{
+              label: 'Pending Amount',
+              borderColor: '#F0E869',
+              backgroundColor: '#F0E869',            
+              //borderWidth: 1,
+              data: @json($graph_pa),
+          }]
+      },
+      options: {
+          responsive: true,
+          title: {
+            display: true,
+            text: 'Repayments and Loans for the Last 30 Days'
+          },
+          tooltips: {
+            mode: 'index',
+          },
+          hover: {
+            mode: 'index'
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
 
 </script>
 @endsection
