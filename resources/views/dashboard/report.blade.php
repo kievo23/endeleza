@@ -78,7 +78,7 @@ Endeleza: Report
                                         </td>
                                         <td>{{number_format(($d->amount_paid - $d->amount_advanced), 2, '.', ',')}}</td>
                                         <td>
-                                          {{ number_format(($d->amount_paid - $d->amount_paid), 2, '.', ',') }}
+                                          {{ number_format(($d->expected_amount - $d->amount_paid), 2, '.', ',') }}
                                         </td>
                                     </tr>
                                 @endforeach
