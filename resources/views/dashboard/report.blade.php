@@ -204,7 +204,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
           responsive: true,
           title: {
             display: true,
-            text: 'Repayments and Loans for the Last 30 Days'
+            text: 'Performance from inception'
           },
           tooltips: {
             mode: 'index',
