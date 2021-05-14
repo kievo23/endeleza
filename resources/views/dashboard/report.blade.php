@@ -156,8 +156,8 @@ var ctx = document.getElementById('myChart').getContext('2d');
           datasets: [{
               type: 'bar',
               label: 'Amount Advanced',
-              borderColor: '#8727d6',
-              backgroundColor: '#8727d6',            
+              borderColor: '#858585',
+              backgroundColor: '#858585',            
               //borderWidth: 1,
               borderRadius: 5,
               fill: false,
@@ -165,16 +165,16 @@ var ctx = document.getElementById('myChart').getContext('2d');
           },{
               type: 'bar',
               label: 'Expected Amount',
-              borderColor: '#d927c7',
-              backgroundColor: '#d927c7',            
+              borderColor: '#336ce8',
+              backgroundColor: '#336ce8',            
               //borderWidth: 1,
               fill: false,
               data: @json($graph_ea),
           },{
               type: 'bar',
               label: 'Amount Paid',
-              borderColor: '#336ce8',
-              backgroundColor: '#336ce8',            
+              borderColor: '#1db525',
+              backgroundColor: '#1db525',            
               //borderWidth: 1,
               fill: false,
               data: @json($graph_ap),
@@ -194,8 +194,8 @@ var ctx = document.getElementById('myChart').getContext('2d');
               data: @json($graph_op),
           },{
               label: 'Pending Amount',
-              borderColor: '#F0E869',
-              backgroundColor: '#F0E869',            
+              borderColor: '#f5ba31',
+              backgroundColor: '#f5ba31',            
               //borderWidth: 1,
               data: @json($graph_pa),
           }]
