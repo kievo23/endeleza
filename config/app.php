@@ -68,6 +68,19 @@ return [
     'TWIGA_URL' => env('TWIGA_URL',null),
     'TWIGA_BEARER_TOKEN' => env('TWIGA_BEARER_TOKEN', null),
 
+
+        /*
+    |--------------------------------------------------------------------------
+    | SMS LEOPARD CONFIGURATION
+    |--------------------------------------------------------------------------
+    |
+    | Set of URLs, bearer token 
+    |
+    */
+    'SMS_SENDER_ID' => env('SMS_SENDER_ID',null),
+    'SMS_SECRET_KEY' => env('SMS_SECRET_KEY', null),
+    'SMS_ACCOUNT_ID' => env('SMS_ACCOUNT_ID', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

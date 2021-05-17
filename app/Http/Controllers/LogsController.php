@@ -17,10 +17,16 @@ class LogsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function sms()
+    public function sms(Request $request)
     {
         //
-        $sms = Outbox::all();
+        $sms = [];
+        if (! empty($request->start_date)) {
+            $sms = Outbox::whereBetween('created_at', [$request->start_date, $request->end_date])
+                ->orderBy('id','desc')->get();
+        }else{
+            $sms = Outbox::limit(200)->orderBy('id','desc')->get();
+        }
         $title = "List of SMSs Sent";
 
         return view('logs/sms', compact('sms','title'));

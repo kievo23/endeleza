@@ -7,6 +7,7 @@ use App\LoanAccount;
 use Carbon\Carbon;
 use App\SMS;
 use App\Settings;
+use Illuminate\Support\Facades\Log;
 
 class Rollovers extends Command
 {
@@ -51,10 +52,38 @@ class Rollovers extends Command
         $loans = LoanAccount::where('loan_status','0')->get();
         //print_r($loans);
         foreach ($loans as $key => $loan) {
-            if($loan->customer->rollover != 1){
-                $hours = Carbon::now()->diffInHours(Carbon::parse($loan->created_at));
-                $days = Carbon::now()->diffInDays(Carbon::parse($loan->created_at));
+            $hours = Carbon::now()->diffInHours(Carbon::parse($loan->created_at));
+            $days = Carbon::now()->diffInDays(Carbon::parse($loan->created_at));
 
+            //SEND SMS FOR ONE WEEK LOAN
+            if($loan->customer->interest == 6 && $loan->days_in_arrears == 3 && $days == 4){
+                $sms = "REMINDER! Your stock loan balance of Ksh. ".$loan->loan_balance." is due TOMORROW. Kindly CLEAR via Till Number 5041363 or dial *483*209# and select option 2.";
+                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
+                Outbox::log(json_decode($res),$sms);
+                Log::alert($res);
+            }
+            if($loan->customer->interest == 10.5 && $loan->days_in_arrears == 12 && $days == 13){
+                //SEND SMS FOR TWO WEEK LOAN
+                $sms = "REMINDER! Your stock loan balance of Ksh. ".$loan->loan_balance." is due TOMORROW. Kindly CLEAR via Till Number 5041363 or dial *483*209# and select option 2.";
+                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
+                Outbox::log(json_decode($res),$sms);
+                Log::alert($res);
+            }
+            //SEND SMS THAT PAYMENT IS DUE
+            if($loan->customer->interest == 6 && $loan->days_in_arrears == 4 && $days == 5){
+                $sms = "Dear Customer, your stock loan balance of Ksh. ".$loan->loan_balance." is due TODAY. Kindly pay via Buy Goods Till Number 5041363 to access new stock.";
+                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
+                Outbox::log(json_decode($res),$sms);
+                Log::alert($res);
+            }
+            if($loan->customer->interest == 10.5 && $loan->days_in_arrears == 13 && $days == 14){
+                //SEND SMS FOR TWO WEEK LOAN
+                $sms = "Dear Customer, your stock loan balance of Ksh. ".$loan->loan_balance." is due TODAY. Kindly pay via Buy Goods Till Number 5041363 to access new stock.";
+                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
+                Outbox::log(json_decode($res),$sms);
+                Log::alert($res);
+            }
+            if($loan->customer->rollover != 1){
                 $loan->hours_in_arrears = $hours;
                 $loan->days_in_arrears = $days;
                 $loan->save();

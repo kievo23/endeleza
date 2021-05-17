@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\SMS;
+use App\Outbox;
+use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
 {
@@ -16,6 +19,13 @@ class TestController extends Controller
     public function index()
     {
         //
+        $sms = "welewele inadecode";
+        $res = SMS::sendSmsLeopard($sms,'0710345130');
+        //$res = '{"success":true,"message":"Sent to 1/1. Cost KES 0.90","recipients":[{"id":"a75ec5de-2fe0-424a-a5b3-f25bad1cbbef","cost":0.9,"number":"+254710345130","status":"queued"}]}';
+        //Log::alert($res);
+        //print_r(json_decode($res)->recipients);
+        Outbox::log(json_decode($res),$sms);
+        return $res;
     }
 
     /**

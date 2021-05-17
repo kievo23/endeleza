@@ -96,7 +96,7 @@ Route::middleware(['web','auth'])->group(function () {
 
     //LOGS
     Route::middleware('role_or_permission:admin|logs')->prefix('logs')->group(function() {        
-        Route::get('/sms','LogsController@sms');
+        Route::get('/sms','LogsController@sms')->name('logs.sms');
     });
 
     Route::get('checks','CheckerController@index')->name('checker.index');
@@ -105,5 +105,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::post('checker/{checkId}/approve','CheckerController@approve')->name('checker.approve')->middleware('role_or_permission:admin|checker');
     Route::post('checker/{checkId}/drop','CheckerController@drop')->name('checker.drop')->middleware('role_or_permission:admin|checker');
 });
+
+Route::get('send_sms','TestController@index');
 
 Auth::routes();

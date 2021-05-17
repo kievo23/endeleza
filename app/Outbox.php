@@ -16,8 +16,7 @@ class Outbox extends Model
     ];
 
     public static function log($data,$sms){
-        $encoded = json_decode(json_encode($data));
-        $encodedArray = $encoded->data->SMSMessageData->Recipients;
+        $encodedArray = $data->recipients;
         foreach ($encodedArray as $key => $log) {
             # code...
             Outbox::create([

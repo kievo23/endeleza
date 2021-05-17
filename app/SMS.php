@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use AfricasTalking\SDK\AfricasTalking;
-
+use Illuminate\Support\Facades\Log;
 
 
 class SMS extends Model
@@ -29,7 +29,42 @@ class SMS extends Model
         
     }
 
-    
+    public static function sendSmsLeopard($sms,$phone){
+        $url = 'https://api.smsleopard.com/v1/sms/send';
+        $data = array(
+            "source" => config('app.SMS_SENDER_ID'),
+            "message" => $sms, 
+            "destination" => array(
+                array(
+                    "number" => $phone
+                )
+            )
+        );
+        $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url = 'https://api.smsleopard.com/v1/sms/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "accept: */*",
+                "accept-language: en-US,en;q=0.8",
+                "content-type: application/json",
+                "Authorization: Basic ".base64_encode(config('app.SMS_ACCOUNT_ID').":".config('app.SMS_SECRET_KEY')),
+            ),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        return $response;
+    }    
 }
 
 /*

@@ -35,6 +35,13 @@ class SMSController extends Controller
         return view('messages/index',compact('customers'));
     }
 
+    public function list()
+    {
+        //
+        $outbox = Outbox::all()->toArray();
+        return response()->json(['data' => $outbox],200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
