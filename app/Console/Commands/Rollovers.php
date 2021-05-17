@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\LoanAccount;
 use Carbon\Carbon;
 use App\SMS;
+use App\Outbox;
 use App\Settings;
 use Illuminate\Support\Facades\Log;
 
@@ -54,7 +55,8 @@ class Rollovers extends Command
         foreach ($loans as $key => $loan) {
             $hours = Carbon::now()->diffInHours(Carbon::parse($loan->created_at));
             $days = Carbon::now()->diffInDays(Carbon::parse($loan->created_at));
-
+            Log::error("days: ".$days);
+            Log::error("days in db: ".$loan->days_in_arrears);
             //SEND SMS FOR ONE WEEK LOAN
             if($loan->customer->interest == 6 && $loan->days_in_arrears == 3 && $days == 4){
                 $sms = "REMINDER! Your stock loan balance of Ksh. ".$loan->loan_balance." is due TOMORROW. Kindly CLEAR via Till Number 5041363 or dial *483*209# and select option 2.";
