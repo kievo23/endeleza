@@ -84,10 +84,12 @@ class Rollovers extends Command
                 Log::alert($res);
             }
             if($loan->customer->rollover != 1){
-                $loan->hours_in_arrears = $hours;
-                $loan->days_in_arrears = $days;
-                $loan->save();
+                
             }
+
+            $loan->hours_in_arrears = $hours;
+            $loan->days_in_arrears = $days;
+            $loan->save();
         }
     }
 

@@ -463,6 +463,12 @@
                                         <span class="pcoded-mtext">Report</span>
                                     </a>                                
                                 </li>
+                                <li class="{!! Request::is('logs*') ? 'active' : '' !!}">
+                                    <a href="{{url('/logs/sms')}}">
+                                        <span class="pcoded-micon"><i class="feather icon-mail"></i></span>
+                                        <span class="pcoded-mtext">SMS Logs</span>
+                                    </a>                                
+                                </li>
                                  <!-- <li class="pcoded-hasmenu"> -->
                                  <!-- <li class="{!! Request::is('messages*') ? 'active' : '' !!}">
                                     <a href="{{ url('messages') }}">
