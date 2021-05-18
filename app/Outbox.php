@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Outbox extends Model
 {
@@ -17,15 +18,22 @@ class Outbox extends Model
 
     public static function log($data,$sms){
         $encodedArray = $data->recipients;
-        foreach ($encodedArray as $key => $log) {
-            # code...
-            Outbox::create([
-                'phone' => $log->number,
-                'text' => $sms,
-                'status' => $log->status,
-                'cost' => $log->cost
-            ]);
+        try {
+            //code...
+            foreach ($encodedArray as $key => $log) {
+                # code...
+                Outbox::create([
+                    'phone' => $log->number,
+                    'text' => $sms,
+                    'status' => $log->status,
+                    'cost' => $log->cost
+                ]);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::error("Throw error: ".$th);
         }
+        
         return true;
     }
 }
