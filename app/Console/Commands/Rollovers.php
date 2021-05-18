@@ -59,7 +59,7 @@ class Rollovers extends Command
             Log::error("days in db: ".$loan->days_in_arrears);
             Log::error("Loan Id: ".$loan->id);
             //SEND SMS FOR ONE WEEK LOAN
-            if($loan->customer->interest == 6 && $loan->days_in_arrears == 3 && $days == 4){
+            if($loan->customer->interest == 6 && $loan->days_in_arrears == 5 && $days == 6){
                 $sms = "REMINDER! Your stock loan balance of Ksh. ".$loan->loan_balance." is due TOMORROW. Kindly CLEAR via Till Number 5041363 or dial *483*209# and select option 2.";
                 $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
                 Outbox::log(json_decode($res),$sms);
@@ -73,7 +73,7 @@ class Rollovers extends Command
                 Log::alert($res);
             }
             //SEND SMS THAT PAYMENT IS DUE
-            if($loan->customer->interest == 6 && $loan->days_in_arrears == 4 && $days == 5){
+            if($loan->customer->interest == 6 && $loan->days_in_arrears == 6 && $days == 7){
                 $sms = "Dear Customer, your stock loan balance of Ksh. ".$loan->loan_balance." is due TODAY. Kindly pay via Buy Goods Till Number 5041363 to access new stock.";
                 $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
                 Outbox::log(json_decode($res),$sms);
