@@ -39,6 +39,6 @@ class WordOfTheDay extends Command
     public function handle()
     {
         //
-        Log::alert("word of the day");
+        Log::info("word of the day");
     }
 }
