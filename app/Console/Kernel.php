@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
         Commands\Rollovers::class,
+        Commands\WordOfTheDay::class,
     ];
 
     /**
@@ -28,6 +29,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //         ->hourly();
         $schedule->command('count_days:run')->hourlyAt(17);
+        $schedule->command('word:day')->everyMinute();
     }
 
     /**
