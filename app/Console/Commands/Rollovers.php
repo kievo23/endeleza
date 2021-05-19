@@ -56,9 +56,9 @@ class Rollovers extends Command
             $hours = Carbon::now()->diffInHours(Carbon::parse($loan->created_at));
             $days = Carbon::now()->diffInDays(Carbon::parse($loan->created_at));
             Log::alert("=================================================== BEGINNING OF ROLLOVER LOG============================================");
-            Log::error("days: ".$days);
-            Log::error("days in db: ".$loan->days_in_arrears);
-            Log::error("Loan Id: ".$loan->id);
+            Log::alert("days: ".$days);
+            Log::alert("days in db: ".$loan->days_in_arrears);
+            Log::alert("Loan Id: ".$loan->id);
             Log::alert("Customer No: ".$loan->customer->customer_account_msisdn);
             //SEND SMS FOR ONE WEEK LOAN
             if($loan->customer->interest == 6 && $loan->days_in_arrears == 5 && $days == 6){
