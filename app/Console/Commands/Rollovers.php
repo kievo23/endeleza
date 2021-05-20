@@ -55,7 +55,7 @@ class Rollovers extends Command
         foreach ($loans as $key => $loan) {
             $hours = Carbon::now()->diffInHours(Carbon::parse($loan->created_at));
             $days = Carbon::now()->diffInDays(Carbon::parse($loan->created_at));
-            Log::alert("=================================================== BEGINNING OF ROLLOVER LOG============================================");
+            Log::alert("=================================================== BEGINNING OF ROLLOVER LOG ============================================");
             Log::alert("days: ".$days);
             Log::alert("days in db: ".$loan->days_in_arrears);
             Log::alert("Loan Id: ".$loan->id);
