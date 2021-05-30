@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //         ->hourly();
-        $schedule->command('count_days:run')->hourlyAt(56);
+        $schedule->command('count_days:run')->hourlyAt(15);
         //$schedule->command('word:day')->everyMinute();
     }
 
