@@ -134,8 +134,8 @@ class ApiController extends Controller
         $amt = $rst->Body->stkCallback->CallbackMetadata->Item[0]->Value;
         $amtPaid = $amt;
         $mpesaCode = $rst->Body->stkCallback->CallbackMetadata->Item[1]->Value;
-        $timestamp = $rst->Body->stkCallback->CallbackMetadata->Item[3]->Value;
-        $msisdn = $rst->Body->stkCallback->CallbackMetadata->Item[4]->Value;
+        $timestamp = $rst->Body->stkCallback->CallbackMetadata->Item[2]->Value;
+        $msisdn = $rst->Body->stkCallback->CallbackMetadata->Item[3]->Value;
         $MerchantRequestID = $rst->Body->stkCallback->MerchantRequestID;
         $resultCode = $rst->Body->stkCallback->ResultCode;
         $resultDesc = $rst->Body->stkCallback->ResultDesc;
