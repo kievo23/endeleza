@@ -431,7 +431,7 @@
                                         <span class="pcoded-mtext">Report</span>
                                     </a>                                
                                 </li>
-                                <li class="pcoded-hasmenu {!! Request::is('logs*') ? 'active' : '' !!}">
+                                <li class="pcoded-hasmenu {!! Request::is('sms*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-trending-up"></i></span>
                                         <span class="pcoded-mtext">SMS</span>
