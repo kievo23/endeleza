@@ -425,12 +425,34 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="{!! Request::is('online_checkout*') ? 'active' : '' !!}">
-                                    <a href="{{ url('online_checkout') }}">
-                                        <span class="pcoded-micon"><i class="feather icon-at-sign"></i></span>
-                                        <span class="pcoded-mtext">Online Checkout</span>
-                                    </a>
+                                <li class="{!! Request::is('report*') ? 'active' : '' !!}">
+                                    <a href="{{url('/report')}}">
+                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                        <span class="pcoded-mtext">Report</span>
+                                    </a>                                
                                 </li>
+                                <li class="pcoded-hasmenu {!! Request::is('logs*') ? 'active' : '' !!}">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-trending-up"></i></span>
+                                        <span class="pcoded-mtext">SMS</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{{url('/sms/create')}}">
+                                                <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
+                                                <span class="pcoded-mtext">SMS Create</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{{url('/sms/logs')}}">
+                                                <span class="pcoded-micon"><i class="feather icon-mail"></i></span>
+                                                <span class="pcoded-mtext">SMS Logs</span>
+                                            </a>  
+                                        </li>
+                                    </ul>
+                                                                 
+                                </li>
+                                
                                 <li class="pcoded-hasmenu {!! Request::is('user*') ? 'active' : '' !!}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
@@ -457,18 +479,13 @@
                                         <span class="pcoded-mtext">Agents</span>
                                     </a>                                
                                 </li>
-                                <li class="{!! Request::is('report*') ? 'active' : '' !!}">
-                                    <a href="{{url('/report')}}">
-                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
-                                        <span class="pcoded-mtext">Report</span>
-                                    </a>                                
+                                <li class="{!! Request::is('online_checkout*') ? 'active' : '' !!}">
+                                    <a href="{{ url('online_checkout') }}">
+                                        <span class="pcoded-micon"><i class="feather icon-at-sign"></i></span>
+                                        <span class="pcoded-mtext">Online Checkout</span>
+                                    </a>
                                 </li>
-                                <li class="{!! Request::is('logs*') ? 'active' : '' !!}">
-                                    <a href="{{url('/logs/sms')}}">
-                                        <span class="pcoded-micon"><i class="feather icon-mail"></i></span>
-                                        <span class="pcoded-mtext">SMS Logs</span>
-                                    </a>                                
-                                </li>
+                                
                                  <!-- <li class="pcoded-hasmenu"> -->
                                  <!-- <li class="{!! Request::is('messages*') ? 'active' : '' !!}">
                                     <a href="{{ url('messages') }}">

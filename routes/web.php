@@ -95,8 +95,9 @@ Route::middleware(['web','auth'])->group(function () {
     //Route::resource('permissions', 'PermissionsController')->middleware('role:manager');
 
     //LOGS
-    Route::middleware('role_or_permission:admin|logs')->prefix('logs')->group(function() {        
-        Route::get('/sms','LogsController@sms')->name('logs.sms');
+    Route::middleware('role_or_permission:admin|logs')->prefix('sms')->group(function() {        
+        Route::get('/create','SMSController@index')->name('sms.create');
+        Route::get('/logs','LogsController@sms')->name('logs.sms');
     });
 
     Route::get('checks','CheckerController@index')->name('checker.index');

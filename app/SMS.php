@@ -26,24 +26,34 @@ class SMS extends Model
         ]);
 
         return $result;
-        
     }
 
     public static function sendSmsLeopard($phone,$sms){
         $url = 'https://api.smsleopard.com/v1/sms/send';
-        $data = array(
-            "source" => config('app.SMS_SENDER_ID'),
-            "message" => $sms, 
-            "destination" => array(
+        //sort the numbers
+        $destination = [[]];
+        if(is_array($phone)){
+            foreach ($phone as $key => $val) {
+                # code...
+                $destination[$key]['number'] = $val;
+            }
+        }else{
+            $destination = array(
                 array(
                     "number" => $phone
                 )
-            )
+            );
+        }
+
+        $data = array(
+            "source" => config('app.SMS_SENDER_ID'),
+            "message" => $sms,
+            "destination" => $destination
         );
         $curl = curl_init();
         
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $url = 'https://api.smsleopard.com/v1/sms/send',
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -52,7 +62,7 @@ class SMS extends Model
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => json_encode($data),
             CURLOPT_HTTPHEADER => array(
-                "accept: */*",
+                "accept: application/json",
                 "accept-language: en-US,en;q=0.8",
                 "content-type: application/json",
                 "Authorization: Basic ".base64_encode(config('app.SMS_ACCOUNT_ID').":".config('app.SMS_SECRET_KEY')),
