@@ -73,15 +73,15 @@ class SMSController extends Controller
         
         if($req->category == "custom"){
             $phones = explode(',',$req->phones);
-            $rst = SMS::sendsms($phones, $req->sms);
-            Outbox::log($rst,$req->sms);
+            $rst = SMS::sendSmsLeopard($phones, $req->sms);
+            Outbox::log(json_decode($rst),$req->sms);
         }else if($req->category == "select_customers"){
-            $rst = SMS::sendsms($req->customers, $req->sms);
-            Outbox::log($rst,$req->sms);
+            $rst = SMS::sendSmsLeopard($req->customers, $req->sms);
+            Outbox::log(json_decode($rst),$req->sms);
         }else{
             foreach ($interestedCustomers as $key => $value) {
-                $rst = SMS::sendsms($value->customer_account_msisdn, $req->sms);
-                Outbox::log($rst,$req->sms);
+                $rst = SMS::sendSmsLeopard($value->customer_account_msisdn, $req->sms);
+                Outbox::log(json_decode($rst),$req->sms);
             }
         }        
         

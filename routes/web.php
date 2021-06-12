@@ -106,6 +106,6 @@ Route::middleware(['web','auth'])->group(function () {
     Route::post('checker/{checkId}/drop','CheckerController@drop')->name('checker.drop')->middleware('role_or_permission:admin|checker');
 });
 
-Route::get('send_sms','TestController@index');
+//Route::get('send_sms','TestController@index');
 
 Auth::routes();

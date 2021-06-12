@@ -29,7 +29,7 @@ class SMS extends Model
         
     }
 
-    public static function sendSmsLeopard($sms,$phone){
+    public static function sendSmsLeopard($phone,$sms){
         $url = 'https://api.smsleopard.com/v1/sms/send';
         $data = array(
             "source" => config('app.SMS_SENDER_ID'),

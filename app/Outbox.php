@@ -17,7 +17,9 @@ class Outbox extends Model
     ];
 
     public static function log($data,$sms){
+        Log::error($data);
         $encodedArray = $data->recipients;
+        
         try {
             //code...
             foreach ($encodedArray as $key => $log) {
