@@ -55,36 +55,37 @@ class Rollovers extends Command
         foreach ($loans as $key => $loan) {
             $hours = Carbon::now()->diffInHours(Carbon::parse($loan->created_at));
             $days = Carbon::now()->diffInDays(Carbon::parse($loan->created_at));
-            //Log::alert("=================================================== BEGINNING OF ROLLOVER LOG ============================================");
-            //Log::alert("days: ".$days);
+            Log::alert("=================================================== BEGINNING OF ROLLOVER LOG ============================================");
+            Log::alert("days: ".$days);
             //Log::alert("days in db: ".$loan->days_in_arrears);
             //Log::alert("Loan Id: ".$loan->id);
-            //Log::alert("Customer No: ".$loan->customer->customer_account_msisdn);
+            Log::alert("Customer No: ".$loan->customer->customer_account_msisdn);
             //SEND SMS FOR ONE WEEK LOAN
             if($loan->customer->interest == 6 && $loan->days_in_arrears == 5 && $days == 6){
                 $sms = "REMINDER! Your stock loan balance of Ksh. ".$loan->loan_balance." is due TOMORROW. Kindly CLEAR via Till Number 5041363 or dial *483*209# and select option 2.";
-                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
+                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
                 Outbox::log(json_decode($res),$sms);
                 Log::alert($res);
             }
             if($loan->customer->interest == 10.5 && $loan->days_in_arrears == 12 && $days == 13){
                 //SEND SMS FOR TWO WEEK LOAN
                 $sms = "REMINDER! Your stock loan balance of Ksh. ".$loan->loan_balance." is due TOMORROW. Kindly CLEAR via Till Number 5041363 or dial *483*209# and select option 2.";
-                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
+                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
                 Outbox::log(json_decode($res),$sms);
                 Log::alert($res);
             }
             //SEND SMS THAT PAYMENT IS DUE
             if($loan->customer->interest == 6 && $loan->days_in_arrears == 6 && $days == 7){
                 $sms = "Dear Customer, your stock loan balance of Ksh. ".$loan->loan_balance." is due TODAY. Kindly pay via Buy Goods Till Number 5041363 to access new stock.";
-                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
-                Outbox::log(json_decode($res),$sms);
-                Log::alert($res);
+                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
+                //Log::alert($res);
+                //Log::alert($loan->customer->customer_account_msisdn);
+                Outbox::log(json_decode($res),$sms);                
             }
             if($loan->customer->interest == 10.5 && $loan->days_in_arrears == 13 && $days == 14){
                 //SEND SMS FOR TWO WEEK LOAN
                 $sms = "Dear Customer, your stock loan balance of Ksh. ".$loan->loan_balance." is due TODAY. Kindly pay via Buy Goods Till Number 5041363 to access new stock.";
-                $res = SMS::sendSmsLeopard($sms,$loan->customer->customer_account_msisdn);
+                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
                 Outbox::log(json_decode($res),$sms);
                 Log::alert($res);
             }
