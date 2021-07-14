@@ -118,7 +118,7 @@ Endeleza: Dashboard
                             <div class="col-8">
                               <h5 class="text-white">{{ number_format($lateLoans, 2, '.', ',')}}</h5>
                               <h6 class="text-white m-b-0">Late Loans 8-29days</h6>
-                              <span>1 wk {{number_format($oneWeek, 0, '.', ',')}} | 2 wks {{number_format($twoWeeks, 0, '.', ',')}}</span>
+                              <small>1 wk {{number_format($oneWeek, 0, '.', ',')}} | 2 wks {{number_format($twoWeeks, 0, '.', ',')}}</small>
                             </div>
                             <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
                               <canvas id="update-chart-2" height="50" width="89" style="display: block; width: 89px; height: 50px;"></canvas>
