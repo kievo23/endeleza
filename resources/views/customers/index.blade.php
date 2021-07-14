@@ -97,6 +97,7 @@ Endeleza: Customers
                             <th>Agent</th>
                             <th>Business</th>
                             <th>Customer Account MSISDN</th>
+                            <th>Interest</th>
                             <th>Blocked</th>
                             <th>Active</th>
                             <th>Account Limit</th>
@@ -120,6 +121,7 @@ Endeleza: Customers
                             @endif
                             </td>
                             <td>{{$customer->customer_account_msisdn}}</td>
+                            <td>{{$customer->interest}}</td>
                             <td>{{$customer->blocked}}</td>
                             
                             <td>@if($customer->active == "0")
