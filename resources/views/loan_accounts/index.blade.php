@@ -132,7 +132,6 @@ Endeleza: {{$title}}
                     <th>Principal</th>
                     <th>Repayable</th>
                     <th>Till</th>
-                    <th>Interest</th>
                     <th>Paid Amount</th>
                     <th>Balance</th>
                     <th>Status</th>
@@ -151,7 +150,6 @@ Endeleza: {{$title}}
                     <td>{{$account->principal_amount}}</td>
                     <td>{{$account->loan_amount}}</td>
                     <td>{{$account->delivery->till_number}}</td>
-                    <td>{{$account->customer->interest}}</td>
                     <td>{{$account->loan_amount - $account->loan_balance}}</td>
                     <td>{{$account->loan_balance}}</td>
                     <td>@if($account->loan_status == "0")
