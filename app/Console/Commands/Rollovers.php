@@ -78,7 +78,7 @@ class Rollovers extends Command
                 Outbox::log(json_decode($res),$sms);
                 //Log::alert($res);
                 $loan->loan_balance = $new_loan_balance;
-                $loan->penalty = $loan->penalty + $daily_interest;
+                $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
                 $loan->save();
             }
             if($loan->customer->interest == 10.5 && $loan->days_in_arrears == 12 && $days == 13){
@@ -113,7 +113,7 @@ class Rollovers extends Command
                 Outbox::log(json_decode($res),$sms);
                 //Log::alert($res);
                 $loan->loan_balance = $new_loan_balance;
-                $loan->penalty = $loan->penalty + $daily_interest;
+                $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
                 $loan->save();
             }
             //Log::alert("=================================================== END OF ROLLOVER LOG============================================");
