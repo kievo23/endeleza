@@ -68,7 +68,7 @@ class Rollovers extends Command
                 Log::alert($res);
             }
             //Rollovers
-            if($loan->customer->interest == 6 && $loan->days_in_arrears >= 8 && $loan->customer->rollover == 0){
+            if($loan->customer->interest == 6 && $loan->days_in_arrears >= 8 && $loan->customer->rollover == 1){
                 //Daily interest
                 $daily_interest_rate = 0.86;
                 $daily_interest = $daily_interest_rate/100*$loan->loan_balance;
@@ -103,7 +103,7 @@ class Rollovers extends Command
                 Outbox::log(json_decode($res),$sms);
                 Log::alert($res);
             }
-            if($loan->customer->interest == 10.5 && $loan->days_in_arrears >= 15 && $loan->customer->rollover == 0){
+            if($loan->customer->interest == 10.5 && $loan->days_in_arrears >= 15 && $loan->customer->rollover == 1){
                 //Daily interest
                 $daily_interest_rate = 0.75;
                 $daily_interest = $daily_interest_rate/100*$loan->loan_balance;

@@ -85,9 +85,9 @@
                     <div class="input-group">
                         <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
                         <select class="selectpicker form-control" name="rollover">
-                            <option value="{{$customer->rollover}}">{!! ($customer->rollover == '1') ? "Stopped" : "Rollover Active" !!}</option>
-                            <option value="1">Stop Rollover</option>
-                            <option value="0">Rollover Active</option>
+                            <option value="{{$customer->rollover}}">{!! ($customer->rollover == '1') ? "Rollover Active" : "Rollover Inactive" !!}</option>
+                            <option value="0">Stop Rollover</option>
+                            <option value="1">Rollover Active</option>
                         </select>
                     </div>
                 </div>
