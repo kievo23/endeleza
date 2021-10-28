@@ -70,16 +70,16 @@ class Rollovers extends Command
             //Rollovers
             if($loan->customer->interest == 6 && $loan->days_in_arrears >= 8 && $loan->customer->rollover == 1){
                 //Daily interest
-                $daily_interest_rate = 0.86;
-                $daily_interest = $daily_interest_rate/100*$loan->loan_balance;
-                $new_loan_balance = $loan->loan_balance + $daily_interest;
-                $sms = "Dear customer, your OVERDUE loan has attracted Ksh. ". $daily_interest ." as lateness fees. Your new outstanding balance is Ksh. ".$new_loan_balance;
-                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
-                Outbox::log(json_decode($res),$sms);
-                //Log::alert($res);
-                $loan->loan_balance = $new_loan_balance;
-                $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
-                $loan->save();
+                // $daily_interest_rate = 0.86;
+                // $daily_interest = $daily_interest_rate/100*$loan->loan_balance;
+                // $new_loan_balance = $loan->loan_balance + $daily_interest;
+                // $sms = "Dear customer, your OVERDUE loan has attracted Ksh. ". $daily_interest ." as lateness fees. Your new outstanding balance is Ksh. ".$new_loan_balance;
+                // $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
+                // Outbox::log(json_decode($res),$sms);
+                // //Log::alert($res);
+                // $loan->loan_balance = $new_loan_balance;
+                // $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
+                //$loan->save();
             }
             if($loan->customer->interest == 10.5 && $loan->days_in_arrears == 12 && $days == 13){
                 //SEND SMS FOR TWO WEEK LOAN
@@ -105,16 +105,16 @@ class Rollovers extends Command
             }
             if($loan->customer->interest == 10.5 && $loan->days_in_arrears >= 15 && $loan->customer->rollover == 1){
                 //Daily interest
-                $daily_interest_rate = 0.75;
-                $daily_interest = $daily_interest_rate/100*$loan->loan_balance;
-                $new_loan_balance = $loan->loan_balance + $daily_interest;
-                $sms = "Dear customer, your OVERDUE loan has attracted Ksh. ". $daily_interest ." as lateness fees. Your new outstanding balance is Ksh. ".$new_loan_balance;
-                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
-                Outbox::log(json_decode($res),$sms);
-                //Log::alert($res);
-                $loan->loan_balance = $new_loan_balance;
-                $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
-                $loan->save();
+                // $daily_interest_rate = 0.75;
+                // $daily_interest = $daily_interest_rate/100*$loan->loan_balance;
+                // $new_loan_balance = $loan->loan_balance + $daily_interest;
+                // $sms = "Dear customer, your OVERDUE loan has attracted Ksh. ". $daily_interest ." as lateness fees. Your new outstanding balance is Ksh. ".$new_loan_balance;
+                // $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
+                // Outbox::log(json_decode($res),$sms);
+                // //Log::alert($res);
+                // $loan->loan_balance = $new_loan_balance;
+                // $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
+                //$loan->save();
             }
             //Log::alert("=================================================== END OF ROLLOVER LOG============================================");
             if($loan->customer->rollover != 1){
