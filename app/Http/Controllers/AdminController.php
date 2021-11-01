@@ -222,8 +222,8 @@ class AdminController extends Controller
                 DB::raw('YEAR(created_at) as year'),
                 DB::raw('MONTH(created_at) as month'),
                 DB::raw('SUM(principal_amount) as amount_advanced'),
-                DB::raw('SUM(loan_amount) as expected_amount'),
-                DB::raw('SUM(loan_amount - loan_balance) as amount_paid')
+                DB::raw('SUM(loan_amount) + SUM(loan_penalty) as expected_amount'),
+                DB::raw('SUM(loan_amount - loan_balance) + SUM(loan_penalty) as amount_paid')
             )
             ->whereYear('created_at', '=', Carbon::now()->year)
             ->orWhereYear('created_at', '=', Carbon::now()->subYear()->year)
