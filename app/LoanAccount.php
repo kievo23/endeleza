@@ -59,7 +59,7 @@ class LoanAccount extends Model
         $account_no = "+254" . substr(trim($account_no), -9);
         $amtPaid = $amt;
         if($account_no == "+254723481303"){
-            $account_no == "+354723481303";
+            $account_no = "+354723481303";
         }
 
         $customer = Customer::where('customer_account_msisdn', $account_no)->first();
