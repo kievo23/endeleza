@@ -75,6 +75,62 @@ class SMS extends Model
         curl_close($curl);
         return $response;
     }    
+
+    public static function sendSmsUjumbe($phone,$sms){
+        $url = 'http://ujumbesms.co.ke/api/messaging';
+        //sort the numbers
+        $destination;
+        if(is_array($phone)){
+            $destination = array(
+                array(
+                    "message_bag" => array(
+                        "numbers"=>explode(",", $phone),
+                        "message"=>"This is a test message, please ignore",
+                        "sender"=>"EndelezaCap"
+                    ) 
+                )
+            );
+        }else{
+            $destination = array(
+                array(
+                    "message_bag" => array(
+                        "numbers"=>$phone,
+                        "message"=>"This is a test message, please ignore",
+                        "sender"=>"EndelezaCap"
+                    ) 
+                )
+            );
+        }
+
+        $data = array(
+            "data" => $destination,
+        );
+        $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "accept-language: en-US,en;q=0.8",
+                "content-type: application/json",
+                "X-Authorization: Basic ".base64_encode(config('app.SMS_ACCOUNT_ID').":".config('app.SMS_SECRET_KEY')),
+            ),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        return $response;
+    }  
+
 }
 
 /*

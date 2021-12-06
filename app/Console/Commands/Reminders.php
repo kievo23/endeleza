@@ -89,10 +89,8 @@ class Reminders extends Command
                 Outbox::log(json_decode($res),$sms);
                 Log::alert($res);
             }
-            //Log::alert("=================================================== END OF ROLLOVER LOG============================================");
-            if($loan->customer->rollover != 1){
-                
-            }
+            //Log::alert("=================================================== Late Payments ============================================");
+            
 
             $loan->hours_in_arrears = $hours;
             $loan->days_in_arrears = $days;

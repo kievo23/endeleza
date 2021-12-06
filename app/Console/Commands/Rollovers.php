@@ -74,6 +74,24 @@ class Rollovers extends Command
                 $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
                 $loan->save();
             }
+
+            $dayOfTheWeek = Carbon::now()->dayOfWeek;
+            //Late Payment Reminders
+            if($loan->customer->interest == 6 && $loan->days_in_arrears >= 7 && ($dayOfTheWeek == 1 || $dayOfTheWeek == 3 || $dayOfTheWeek == 5)){
+                $sms = "Dear Customer, your loan balance of Ksh. ".$loan->loan_balance." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
+                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
+                //Log::alert($res);
+                //Log::alert($loan->customer->customer_account_msisdn);
+                Outbox::log(json_decode($res),$sms);                
+            }
+
+            if($loan->customer->interest == 10.5 && $loan->days_in_arrears >= 14 && ($dayOfTheWeek == 1 || $dayOfTheWeek == 3 || $dayOfTheWeek == 5)){
+                $sms = "Dear Customer, your loan balance of Ksh. ".$loan->loan_balance." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
+                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
+                //Log::alert($res);
+                //Log::alert($loan->customer->customer_account_msisdn);
+                Outbox::log(json_decode($res),$sms);                
+            }
         }
     }
 }
