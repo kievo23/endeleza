@@ -120,7 +120,7 @@ class SMS extends Model
                 "accept: application/json",
                 "accept-language: en-US,en;q=0.8",
                 "content-type: application/json",
-                "X-Authorization: Basic ".base64_encode(config('app.SMS_ACCOUNT_ID').":".config('app.SMS_SECRET_KEY')),
+                "X-Authorization: ".config('app.SMS_UJUMBE'),
             ),
         ));
         
