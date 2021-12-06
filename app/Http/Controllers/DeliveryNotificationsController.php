@@ -61,7 +61,7 @@ class DeliveryNotificationsController extends Controller
         $request = DeliveryNotification::findOrFail($id);
         $status = null;
         //dd($req->status);
-        if($req->status == "denay"){
+        if($req->status == "deny"){
             $status = 2;
             $request->status = $status;
             $rst = $request->save();         

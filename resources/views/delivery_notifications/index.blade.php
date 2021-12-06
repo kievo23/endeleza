@@ -160,7 +160,7 @@ function validate(id){
     buttons: {
       cancel: "close",
       ok: "convert",
-      denay: "denay",
+      deny: "deny",
     },
     dangerMode: true,
   })
@@ -189,7 +189,7 @@ function validate(id){
           //document.getElementById('convert-intoloan').submit();
         }, 1000);
 
-        $("#convert"+id).val("denay");
+        $("#convert"+id).val("deny");
       }     
     } else {
       //swal("Okay, You have stopped the conversion of a request successfully");
