@@ -78,9 +78,8 @@ class Reminders extends Command
             if($loan->customer->interest == 6 && $loan->days_in_arrears == 6 && $days == 7){
                 $sms = "Dear Customer, your stock loan balance of Ksh. ".$loan->loan_balance." is due TODAY. Kindly pay via Buy Goods Till Number 5041363 to access new stock.";
                 $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
-                //Log::alert($res);
-                //Log::alert($loan->customer->customer_account_msisdn);
-                Outbox::log(json_decode($res),$sms);                
+                Outbox::log(json_decode($res),$sms);  
+                Log::alert($res);              
             }
             if($loan->customer->interest == 10.5 && $loan->days_in_arrears == 13 && $days == 14){
                 //SEND SMS FOR TWO WEEK LOAN
