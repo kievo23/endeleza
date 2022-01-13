@@ -84,7 +84,7 @@ class Rollovers extends Command
                 $new_amt = $loan->loan_balance + $loan->loan_penalty;
                 $sms = "Dear Customer, your loan balance of Ksh. ".$new_amt." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
                 $ujumbe->send($loan->customer->customer_account_msisdn, $sms, "EndelezaCap");
-                //Log::alert($loan->customer->customer_account_msisdn);
+                Log::alert($loan->customer->customer_account_msisdn . "Loan Balance: ".$new_amt);
                 //Outbox::log(json_decode($res),$sms);                
             }
 
@@ -92,7 +92,7 @@ class Rollovers extends Command
                 $new_amt = $loan->loan_balance + $loan->loan_penalty;
                 $sms = "Dear Customer, your loan balance of Ksh. ".$new_amt." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
                 $ujumbe->send($loan->customer->customer_account_msisdn, $sms, "EndelezaCap");
-                //Log::alert($res);
+                Log::alert($loan->customer->customer_account_msisdn . "Loan Balance: ".$new_amt);
                 //Log::alert($loan->customer->customer_account_msisdn);
                 //Outbox::log(json_decode($res),$sms);                
             }
