@@ -81,7 +81,7 @@ class Rollovers extends Command
 
             
             //Late Payment Reminders
-            if($loan->customer->interest == 6 && $loan->days_in_arrears >= 7 && ($dayOfTheWeek == 1 || $dayOfTheWeek == 4 || $dayOfTheWeek == 5)){
+            if($loan->customer->interest == 6 && $loan->days_in_arrears >= 7 ){
                 $new_amt = $loan->loan_balance + $loan->loan_penalty;
                 $sms = "Dear Customer, your loan balance of Ksh. ".$new_amt." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
                 $ujumbe->send($loan->customer->customer_account_msisdn, $sms, "EndelezaCap");
@@ -90,7 +90,7 @@ class Rollovers extends Command
                 //Outbox::log(json_decode($res),$sms);                
             }
 
-            if($loan->customer->interest == 10.5 && $loan->days_in_arrears >= 14 && ($dayOfTheWeek == 1 || $dayOfTheWeek == 4 || $dayOfTheWeek == 5)){
+            if($loan->customer->interest == 10.5 && $loan->days_in_arrears >= 14 ){
                 $new_amt = $loan->loan_balance + $loan->loan_penalty;
                 $sms = "Dear Customer, your loan balance of Ksh. ".$new_amt." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
                 $ujumbe->send($loan->customer->customer_account_msisdn, $sms, "EndelezaCap");
