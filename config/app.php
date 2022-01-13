@@ -81,6 +81,10 @@ return [
     'SMS_SECRET_KEY' => env('SMS_SECRET_KEY', null),
     'SMS_ACCOUNT_ID' => env('SMS_ACCOUNT_ID', null),
 
+    'SMS_UJUMBE_TOKEN' => env('SMS_UJUMBE_TOKEN',null),
+    'SMS_UJUMBE_EMAIL' => env('SMS_UJUMBE_EMAIL', null),
+    'SMS_UJUMBE_SENDER_ID' => env('SMS_UJUMBE_SENDER_ID', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
