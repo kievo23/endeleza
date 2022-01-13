@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\LoanAccount;
 use Carbon\Carbon;
 use App\SMS;
+use App\Ujumbe;
 use App\Outbox;
 use App\Settings;
 use Illuminate\Support\Facades\Log;
@@ -76,11 +77,14 @@ class Rollovers extends Command
             }
 
             $dayOfTheWeek = Carbon::now()->dayOfWeek;
+            $sms = new Ujumbe(config('app.SMS_UJUMBE_TOKEN'), config('app.SMS_UJUMBE_EMAIL'));
+
+            
             //Late Payment Reminders
             if($loan->customer->interest == 6 && $loan->days_in_arrears >= 7 && ($dayOfTheWeek == 1 || $dayOfTheWeek == 3 || $dayOfTheWeek == 5)){
                 $new_amt = $loan->loan_balance + $loan->loan_penalty;
                 $sms = "Dear Customer, your loan balance of Ksh. ".$new_amt." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
-                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
+                $sms->send($loan->customer->customer_account_msisdn, $sms, "EndelezaCap");
                 //Log::alert($res);
                 //Log::alert($loan->customer->customer_account_msisdn);
                 Outbox::log(json_decode($res),$sms);                
@@ -89,7 +93,7 @@ class Rollovers extends Command
             if($loan->customer->interest == 10.5 && $loan->days_in_arrears >= 14 && ($dayOfTheWeek == 1 || $dayOfTheWeek == 3 || $dayOfTheWeek == 5)){
                 $new_amt = $loan->loan_balance + $loan->loan_penalty;
                 $sms = "Dear Customer, your loan balance of Ksh. ".$new_amt." is in Default!. Lipa mdogo mdogo to clear and get a new stock. Till Number 5041363";
-                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
+                $sms->send($loan->customer->customer_account_msisdn, $sms, "EndelezaCap");
                 //Log::alert($res);
                 //Log::alert($loan->customer->customer_account_msisdn);
                 Outbox::log(json_decode($res),$sms);                

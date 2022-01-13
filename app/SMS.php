@@ -79,28 +79,16 @@ class SMS extends Model
     public static function sendSmsUjumbe($phone,$sms){
         $url = 'http://ujumbesms.co.ke/api/messaging';
         //sort the numbers
-        $destination;
-        if(is_array($phone)){
-            $destination = array(
-                array(
-                    "message_bag" => array(
-                        "numbers"=>explode(",", $phone),
-                        "message"=>"This is a test message, please ignore",
-                        "sender"=>"EndelezaCap"
-                    ) 
+        
+        $destination = array(
+            array(
+                "message_bag" => array(
+                    "numbers"=>$phone,
+                    "message"=>$sms,
+                    "sender"=>"EndelezaCap"
                 )
-            );
-        }else{
-            $destination = array(
-                array(
-                    "message_bag" => array(
-                        "numbers"=>$phone,
-                        "message"=>"This is a test message, please ignore",
-                        "sender"=>"EndelezaCap"
-                    ) 
-                )
-            );
-        }
+            )
+        );
 
         $data = array(
             "data" => $destination,
@@ -117,19 +105,24 @@ class SMS extends Model
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => json_encode($data),
             CURLOPT_HTTPHEADER => array(
-                "accept: application/json",
-                "accept-language: en-US,en;q=0.8",
-                "content-type: application/json",
-                "X-Authorization: ".config('app.SMS_UJUMBE_EMAIL'),
-                "X-Authorization: ".config('app.SMS_UJUMBE_TOKEN'),
+                'accept: application/json',
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen(json_encode($data)),
+                'email: '.config('app.SMS_UJUMBE_EMAIL'),
+                'X-Authorization: '.config('app.SMS_UJUMBE_TOKEN'),
             ),
         ));
         
         $response = curl_exec($curl);
-        $err = curl_error($curl);
-        
-        curl_close($curl);
-        return $response;
+        if ($response === false) {
+            $err = 'Curl error: ' . curl_error($curl);
+            curl_close($curl);
+            return $err;
+        } else {
+            curl_close($curl);
+
+            return $response;
+        }
     }  
 
 }
