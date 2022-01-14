@@ -77,6 +77,7 @@ class LoanAccount extends Model
                     $amountPaidForLoan = 0;
                     $loan_amount = $loan->loan_balance;
                     if($amt > $loan->loan_balance && $amt > 0 ){
+                        //REMEMBER to check the penalty soon
                         $amt -= $loan->loan_balance;
                         $amountPaidForLoan = $loan->loan_balance;
                         $loan->loan_balance = 0;

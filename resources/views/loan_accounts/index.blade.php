@@ -150,8 +150,8 @@ Endeleza: {{$title}}
                     <td>{{$account->principal_amount}}</td>
                     <td>{{$account->loan_amount}}</td>
                     <td>{{$account->delivery->till_number}}</td>
-                    <td>{{($account->loan_amount  - $account->loan_balance) }}</td>
-                    <td>{{($account->loan_balance + $account->loan_penalty)}}</td>
+                    <td>{{($account->loan_amount +  $account->loan_penalty) - $account->loan_balance }}</td>
+                    <td>{{ $account->loan_balance }}</td>
                     <td>@if($account->loan_status == "0")
                       <label class="label label-warning">Active</label>
                       @else
