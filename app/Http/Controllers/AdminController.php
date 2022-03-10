@@ -149,6 +149,7 @@ class AdminController extends Controller
         $valueOfTransactions = LoanAccount::sum('trn_charge');
         $valueOfInterests = LoanAccount::sum('interest_charged');
         $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
+        $valueOfLoanPenaltyNotPaid = LoanAccount::where('loan_status',0)->sum('loan_penalty');
         $valueOfOutstandingLoans = LoanAccount::sum('loan_balance');
         //$healthyLoans = LoanAccount::where('created_at', '>', Carbon::now()->subDays(8))->sum('loan_balance');
 
@@ -197,6 +198,7 @@ class AdminController extends Controller
             'valueOfAllRequests',
             'valueOfAllTransactions',
             'transactionsWithoutACustomer',
+            'valueOfLoanPenaltyNotPaid',
             'layout',
             'dates',
             'graph_d',
