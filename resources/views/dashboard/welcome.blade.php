@@ -152,7 +152,7 @@ Endeleza: Dashboard
                           <div class="row align-items-end">
                             <div class="col-12">
                               <a href="{{ action('TransactionsController@index')}}">
-                                <h5 class="text-white">@php echo number_format(($defaulters/$valueOfOutstandingLoans*100), 2, '.', ''); @endphp %</h5>
+                                <h5 class="text-white">@php echo number_format((($valueOfOutstandingLoans - $valueOfLoanPenaltyNotPaid)/$valueOfOutstandingLoans*100), 2, '.', ''); @endphp %</h5>
                                 <h6 class="text-white m-b-0">Percentage of defaults to Outstanding loans</h6>
                               </a>
                             </div>
