@@ -267,7 +267,7 @@ Endeleza: {{$customer->person->fullName}} Statement
                 <div class="card-body">
                   <p class="card-title">Loan Requests</p>
                   <div class="table-responsive">
-                    <table id="delivery_notifications" class="table">
+                    <table id="loan_requests" class="table">
                       <thead>
                         <tr>
                             <th>Notification ID</th>
@@ -333,6 +333,33 @@ Endeleza: {{$customer->person->fullName}} Statement
 
 $(document).ready( function () {
     $('#statement').DataTable({
+      dom: 'Bfrtip',
+      pageLength: 100,
+      "order": [[ 0, "asc" ]],
+      buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+
+    $('#loan_accounts').DataTable({
+      dom: 'Bfrtip',
+      pageLength: 100,
+      "order": [[ 0, "asc" ]],
+      buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+
+    $('#transactions').DataTable({
+      dom: 'Bfrtip',
+      pageLength: 100,
+      "order": [[ 0, "asc" ]],
+      buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+
+    $('#loan_requests').DataTable({
       dom: 'Bfrtip',
       pageLength: 100,
       "order": [[ 0, "asc" ]],
