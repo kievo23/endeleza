@@ -179,7 +179,7 @@ Endeleza: {{$title}}
                   </td>
                   <!-- <td>{{$account->id}}</td> -->
                   <!-- <td>{{$account->loan_product_id}}</td> -->
-                  <!-- <td> {{$account->customer->agent->person ? $account->customer->agent->person->two_name : ''}}</td> -->
+                  
                   <!-- <td>{{$account->delivery_id}}</td> -->
                   <!-- <td>{{$account->trn_charge}}</td> -->
                 </tr>
