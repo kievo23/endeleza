@@ -144,9 +144,9 @@ Endeleza: {{$title}}
                   @foreach($loan_accounts as $account)
                   <tr>
                     <td>{{$account->created_at}}</td>
-                    <td>{{$account->customer->person ? $account->customer->person->full_name : ''}}</td>
+                    <td>{{$account->customer?->person ? $account->customer?->person->full_name : ''}}</td>
                     <td>{{$account->customer ? $account->customer->customer_account_msisdn : ''}}</td>
-                    <td>{{$account->customer->person ? $account->customer->person->business_name : ''}}</td>
+                    <td>{{$account->customer?->person ? $account->customer?->person->business_name : ''}}</td>
                     <td>{{$account->principal_amount}}</td>
                     <td>{{$account->loan_amount}}</td>
                     <td>{{$account->delivery->till_number}}</td>
