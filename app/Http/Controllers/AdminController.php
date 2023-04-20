@@ -164,7 +164,8 @@ class AdminController extends Controller
         $lateLoans = $oneWeek + $twoWeeks;
 
         $defaulters = LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
-            ->sum('loan_balance');
+            ->sum('loan_balance') - LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
+            ->sum('loan_penalty');
 
         $customers = Customer::count();
         $activeCustomers = Customer::where('active',1)->count();
