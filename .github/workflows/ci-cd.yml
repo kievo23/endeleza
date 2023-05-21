@@ -26,7 +26,7 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: SSH into server
-      uses: appleboy/ssh-action@master
+      uses: yankewei/laravel-deploy-action@main
       with:
         host: ${{ secrets.SSH_IP_ADDRESS }}
         username: ${{ secrets.SERVER_USERNAME }}
