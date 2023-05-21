@@ -46,5 +46,4 @@ jobs:
     - name: Pull code from repository
       run: |
         cd /home/endeleza/endeleza
-        git pull
-        
+        git pull        
