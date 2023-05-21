@@ -36,3 +36,4 @@ jobs:
       run: |
         cd ${{ secrets.SSH_SERVER_PATH }}
         git pull
+        
