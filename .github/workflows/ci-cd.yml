@@ -31,6 +31,8 @@ jobs:
         user: ${{ secrets.SERVER_USERNAME }}
         #password: ${{ secrets.SSH_USER_PASSWORD }}
         path: ${{ secrets.SSH_SERVER_PATH }}
+        owner: endeleza
+        port: 22
       env:
         DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY_PRIVATE_KEY }}
 
@@ -38,6 +40,3 @@ jobs:
       run: |
         cd /home/endeleza/endeleza
         git pull
-
-
-        
