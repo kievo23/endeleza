@@ -34,6 +34,5 @@ jobs:
 
     - name: Pull code from repository
       run: |
-        cd ${{ secrets.SSH_SERVER_PATH }}
+        cd /home/endeleza/endeleza
         git pull
-        
