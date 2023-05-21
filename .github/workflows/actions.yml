@@ -8,7 +8,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  endeleza-tests:
+  endeleza-tests&deployment:
 
     runs-on: ubuntu-latest
 
@@ -25,3 +25,14 @@ jobs:
       run: php artisan key:generate
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
+    - name: SSH into server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_IP_ADDRESS }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        password: ${{ secrets.SSH_USER_PASSWORD }}
+
+    - name: Pull code from repository
+      run: |
+        cd ${{ secrets.SSH_SERVER_PATH }}
+        git pull
