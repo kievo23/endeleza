@@ -25,11 +25,13 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: SSH into server
-      uses: yankewei/laravel-deploy-action@main
+      uses: ngocquyhoang/deploy@laravel
       with:
         host: ${{ secrets.SSH_IP_ADDRESS }}
-        username: ${{ secrets.SERVER_USERNAME }}
-        password: ${{ secrets.SSH_USER_PASSWORD }}
+        user: ${{ secrets.SERVER_USERNAME }}
+        #password: ${{ secrets.SSH_USER_PASSWORD }}
+        path: ${{ secrets.SSH_SERVER_PATH }}
+        port: 22
 
     - name: Pull code from repository
       run: |
