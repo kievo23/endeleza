@@ -51,6 +51,7 @@ jobs:
         #password: ${{ secrets.SSH_USER_PASSWORD }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
+        debug: true
         script: |
           whoami
           ls -al
