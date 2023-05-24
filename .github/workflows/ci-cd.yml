@@ -54,8 +54,10 @@ jobs:
         script: |
           whoami
           ls -al
+          cd /home/endeleza/endeleza
+          git pull origin master
 
-    - name: Pull code from repository
-      run: |
-        cd /home/endeleza/endeleza
-        git pull origin master
+    # - name: Pull code from repository
+    #   run: |
+    #     cd /home/endeleza/endeleza
+    #     git pull origin master
