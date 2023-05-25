@@ -56,7 +56,7 @@ jobs:
           whoami
           ls -al
           cd /home/capital/endeleza/
-          git pull origin master 
+          git pull origin master
 
     # - name: Pull code from repository
     #   run: |
