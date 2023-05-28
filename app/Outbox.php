@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 class Outbox extends Model
 {
     //
+
     protected $table = 'outbox';
     protected $fillable = [
         'phone',
