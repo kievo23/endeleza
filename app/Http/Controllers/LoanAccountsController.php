@@ -133,7 +133,7 @@ class LoanAccountsController extends Controller
         //dd($request);
         
         return view('loan_accounts/index', 
-            compact('title','loan_accounts','clearedLoan','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests','repayable')
+            compact('title','loan_accounts','clearedLoans','valueOfLoans','valueOfOutstandingLoans','valueOfTransactions','valueOfLoanPenalty','valueOfOutstandingLoans','valueOfInterests','repayable')
         );
     }
 
