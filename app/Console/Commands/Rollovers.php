@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\SendSMSJob;
 use Illuminate\Console\Command;
 use App\LoanAccount;
 use Carbon\Carbon;
@@ -54,8 +55,7 @@ class Rollovers extends Command
                 $daily_interest = $daily_interest_rate/100*$loan->loan_balance;
                 $new_loan_balance = $loan->loan_balance + $daily_interest;
                 $sms = "Dear customer, your OVERDUE loan has attracted Ksh. ". $daily_interest ." as lateness fees. Your new outstanding balance is Ksh. ".$new_loan_balance;
-                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
-                Outbox::log(json_decode($res),$sms);
+                dispatch(new SendSMSJob($loan->customer->customer_account_msisdn,$sms));
                 //Log::alert($res);
                 $loan->loan_balance = $new_loan_balance;
                 $loan->loan_penalty = $loan->loan_penalty + $daily_interest;
@@ -68,8 +68,7 @@ class Rollovers extends Command
                 $daily_interest = $daily_interest_rate/100*$loan->loan_balance;
                 $new_loan_balance = $loan->loan_balance + $daily_interest;
                 $sms = "Dear customer, your OVERDUE loan has attracted Ksh. ". $daily_interest ." as lateness fees. Your new outstanding balance is Ksh. ".$new_loan_balance;
-                $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
-                Outbox::log(json_decode($res),$sms);
+                dispatch(new SendSMSJob($loan->customer->customer_account_msisdn,$sms));
                 //Log::alert($res);
                 $loan->loan_balance = $new_loan_balance;
                 $loan->loan_penalty = $loan->loan_penalty + $daily_interest;

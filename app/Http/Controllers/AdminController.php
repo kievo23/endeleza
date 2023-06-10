@@ -11,6 +11,7 @@ use App\DeliveryNotification;
 use App\Transaction;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Cache;
 
 class AdminController extends Controller
 {
@@ -141,64 +142,69 @@ class AdminController extends Controller
         //exit();
         //END OF GRAPH
 
-        //Data
-        $loan_accounts = LoanAccount::count();
-        $clearedLoans = LoanAccount::where('loan_status',1)->count();
-        $valueOfLoans = LoanAccount::sum('principal_amount');
-        $valueOfPrincipalOnLoans = LoanAccount::where('loan_status',1)->sum('loan_amount');
-        $valueOfTransactions = LoanAccount::sum('trn_charge');
-        $valueOfInterests = LoanAccount::sum('interest_charged');
-        $valueOfLoanPenalty = LoanAccount::sum('loan_penalty');
-        $valueOfLoanPenaltyNotPaid = LoanAccount::where('loan_status',0)->sum('loan_penalty');
-        $valueOfOutstandingLoans = LoanAccount::sum('loan_balance');
-        //$healthyLoans = LoanAccount::where('created_at', '>', Carbon::now()->subDays(8))->sum('loan_balance');
+        // A day, half a day
+        $a_day = 60 * 60 * 24;
+        $half_day = 60 * 60 * 12;
+        $valueOfLoans = Cache::remember('valueOfLoans',$a_day, function(){
+            return LoanAccount::sum('principal_amount');
+        });
 
-        $oneWeek = LoanAccount::leftJoin('customers','customers.id','loan_account.customer_account_id')
-            ->whereBetween('loan_account.created_at', [Carbon::now()->subDays(29) ,Carbon::now()->subDays(8) ])
-            ->where('customers.interest',6)
-            ->sum('loan_account.loan_balance');
-        $twoWeeks = LoanAccount::leftJoin('customers','customers.id','loan_account.customer_account_id')
-            ->whereBetween('loan_account.created_at', [Carbon::now()->subDays(29) ,Carbon::now()->subDays(15) ])
-            ->where('customers.interest',10.5)
-            ->sum('loan_account.loan_balance');
+        $valueOfInterests = Cache::remember('valueOfInterests', $a_day, function(){
+            return LoanAccount::sum('interest_charged');
+        });
+        $valueOfLoanPenalty = Cache::remember('valueOfLoanPenalty',$a_day, function(){
+            return LoanAccount::sum('loan_penalty');
+        });
+        $valueOfLoanPenaltyNotPaid = Cache::remember('valueOfLoanPenaltyNotPaid',$a_day,function(){
+            return LoanAccount::where('loan_status',0)->sum('loan_penalty');
+        });
+        $valueOfOutstandingLoans = Cache::remember('valueOfOutstandingLoans',$a_day, function(){
+            return LoanAccount::sum('loan_balance');
+        });
+
+        $oneWeek = Cache::remember('oneWeek',$half_day,function(){
+            return LoanAccount::leftJoin('customers','customers.id','loan_account.customer_account_id')
+                ->whereBetween('loan_account.created_at', [Carbon::now()->subDays(29) ,Carbon::now()->subDays(8) ])
+                ->where('customers.interest',6)
+                ->sum('loan_account.loan_balance');
+        });
+        $twoWeeks = Cache::remember('twoWeek',$half_day,function(){
+            return LoanAccount::leftJoin('customers','customers.id','loan_account.customer_account_id')
+                ->whereBetween('loan_account.created_at', [Carbon::now()->subDays(29) ,Carbon::now()->subDays(15) ])
+                ->where('customers.interest',10.5)
+                ->sum('loan_account.loan_balance');
+        });
         $lateLoans = $oneWeek + $twoWeeks;
 
-        $defaulters = LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
-            ->sum('loan_balance') - LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
-            ->sum('loan_penalty');
+        $defaulters = Cache::remember('oneWeek',$half_day,function(){
+            return LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
+                ->sum('loan_balance') - LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
+                ->sum('loan_penalty');
+        });
 
-        $customers = Customer::count();
-        $activeCustomers = Customer::where('active',1)->count();
-
-        $delivery_notifications = DeliveryNotification::where('status',null)->count();
-        $deliveriesWithLoans = DeliveryNotification::where('status',1)->count();
-        $requests = DeliveryNotification::where('status',null)->count();
-        $valueOfAllRequests = DeliveryNotification::where('status',null)->sum('amount');
-        $valueOfDeliveriesWithLoans = DeliveryNotification::where('status',1)->sum('amount');
-
-        $transactions = Transaction::count();
-        $valueOfAllTransactions = Transaction::whereNotNull('customer_id')->sum('transaction_amount');
-        $transactionsWithoutACustomer = Transaction::where('customer_id',NULL)->count();
+        $customers = Cache::remember('customers',$half_day,function(){
+            return Customer::count();
+        });
+        $activeCustomers = Cache::remember('activeCustomers',$half_day,function(){
+            return Customer::where('active',1)->count();
+        });
+        $transactions = Cache::remember('transactions',$half_day,function(){
+            return Transaction::count();
+        });
+        $valueOfAllTransactions = Cache::remember('valueOfAllTransactions',$half_day,function(){
+            return Transaction::whereNotNull('customer_id')->sum('transaction_amount');
+        });
 
         $layout = "app"; 
         return view('dashboard/welcome',compact(
-            'loan_accounts',
-            'clearedLoans',
             'valueOfLoans',
-            'valueOfTransactions',
             'valueOfInterests',
             'valueOfLoanPenalty',
             'valueOfOutstandingLoans',
             'customers',
             'activeCustomers',
-            'delivery_notifications',
-            'deliveriesWithLoans',
-            'valueOfDeliveriesWithLoans',
             'transactions',
-            'requests',
-            'valueOfAllRequests',
             'valueOfAllTransactions',
-            'transactionsWithoutACustomer',
             'valueOfLoanPenaltyNotPaid',
             'layout',
             'dates',

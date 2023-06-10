@@ -1,4 +1,5 @@
 <?php
+use App\Jobs\SendSMSJob;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +11,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('queue', function(){
+    dispatch(new SendSMSJob('0710345130',"Testing queueing during CI-CD with github actions :) "));    
+});
 
 Route::prefix('agent')->name('agent.')->namespace('Agent')->group(function(){
     //All the admin routes will be defined here...
@@ -106,7 +111,5 @@ Route::middleware(['web','auth'])->group(function () {
     Route::post('checker/{checkId}/approve','CheckerController@approve')->name('checker.approve')->middleware('role_or_permission:admin|checker');
     Route::post('checker/{checkId}/drop','CheckerController@drop')->name('checker.drop')->middleware('role_or_permission:admin|checker');
 });
-
-//Route::get('send_sms','TestController@index');
 
 Auth::routes();
