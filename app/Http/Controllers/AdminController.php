@@ -69,26 +69,6 @@ class AdminController extends Controller
           ->where('created_at', '>=', Carbon::now()->subMonth())
           ->get();
 
-        // $graph_loans_customer = LoanAccount::select([
-        //     DB::raw('sum(loan_amount) as `amount`'),
-        //     DB::raw('customer_account_id as customer')
-        //   ])->groupBy('customer')
-        //   //->where('created_at', '>=', Carbon::now()->subMonth())
-        //   ->orderBy('amount','desc')
-        //   ->get();
-
-        // $graph_repayments_customer = Transaction::select([
-        //     // This aggregates the data and makes available a 'count' attribute
-        //     DB::raw('sum(transaction_amount) as `amount`'), 
-        //     // This throws away the timestamp portion of the date
-        //     DB::raw('customer_id as customer')
-        //   // Group these records according to that day
-        //   ])->groupBy('customer')
-        //   // And restrict these results to only those created in the last week
-        //   //->where('created_at', '>=', Carbon::now()->subMonth())
-        //   ->orderBy('amount','desc')
-        //   ->get();
-
         $graph_d = [];
         $graph_r = [];
         $graph_l = [];
@@ -124,23 +104,6 @@ class AdminController extends Controller
                 //print_r($th);
             }
         }
-        //dd($graph_d);
-        // foreach ($graph_deliveries as $key => $delivery) {
-        //     array_push($graph_d, $delivery->amount);
-        // }
-
-        // foreach ($graph_repayments as $key => $repayment) {
-        //     array_push($graph_r, $repayment->amount);
-        // }
-
-        // foreach ($graph_loans as $key => $loan) {
-        //     array_push($graph_l, $loan->amount);
-        // }        
-        
-        
-        //dd($dates);
-        //exit();
-        //END OF GRAPH
 
         // A day, half a day
         $a_day = 60 * 60 * 24;
@@ -176,7 +139,7 @@ class AdminController extends Controller
         });
         $lateLoans = $oneWeek + $twoWeeks;
 
-        $defaulters = Cache::remember('oneWeek',$half_day,function(){
+        $defaulters = Cache::remember('defaulters',$half_day,function(){
             return LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
                 ->sum('loan_balance') - LoanAccount::where('created_at', '<', Carbon::now()->subDays(29))
                 ->sum('loan_penalty');
