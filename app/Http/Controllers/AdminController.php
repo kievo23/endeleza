@@ -106,8 +106,8 @@ class AdminController extends Controller
         }
 
         // A day, half a day
-        $a_day = 60 * 60 * 24;
-        $half_day = 60 * 60 * 12;
+        $a_day = 60 * 60;
+        $half_day = 60 * 60;
         $valueOfLoans = Cache::remember('valueOfLoans',$a_day, function(){
             return LoanAccount::sum('principal_amount');
         });
