@@ -67,7 +67,7 @@ class Reminders extends Command
                 Outbox::log(json_decode($res),$sms);
                 Log::alert($res);
             }
-            if($loan->customer->interest == 8 && $loan->days_in_arrears == 12 && $days == 13){
+            if(($loan->customer->interest == 8 || $loan->customer->interest == 10.5) && $loan->days_in_arrears == 12 && $days == 13){
                 //SEND SMS FOR TWO WEEK LOAN
                 $sms = "REMINDER! Your stock loan balance of Ksh. ".$loan->loan_balance." is due TOMORROW. Kindly CLEAR via Till Number 5041363 or dial *483*209# and select option 2.";
                 $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
@@ -81,7 +81,7 @@ class Reminders extends Command
                 Outbox::log(json_decode($res),$sms);  
                 Log::alert($res);              
             }
-            if($loan->customer->interest == 8 && $loan->days_in_arrears == 13 && $days == 14){
+            if(($loan->customer->interest == 8 || $loan->customer->interest == 10.5) && $loan->days_in_arrears == 13 && $days == 14){
                 //SEND SMS FOR TWO WEEK LOAN
                 $sms = "Dear Customer, your stock loan balance of Ksh. ".$loan->loan_balance." is due TODAY. Kindly pay via Buy Goods Till Number 5041363 to access new stock.";
                 $res = SMS::sendSmsLeopard($loan->customer->customer_account_msisdn,$sms);
