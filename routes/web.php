@@ -71,6 +71,8 @@ Route::middleware(['web','auth'])->group(function () {
     Route::post('loan_request/{id}/convert','DeliveryNotificationsController@convert')->name('convert_toLoan');
     Route::resource('loan_requests','DeliveryNotificationsController');
     Route::post('delivery_notifications/ajax','DeliveryNotificationsController@ajax')->name('deliveries.ajax');
+    Route::get('delivery_notifications/create','DeliveryNotificationsController@create')->name('deliveries.create');
+    Route::post('delivery_notifications/store','DeliveryNotificationsController@store')->name('deliveries.store');
  
     Route::resource('online_checkout','OnlineCheckoutController');
     Route::resource('customer_stalls', 'CustomerStallsController');
@@ -91,6 +93,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('loan_accounts/fullypaid','LoanAccountsController@fullypaid');
     Route::get('loan_accounts/pending','LoanAccountsController@pending');
     Route::get('loan_accounts/today','LoanAccountsController@today');
+    Route::get('loan_accounts/create','LoanAccountsController@create');
     Route::get('loan_accounts/yesterday','LoanAccountsController@yesterday');
     Route::get('loan_accounts/pendingBelow/{days}','LoanAccountsController@pendingBelow');
     Route::get('loan_accounts/pendingAbove30','LoanAccountsController@aboveThirty');

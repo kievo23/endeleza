@@ -119,15 +119,46 @@ class DeliveryNotificationsController extends Controller
         return view('delivery_notifications/index', compact('delivery_notifications','title'));
     }
 
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $customers = Customer::all();
+        return view('delivery_notifications/create',compact('customers'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+        
+        //dd($req->all());
+        $customer = Customer::where('customer_account_msisdn',$req->customer)->first();
+        //dd($customer);
+        $create_loan = DeliveryNotification::create([
+            //'customer_stall_id' => $req->customer_stall_id,
+            'delivery_id' => $req->delivery_id,
+            'receipt_number' => $req->receipt_no,
+            'amount' => $req->amount,
+            'delivery_date' => $req->date,
+            'till_number' => $req->till,
+            'phone' => $req->phone,
+            'twiga_customer_id' => $req->customer_id,
+            'customer_id' => $customer->id,
+            'CREATED_BY' => 4,
+            'payload' => json_encode($req->all())
+        ]);
+        return redirect()->route('loan_accounts.index')
+                        ->with('success','Loan Request created successfully.');
+
     }
 
     /**

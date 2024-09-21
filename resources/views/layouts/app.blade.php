@@ -346,6 +346,7 @@
                                         <span class="pcoded-mtext">Loan Accounts</span>
                                     </a>
                                     <ul class="pcoded-submenu">
+                                        
                                         <li class="">
                                             <a href="{{ url('loan_accounts') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
@@ -373,6 +374,12 @@
                                         <span class="pcoded-mtext">Loan Requests</span>
                                     </a>
                                     <ul class="pcoded-submenu">
+                                        <li class="">
+                                        <a href="{{url('/delivery_notifications/create')}}">
+                                            <span class="pcoded-micon"><i class="feather icon-user-check"></i></span>
+                                            <span class="pcoded-mtext">Loan Request</span>
+                                        </a>
+                                        </li>
                                         <li class="">
                                             <a href="{{ url('loan_requests') }}">
                                                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
