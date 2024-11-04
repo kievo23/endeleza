@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\DeliveryNotification;
 use App\Customer;
 use App\LoanAccount;
+use App\SMS;
+use App\Outbox;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class DeliveryNotificationsController extends Controller
 {
@@ -156,6 +160,11 @@ class DeliveryNotificationsController extends Controller
             'CREATED_BY' => 4,
             'payload' => json_encode($req->all())
         ]);
+
+        $sms = "Endeleza Capital has initiated a loan of ".$req->amount."KES on your behalf on ".Carbon::now()->isoFormat('LLL');
+        $res = SMS::sendSmsLeopard($customer->customer_account_msisdn,$sms);
+        Outbox::log(json_decode($res),$sms);
+        Log::alert($res);
         return redirect()->route('loan_accounts.index')
                         ->with('success','Loan Request created successfully.');
 
